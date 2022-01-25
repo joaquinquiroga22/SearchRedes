@@ -1,13 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import Footer from './Componentes/Footer/Footer.js';
 import Nav from './Componentes/Nav/Nav';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    // <div className="App">
    
-      <Nav/>
-    </div>
+    //   <Nav/>
+    // </div>
+   <Router>
+     <Nav/>
+     
+       <Routes>
+           
+          
+
+
+       </Routes>
+       <Footer/>
+   </Router>
+    
   );
 }
 
