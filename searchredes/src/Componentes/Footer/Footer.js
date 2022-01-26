@@ -8,16 +8,16 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const buttons = [
-    <IconButton>
+    <IconButton color="inherit">
         <FacebookIcon />
     </IconButton>,
-    <IconButton>
+    <IconButton color="inherit">
         <TwitterIcon />
     </IconButton>,
-    <IconButton>
+    <IconButton color="inherit">
         <InstagramIcon />
     </IconButton>,
-    <IconButton>
+    <IconButton color="inherit">
         <LinkedInIcon />
     </IconButton>,
 ];
@@ -35,7 +35,7 @@ export default function footer() {
                         alignItems="center">
                         <Grid item xs sm={4} color="white"  >
                             <List sx={{ marginTop: '-80px', float: 'left' }} >
-                                <Typography  sx={{justifyContent:'flex-start'}}>
+                                <Typography  sx={{justifyContent:'flex-start', fontFamily: 'Ubuntu, sans-serif'}}>
                                     Empresa
                               <br/>  
                               <br/>
@@ -50,11 +50,11 @@ export default function footer() {
 
 
 
-                            <Typography  >
+                            <Typography sx={{fontFamily: 'Ubuntu, sans-serif'}} >
                                 Mail: ejemplo@ejemplo.com
-                            </Typography>
+                            
                             <br />
-                            <Typography>
+                            <br />
                                 Dirección: Ejemplo calle nº 2344 (e)
                             </Typography>
 
@@ -75,7 +75,7 @@ export default function footer() {
                                     
                                 }}
                             >
-                                <ButtonGroup size="large" aria-label="small button group">
+                                <ButtonGroup size="large" aria-label="small button group" >
                                     {buttons}
                                 </ButtonGroup>
 

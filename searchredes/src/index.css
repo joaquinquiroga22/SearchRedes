@@ -1,4 +1,9 @@
+*{
+  font-family: 'Ubuntu', sans-serif;
+}
 body {
+  scrollbar-width: auto;
+  scrollbar-color: blue orange; 
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
