@@ -27,10 +27,10 @@ export default function footer() {
 
     return (
 
-        <footer >
+        <footer style={{ width:'100%', zIndex:'10000'}}>
             <Box sx={{ backgroundColor: '#3498DB', }}  >
                 <Container maxWidth="lg">
-                    <Grid container spacing={11} sx={{}} direction="row"
+                    <Grid container spacing={11} sx={{}} flexDirection="row"
                         justifyContent="flex-start"
                         alignItems="center">
                         <Grid item xs sm={4} color="white"  >
@@ -67,7 +67,7 @@ export default function footer() {
 
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    alignItems: 'flex-end',
+                                    alignItems: 'center',
                                     '& > *': {
                                         m: 1,
                                     },
