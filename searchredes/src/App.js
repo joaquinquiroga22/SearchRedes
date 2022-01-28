@@ -1,27 +1,38 @@
+import React, { useState } from "react";
+
 import logo from './logo.svg';
 import './App.css';
-import Footer from './Componentes/Footer/Footer.js';
-import Nav from './Componentes/Nav/Nav';
+import Footer from './Componentes/Footer/Footer.jsx';
+import Nav from './Componentes/Nav/Nav.jsx';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Busqueda from '../src/Componentes/Busqueda/Busqueda.jsx'
 
 function App() {
+  const [renderAddUser, setRenderAddUser] = useState(false);
+
   return (
     // <div className="App">
-   
+
     //   <Nav/>
     // </div>
-   <Router>
-     <Nav/>
-     
-       <Routes>
-           
-          
+    <div>
+      <Router>
 
+        <Routes>
+          <Route exact path="/" exact element={<Nav/>} />
+          {/* <Route
+            path="/"
+            exact element = {<Nav/>}
+          /> */}
+         <Route exact path="busqueda" exact element={<Busqueda/>}/>
+         
+          {/* <Route exact path="/busqueda" component={<Busqueda/>} /> */}
 
-       </Routes>
-       <Footer/>
-   </Router>
-    
+        </Routes>
+      </Router>
+      <Footer />
+    </div>
+
   );
 }
 

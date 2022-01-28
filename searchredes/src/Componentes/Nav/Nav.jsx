@@ -64,7 +64,7 @@ export default function Nav() {
 
                 <Paper
                     component="form"
-                    sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '15', alignItems: 'center', width: '60%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
+                    sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '60%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
                 >
 
                     <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
@@ -77,7 +77,7 @@ export default function Nav() {
 
 
                     <Box style={{ position: 'relative' }}>
-                        <img style={{ height: '600px', position: 'absolute', zIndex: '1000', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
+                        <img style={{ height: '600px', position: 'absolute', zIndex: '-1', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
                     </Box>
 
                     <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-start' }}>

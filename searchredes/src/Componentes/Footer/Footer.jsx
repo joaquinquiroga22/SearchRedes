@@ -23,7 +23,7 @@ const buttons = [
 ];
 
 
-export default function footer() {
+ function Footer() {
 
     return (
 
@@ -89,3 +89,5 @@ export default function footer() {
     )
 
 }
+
+export default Footer;
