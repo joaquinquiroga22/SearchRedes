@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Busqueda from '../src/Componentes/Busqueda/Busqueda.jsx'
 
 function App() {
-  const [renderAddUser, setRenderAddUser] = useState(false);
+  
 
   return (
     // <div className="App">

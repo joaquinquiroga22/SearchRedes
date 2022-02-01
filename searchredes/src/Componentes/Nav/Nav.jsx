@@ -16,18 +16,11 @@ import lineasrosa from '../imagenes/lineasrosa.png'
 import lineasamarillas from '../imagenes/lineasamarillas.png'
 import Button from '@mui/material/Button';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import TwitterBorderIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import DirectionsIcon from '@mui/icons-material/Directions';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { ListItemText, Container } from '@mui/material';
 import { Box } from '@mui/system';
-import styles from './Nav.module.css'
 import Checkbox from '@mui/material/Checkbox';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
+
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +38,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export default function Nav() {
     const classes = useStyles();
     return (
-        <section style={{ backgroundColor: '#024761' }}>
+        <section style={{ backgroundColor: '#024761' ,}}>
 
 
 
@@ -126,10 +119,10 @@ export default function Nav() {
                             <li>Api</li>
                             <li>Tendencias</li>
                             <li>Siguenos</li>
-                            <li>Preguntas Frecuentes</li>
+                            
                         </ul>
                     </Box>
-                    <Button type="submit" size="large" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />}>
+                    <Button type="submit" size="small" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />} href="/busqueda">
                         Buscar
                         {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
@@ -143,7 +136,7 @@ export default function Nav() {
                 </Paper>
             </Box>
 
-            <div style={{ height: '60px', zIndex: '1', position: 'relative' }}>
+            <div style={{ height: '60px', zIndex: '1', position: 'relative', width:'100%'}}>
 
             </div>
         </section>
