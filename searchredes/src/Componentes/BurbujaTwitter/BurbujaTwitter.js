@@ -3,22 +3,22 @@ import WordCloud from "react-d3-cloud";
 import data from "../../data.json";
 
        const shortText = function (text) {
-        var newText = text.substring(0, 40);
-        newText = newText.charAt(30).toUpperCase() + newText.slice(1);
+        var newText = text.substring(0, 20);
+        newText = newText.charAt(20).toUpperCase() + newText.slice(1);
       
-        if (text.length > 40) {
+        if (text.length > 20) {
           return newText + "...";
         }
         return newText;
       };
 
-const fontSize = (word) => word.value / 40;
-const rotate = (word) => (word.value % 50) - 15;
+const fontSize = (word) => word.value / 50;
+const rotate = (word) => 0;
 
 function BurbujaPalabras() {
   const newData = data.data.map((item) => ({
       text: shortText(item.text),
-      value: Math.random() * 1000
+      value: Math.random() * 10000
     }));
    
   return (

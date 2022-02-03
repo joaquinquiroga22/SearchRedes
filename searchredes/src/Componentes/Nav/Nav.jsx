@@ -20,9 +20,12 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Box } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
+// import Busqueda from "../Busqueda/Busqueda.jsx"
 
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
@@ -35,8 +38,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 export default function Nav() {
+
+   const [input, setInput] = useState("");
+    const navigate = useNavigate();
     const classes = useStyles();
+
+    const goTwitter = () =>{
+    if (input){
+
+        navigate({
+          pathname: '/busqueda',
+          search: '?search=' + input,
+        });
+    }
+};
+
     return (
         <section style={{ backgroundColor: '#024761' ,}}>
 
@@ -50,7 +68,7 @@ export default function Nav() {
                 </Toolbar>
             </AppBar>
             <Box style={{ display: 'flex', flexDirection: 'column ', alignItems: 'flex-end' }}>
-                <img style={{ height: '150px', width: '400px', position: 'absolute', marginBottom: '120px' }} className='img-fluid shadow-4' src={lineasamarillas} alt='hola' title='Image' />
+                <img style={{ width: '30%', position: 'absolute', marginBottom: '120px' }} className='img-fluid shadow-4' src={lineasamarillas} alt='hola' title='Image' />
             </Box>
 
             <Box style={{ height: '100%', display: 'flex', position: 'relative', alignItems: 'center', justifyContent: 'center', margin: '250px 0 550px' }}>
@@ -73,15 +91,14 @@ export default function Nav() {
                         <img style={{ height: '600px', position: 'absolute', zIndex: '-1', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
                     </Box>
 
-                    <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-start' }}>
-                        <img style={{ height: '200px', width: '600px', position: 'absolute', zIndex: '-99999', marginTop: '320px' }} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
-                    </Box>
                     <InputBase
                         // hiddenLabel={true}
                         // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
                         sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                         placeholder="Que deseas buscar"
                         inputProps={{ 'aria-label': 'search google maps' }}
+                        onChange={e => setInput(e.target.value)}
+                        value={input}
                     />
                     <Box style={{ position: 'absolute', marginTop: '150px', color: 'white', fontSize:'20px' }} >
                         <Checkbox
@@ -122,14 +139,17 @@ export default function Nav() {
                             
                         </ul>
                     </Box>
-                    <Button type="submit" size="small" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />} href="/busqueda">
+                    <Box style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+                        <img style={{ width: '50%',position: 'absolute', zIndex: '-99999',top:'310px',left:'-500px'}} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
+                    </Box>
+                    <Button type="submit"  size="small" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />}  onClick={() => goTwitter()}>
                         Buscar
                         {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                     </Button>
-
+               
 
                     <Divider />
 

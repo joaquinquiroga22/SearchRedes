@@ -1,15 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { alpha, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from '@material-ui/core/Button';
-import HomeIcon from '@material-ui/icons/Home';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -21,28 +19,29 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Collapse from '@mui/material/Collapse';
 import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import { Container, ModalFooter, ThemeProvider } from 'react-bootstrap';
-import { Paper, TextField } from '@material-ui/core';
+import { Container, ThemeProvider } from 'react-bootstrap';
+import { Paper } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
 // import { Modal } from 'react-bootstrap';
 import { Modal } from '@material-ui/core';
 import { createTheme } from '@material-ui/core/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+
 import { withStyles } from '@material-ui/core/styles';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
+import { useSearchParams } from 'react-router-dom';
+
 const theme = createTheme({
   typography: {
     fontFamily: 'Raleway, Arial',
     fontSize: 50,
   },
 })
-
 
 
 const usseStyles = makeStyles((theme) => ({
@@ -162,27 +161,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Busqueda() {
 
+
+
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  // const params = useParams();
+  // const {search} = params
+  // console.log(search);
+  // console.log(params)
+
+  const [search] = useSearchParams();
+  var busqueda = search.get('search')
+  console.log(busqueda);
+
   const styless = usseStyles();
   const [modal, setModal] = useState(false)
-
-  const abrirCerrarModal = () => {
-    setModal(!modal);
-  }
-
-  const body = (
-    <div className={styless.modal}>
-      <div align="center" >
-        <h1 style={{ color: '#34495E' }} >Burbuja</h1>
-      </div>
-      {<BurbujaTwitter />}
-      <div>
-
-        <Button align="center" variant="outlined" color="secondary" size="small" onClick={() => abrirCerrarModal()} >Close</Button>
-      </div>
-    </div>
-  )
-
-
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -201,6 +194,29 @@ export default function Busqueda() {
   const handleClickk = () => {
     setOpen(!open);
   };
+  const abrirCerrarModal = () => {
+    setModal(!modal);
+  }
+
+  const body = (
+    <div className={styless.modal}>
+      <div align="center" >
+        <h1 style={{ color: '#34495E' }} >Burbuja</h1>
+      </div>
+      {<BurbujaTwitter />}
+      <div>
+
+        <Button align="center" variant="outlined" color="secondary" size="small" onClick={() => abrirCerrarModal()} >Close</Button>
+      </div>
+    </div>
+  )
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  async function espera(){
+    await sleep(5000);
+  }
 
   // const [show, popup] = useState(false);
   // const modalOpen = () => popup(true);
@@ -208,6 +224,258 @@ export default function Busqueda() {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    if(busqueda){
+      setLoading(true);
+      axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`, {
+          //   method: 'GET',
+          //   headers: {
+          //       "dataType": "json",
+          //      "Accept": "application/json",
+          //   }
+      })
+           .then(response => response.data)
+          .then(datos => {
+              console.log(datos)
+              setData(datos);
+              setLoading(false);
+              // console.log(datos[0].name)
+
+          }).catch((err) =>{
+            console.log(err);
+            setLoading(false)
+          })
+    }
+
+
+  }, [busqueda]);
+  console.log(loading);
+
+  //`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`
+  //`
+
+  if(!busqueda){
+    return  <div style={{ backgroundColor: '#024761' }}>
+    <div className={classes.root}>
+      <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
+        <Toolbar>
+          <Typography className={classes.title} variant="h4" noWrap>
+            Logo
+          </Typography>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+
+              <SearchIcon />
+
+            </div>
+
+            <InputBase
+
+              placeholder="Que deseas buscar"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+            />
+
+          </div>
+          <Button
+            style={{ borderRadius: '8px' }}
+            variant="outlined"
+            color="primary"
+            size="large"
+            className={classes.button}
+            startIcon={<AnalyticsOutlinedIcon />}
+
+            onClick={handleClicke}
+          >
+            Esquemas
+          </Button>
+          <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClosee}
+          >
+            <StyledMenuItem>
+              <ListItemIcon>
+                <BubbleChartIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+              <Modal
+                open={modal}
+                onClose={abrirCerrarModal}>
+                {body}
+              </Modal>
+              {/* onClick={modalOpen} */}
+              {/* <div class="modal-body">
+              <div class="container-fluid">
+
+                <Modal show={show} onHide={modalClose}>
+                  <Modal.Body><BurbujaTwitter /></Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={modalClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
+            </div> */}
+
+
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <ListItemIcon>
+                <DraftsIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Grafico Barras" />
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <ListItemIcon>
+                <InboxIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Grafico Lineas" />
+            </StyledMenuItem>
+            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+              Volver
+            </Button>
+          </StyledMenu>
+        </Toolbar>
+      </AppBar>
+    </div>
+    <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+
+
+      <Container>
+        <Paper
+          style={{ margin: '0 auto', width: '100%', height:'1000px' }}
+        >
+
+         <p>No se encontro la Busqueda...</p>
+
+        </Paper>
+      </Container>
+
+    </div>
+  </div>
+  }
+  console.log(busqueda)
+
+   if(loading){
+    // if(true){
+      espera();
+    return    <div style={{ backgroundColor: '#024761' }}>
+    <div className={classes.root}>
+      <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
+        <Toolbar>
+          <Typography className={classes.title} variant="h4" noWrap>
+            Logo
+          </Typography>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+
+              <SearchIcon />
+
+            </div>
+
+            <InputBase
+
+              placeholder="Que deseas buscar"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ "aria-label": "search" }}
+            />
+
+          </div>
+          <Button
+            style={{ borderRadius: '8px' }}
+            variant="outlined"
+            color="primary"
+            size="large"
+            className={classes.button}
+            startIcon={<AnalyticsOutlinedIcon />}
+
+            onClick={handleClicke}
+          >
+            Esquemas
+          </Button>
+          <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClosee}
+          >
+            <StyledMenuItem>
+              <ListItemIcon>
+                <BubbleChartIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+              <Modal
+                open={modal}
+                onClose={abrirCerrarModal}>
+                {body}
+              </Modal>
+              {/* onClick={modalOpen} */}
+              {/* <div class="modal-body">
+              <div class="container-fluid">
+
+                <Modal show={show} onHide={modalClose}>
+                  <Modal.Body><BurbujaTwitter /></Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={modalClose}>
+                      Close
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
+            </div> */}
+
+
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <ListItemIcon>
+                <DraftsIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Grafico Barras" />
+            </StyledMenuItem>
+            <StyledMenuItem>
+              <ListItemIcon>
+                <InboxIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Grafico Lineas" />
+            </StyledMenuItem>
+            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+              Volver
+            </Button>
+          </StyledMenu>
+        </Toolbar>
+      </AppBar>
+    </div>
+    <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+
+
+      <Container>
+        <Paper
+          style={{ margin: '0 auto', width: '100%', height:'1000px' }}
+        >
+
+         <p>Cargando...</p>
+
+        </Paper>
+      </Container>
+
+    </div>
+  </div>
+  }
+
+  if(!loading && !data){
+    return <p>No se encontro la busqueda</p>
+  }
   return (
     <div style={{ backgroundColor: '#024761' }}>
       <div className={classes.root}>
@@ -313,7 +581,7 @@ export default function Busqueda() {
                 width: '100%',
                 maxWidth: '100%',
                 bgcolor: 'white',
-                borderRadius:'20px'
+                borderRadius: '20px'
               }}
               theme={theme}
             >
@@ -490,7 +758,7 @@ export default function Busqueda() {
                   <TwitterIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText      
+              <ListItemText
               primary={
             <ThemeProvider theme={theme}>
                 <Typography variant="h6" display="block" gutterBottom>
@@ -503,7 +771,7 @@ export default function Busqueda() {
                 </Typography>
                 </Typography>
             </ThemeProvider>
-              } 
+              }
               secondary="#EmergenciaHídrica"  />
             </ListItem> */}
 
