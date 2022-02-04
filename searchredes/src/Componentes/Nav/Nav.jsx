@@ -47,7 +47,6 @@ export default function Nav() {
 
     const goTwitter = () =>{
     if (input){
-
         navigate({
           pathname: '/busqueda',
           search: '?search=' + input,
