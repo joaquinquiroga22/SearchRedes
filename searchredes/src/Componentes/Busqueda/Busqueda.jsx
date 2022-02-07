@@ -358,7 +358,7 @@ export default function Busqueda() {
 
 
                         <Box className={boxClass.ErrorBox}>
-                        <Box>
+                            <Box>
                                 <img className={boxClass.Group8} src={Group8} alt="" />
                             </Box>
 
@@ -368,24 +368,24 @@ export default function Busqueda() {
                             <Box>
                                 <Button
                                     variant="contained"
-                                    size="large" 
+                                    size="large"
                                     style={{
                                         backgroundColor: '#2F9DED',
                                         color: 'white',
                                         marginBottom: '10px',
                                         margintTop: '20px',
                                         borderRadius: '20px',
-                                    }} 
-                                    color="secondary" 
+                                    }}
+                                    color="secondary"
                                     href="/" >
                                     INTENTE NUEVAMENTE
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width:'100%'}}>
-                                
+                            <Box style={{ position: 'relative', width: '100%' }}>
 
-                                <img style={{width: '80%' ,marginTop:'5%'}} src={image7} alt="hola" />
-                            
+
+                                <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
+
                             </Box>
                         </Box>
 
@@ -495,7 +495,7 @@ export default function Busqueda() {
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%', height: '800px', backgroundColor: '#024761', border: '' }}
+                        style={{ margin: '0 auto', width: '100%', height: '800px', backgroundColor: '#024761', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
                     >
                         <Box className={boxClass.hola} style={{ width: '50%', height: '300px', border: '', borderRadius: '10px', margin: '200px auto', textAlign: 'center' }}>
 
@@ -610,7 +610,7 @@ export default function Busqueda() {
                         style={{ margin: '0 auto', width: '100%', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
                     >
 
-                      
+
                         <Box className={boxClass.ErrorBox}>
 
                             <Box>
@@ -623,24 +623,24 @@ export default function Busqueda() {
                             <Box>
                                 <Button
                                     variant="contained"
-                                    size="large" 
+                                    size="large"
                                     style={{
                                         backgroundColor: '#2F9DED',
                                         color: 'white',
                                         marginBottom: '10px',
                                         margintTop: '20px',
                                         borderRadius: '20px',
-                                    }} 
-                                    color="secondary" 
+                                    }}
+                                    color="secondary"
                                     href="/" >
                                     INTENTE NUEVAMENTE
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width:'100%'}}>
-                                
+                            <Box style={{ position: 'relative', width: '100%' }}>
 
-                                <img style={{width: '80%' ,marginTop:'5%'}} src={image7} alt="hola" />
-                            
+
+                                <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
+
                             </Box>
 
 
@@ -777,6 +777,9 @@ export default function Busqueda() {
                                                             {item.url}
                                                             <Typography variant="subtitle1" display="block" gutterBottom>
                                                                 {item.fecha}
+                                                            </Typography>
+                                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                                                {item.hashtag}
                                                             </Typography>
                                                         </Typography>
                                                     </Typography>

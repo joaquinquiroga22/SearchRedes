@@ -138,9 +138,6 @@ export default function Nav() {
                             
                         </ul>
                     </Box>
-                    <Box style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                        <img style={{ width: '50%',position: 'absolute', zIndex: '-99999',top:'310px',left:'-500px'}} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
-                    </Box>
                     <Button type="submit"  size="small" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />}  onClick={() => goTwitter()}>
                         Buscar
                         {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
@@ -154,6 +151,9 @@ export default function Nav() {
 
                 </Paper>
             </Box>
+                {/* <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
+                    <img style={{ width: '20%',position: 'absolute', zIndex: '1',}} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
+                </Box> */}
 
             <div style={{ height: '60px', zIndex: '1', position: 'relative', width:'100%'}}>
 
