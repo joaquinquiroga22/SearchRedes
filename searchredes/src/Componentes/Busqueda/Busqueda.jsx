@@ -50,7 +50,7 @@ const theme = createTheme({
 const usseStyles = makeStyles((theme) => ({
     modal: {
         position: 'absolute',
-        width: 350,
+        width: 320,
         backgroundColor: 'white',
         border: '2px solid #2FBCED',
         borderRadius: '8px',
