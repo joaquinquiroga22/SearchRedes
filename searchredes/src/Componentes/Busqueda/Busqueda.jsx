@@ -230,7 +230,7 @@ export default function Busqueda() {
     useEffect(() => {
         if (busqueda) {
             setLoading(true);
-            axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`, {
+            axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`, {
                 //   method: 'GET',
                 //   headers: {
                 //       "dataType": "json",
@@ -253,11 +253,11 @@ export default function Busqueda() {
 
     }, [busqueda]);
 
-
+    //`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`
     //`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`
     //`
-    //if (!busqueda) {
-    if (true) {
+    if (!busqueda) {
+        //if (true) {
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
@@ -353,15 +353,40 @@ export default function Busqueda() {
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%', height: '700px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
+                        style={{ margin: '0 auto', width: '100%', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
                     >
 
 
                         <Box className={boxClass.ErrorBox}>
-                            <img className={boxClass.Group8} src={Group8} alt="" />
-                            <h2 className={boxClass.h2}>No se encontraron datos <br/> en tu busqueda
-                            </h2>
-                            <img className={boxClass.Image7} src={image7} alt="hola" />
+                        <Box>
+                                <img className={boxClass.Group8} src={Group8} alt="" />
+                            </Box>
+
+                            <Box>
+                                <h2 className={boxClass.h2}>No se encontraron datos <br /> en tu busqueda </h2>
+                            </Box>
+                            <Box>
+                                <Button
+                                    variant="contained"
+                                    size="large" 
+                                    style={{
+                                        backgroundColor: '#2F9DED',
+                                        color: 'white',
+                                        marginBottom: '10px',
+                                        margintTop: '20px',
+                                        borderRadius: '20px',
+                                    }} 
+                                    color="secondary" 
+                                    href="/" >
+                                    INTENTE NUEVAMENTE
+                                </Button>
+                            </Box>
+                            <Box style={{ position: 'relative', width:'100%'}}>
+                                
+
+                                <img style={{width: '80%' ,marginTop:'5%'}} src={image7} alt="hola" />
+                            
+                            </Box>
                         </Box>
 
                     </Paper>
@@ -486,8 +511,145 @@ export default function Busqueda() {
         </div>
     }
 
-    if (!loading && !data) {
-        return <p>No se encontro la busqueda</p>
+    if (!data || data.length == 0) {
+        return <div style={{ backgroundColor: '#024761' }}>
+            <div className={classes.root}>
+                <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
+                    <Toolbar>
+                        <Typography className={classes.title} variant="h4" noWrap>
+                            Logo
+                        </Typography>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+
+                                <SearchIcon />
+
+                            </div>
+
+                            <InputBase
+
+                                placeholder="Que deseas buscar"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput
+                                }}
+                                inputProps={{ "aria-label": "search" }}
+                            />
+
+                        </div>
+                        <Button
+                            style={{ borderRadius: '8px' }}
+                            variant="outlined"
+                            color="primary"
+                            size="large"
+                            className={classes.button}
+                            startIcon={<AnalyticsOutlinedIcon />}
+
+                            onClick={handleClicke}
+                        >
+                            Esquemas
+                        </Button>
+                        <StyledMenu
+                            id="customized-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClosee}
+                        >
+                            <StyledMenuItem>
+                                <ListItemIcon>
+                                    <BubbleChartIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+                                <Modal
+                                    open={modal}
+                                    onClose={abrirCerrarModal}>
+                                    {body}
+                                </Modal>
+                                {/* onClick={modalOpen} */}
+                                {/* <div class="modal-body">
+          <div class="container-fluid">
+
+            <Modal show={show} onHide={modalClose}>
+              <Modal.Body><BurbujaTwitter /></Modal.Body>
+              <Modal.Footer>
+                <Button onClick={modalClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+        </div> */}
+
+
+                            </StyledMenuItem>
+                            <StyledMenuItem>
+                                <ListItemIcon>
+                                    <DraftsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Grafico Barras" />
+                            </StyledMenuItem>
+                            <StyledMenuItem>
+                                <ListItemIcon>
+                                    <InboxIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Grafico Lineas" />
+                            </StyledMenuItem>
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+                                Volver
+                            </Button>
+                        </StyledMenu>
+                    </Toolbar>
+                </AppBar>
+            </div>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+
+
+                <Container>
+                    <Paper
+                        style={{ margin: '0 auto', width: '100%', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
+                    >
+
+                      
+                        <Box className={boxClass.ErrorBox}>
+
+                            <Box>
+                                <img className={boxClass.Group8} src={Group8} alt="" />
+                            </Box>
+
+                            <Box>
+                                <h2 className={boxClass.h2}>No se encontraron datos <br /> en tu busqueda </h2>
+                            </Box>
+                            <Box>
+                                <Button
+                                    variant="contained"
+                                    size="large" 
+                                    style={{
+                                        backgroundColor: '#2F9DED',
+                                        color: 'white',
+                                        marginBottom: '10px',
+                                        margintTop: '20px',
+                                        borderRadius: '20px',
+                                    }} 
+                                    color="secondary" 
+                                    href="/" >
+                                    INTENTE NUEVAMENTE
+                                </Button>
+                            </Box>
+                            <Box style={{ position: 'relative', width:'100%'}}>
+                                
+
+                                <img style={{width: '80%' ,marginTop:'5%'}} src={image7} alt="hola" />
+                            
+                            </Box>
+
+
+                        </Box>
+                    </Paper>
+                </Container>
+
+            </div>
+        </div >
     }
     return (
         <div style={{ backgroundColor: '#024761' }}>
@@ -587,8 +749,53 @@ export default function Busqueda() {
                     <Paper
                         sx={{ margin: '0 auto', width: '100%' }}
                     >
+                        <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
+                        {data ? (
+                            data && data.map((item) => (
+                                <List
+                                    sx={{
+                                        margin: '0 auto',
+                                        width: '100%',
+                                        maxWidth: '100%',
+                                        bgcolor: 'white',
+                                        borderRadius: '20px'
+                                    }}
+                                    theme={theme}
+                                >
+                                    <ListItem >
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <TwitterIcon />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                            primary={
+                                                <ThemeProvider theme={theme}>
+                                                    <Typography variant="h6" display="block" gutterBottom>
+                                                        {item.cuerpo}
+                                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                                            {item.url}
+                                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                                                {item.fecha}
+                                                            </Typography>
+                                                        </Typography>
+                                                    </Typography>
+                                                </ThemeProvider>
+                                            }
+                                            secondary={item.menciones}
+                                        />
 
-                        <List
+                                    </ListItem>
+                                </List>
+                            ))
+
+
+                        ) : (
+                            <p>no hay nada</p>
+                        )}
+                    </Paper>
+                </Container>
+                {/* <List
                             sx={{
                                 margin: '0 auto',
                                 width: '100%',
@@ -597,338 +804,339 @@ export default function Busqueda() {
                                 borderRadius: '20px'
                             }}
                             theme={theme}
-                        >
+                            >
                             <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twits @Sergio Uñac</h4>
                             <ListItem >
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        <TwitterIcon />
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                Con foco en el desarrollo de la ciencia, tecnología e innovación,
-                                                Sergio Uñac se reunió con Fernando Peirano
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    https://twitter.com/user/status
-                                                    /1483863563408183297
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        12/01/2022
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
-                                        </ThemeProvider>
-                                    }
-                                    secondary="#ciencia"
-                                />
-
-
+                            <ListItemAvatar>
+                            <Avatar>
+                            <TwitterIcon />
+                            </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                            primary={
+                                <ThemeProvider theme={theme}>
+                                <Typography variant="h6" display="block" gutterBottom>
+                                Con foco en el desarrollo de la ciencia, tecnología e innovación,
+                                Sergio Uñac se reunió con Fernando Peirano
+                                <Typography variant="subtitle1" display="block" gutterBottom>
+                                https://twitter.com/user/status
+                                /1483863563408183297
+                                <Typography variant="subtitle1" display="block" gutterBottom>
+                                12/01/2022
+                                </Typography>
+                                </Typography>
+                                </Typography>
+                                </ThemeProvider>
+                            }
+                            secondary="#ciencia"
+                            />
+                            
+                            
                             </ListItem>
-
+                            
                             <ListItem sx={{ marginTop: '10px' }}>
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        <TwitterIcon />
-                                    </Avatar>
+                            <ListItemAvatar>
+                            <Avatar>
+                            <TwitterIcon />
+                            </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                Desarrollo Humano continúa con las inscripciones al programa #Progresar
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    http://t.co/8DAOAj1H1
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        13/01/2022
-                                                    </Typography>
-                                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                                        @sergiounac
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
-                                        </ThemeProvider>
-                                    }
-                                    secondary="#Progresar" />
-                            </ListItem>
-
-                            <ListItem sx={{ marginTop: '10px', width: '100%' }}>
+                                primary={
+                                    <ThemeProvider theme={theme}>
+                                    <Typography variant="h6" display="block" gutterBottom>
+                                    Desarrollo Humano continúa con las inscripciones al programa #Progresar
+                                    <Typography variant="subtitle1" display="block" gutterBottom>
+                                    http://t.co/8DAOAj1H1
+                                    <Typography variant="subtitle1" display="block" gutterBottom>
+                                    13/01/2022
+                                    </Typography>
+                                    <Typography variant="subtitle2" display="block" gutterBottom>
+                                    @sergiounac
+                                    </Typography>
+                                    </Typography>
+                                    </Typography>
+                                    </ThemeProvider>
+                                }
+                                secondary="#Progresar" />
+                                </ListItem>
+                                
+                                <ListItem sx={{ marginTop: '10px', width: '100%' }}>
                                 <ListItemAvatar>
-                                    <Avatar>
-                                        <TwitterIcon />
-                                    </Avatar>
+                                <Avatar>
+                                <TwitterIcon />
+                                </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText sx={{ width: '100%' }}
-                                    primary={
+                                primary={
                                         <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                En la mañana del día miércoles, el gobernador @sergiounac recibió al campeón Nacional de Malambo, Sergio Zalazar, en Casa de Gobierno.
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    https://twitter.com/user/status
-                                                    /1483839269215121409
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        14/01/2022
-                                                    </Typography>
-                                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                                        @sergiounac
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
+                                        <Typography variant="h6" display="block" gutterBottom>
+                                        En la mañana del día miércoles, el gobernador @sergiounac recibió al campeón Nacional de Malambo, Sergio Zalazar, en Casa de Gobierno.
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        https://twitter.com/user/status
+                                        /1483839269215121409
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        14/01/2022
+                                        </Typography>
+                                        <Typography variant="subtitle2" display="block" gutterBottom>
+                                        @sergiounac
+                                        </Typography>
+                                        </Typography>
+                                        </Typography>
                                         </ThemeProvider>
                                     }
                                     secondary="#Campeonato" />
-                            </ListItem>
-
-                            <ListItem sx={{ marginTop: '10px' }}>
-                                <ListItemAvatar>
+                                    </ListItem>
+                                    
+                                    <ListItem sx={{ marginTop: '10px' }}>
+                                    <ListItemAvatar>
                                     <Avatar>
-                                        <TwitterIcon />
+                                    <TwitterIcon />
                                     </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
+                                    </ListItemAvatar>
+                                    <ListItemText
                                     primary={
                                         <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                "@diegodesanjuan Juan domingo Biden le llamó a Sergio para adelantarle la noticia y Uñac medio enojado le exigió que no lo den a conocer hasta que Alberto no viniera a la Provincia y así poderle contar de primera mano"
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    https://twitter.com/user/status
-                                                    /1483605376255737860
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        15/01/2022
-                                                    </Typography>
-                                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                                        @diegodesanjuan
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
+                                        <Typography variant="h6" display="block" gutterBottom>
+                                        "@diegodesanjuan Juan domingo Biden le llamó a Sergio para adelantarle la noticia y Uñac medio enojado le exigió que no lo den a conocer hasta que Alberto no viniera a la Provincia y así poderle contar de primera mano"
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        https://twitter.com/user/status
+                                        /1483605376255737860
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        15/01/2022
+                                        </Typography>
+                                        <Typography variant="subtitle2" display="block" gutterBottom>
+                                        @diegodesanjuan
+                                        </Typography>
+                                        </Typography>
+                                        </Typography>
                                         </ThemeProvider>
                                     }
                                     secondary="#Biden" />
-                            </ListItem>
-
-                            <ListItem sx={{ marginTop: '10px' }} >
-                                <ListItemAvatar>
+                                    </ListItem>
+                                    
+                                    <ListItem sx={{ marginTop: '10px' }} >
+                                    <ListItemAvatar>
                                     <Avatar>
-                                        <TwitterIcon />
+                                    <TwitterIcon />
                                     </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
+                                    </ListItemAvatar>
+                                    <ListItemText
                                     primary={
                                         <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                @Gustavo84124185 @sergiounac @roberto_gattoni No me respondiste. Sos larretista ahora?
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    https://twitter.com/user/status
-                                                    /1484314138536865799
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        16/01/2022
-                                                    </Typography>
-                                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                                        @Gustavo84124185
-                                                        @sergiounac
-                                                        @roberto_gattoni
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
+                                        <Typography variant="h6" display="block" gutterBottom>
+                                        @Gustavo84124185 @sergiounac @roberto_gattoni No me respondiste. Sos larretista ahora?
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        https://twitter.com/user/status
+                                        /1484314138536865799
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        16/01/2022
+                                        </Typography>
+                                        <Typography variant="subtitle2" display="block" gutterBottom>
+                                        @Gustavo84124185
+                                        @sergiounac
+                                        @roberto_gattoni
+                                        </Typography>
+                                        </Typography>
+                                        </Typography>
                                         </ThemeProvider>
                                     }
                                     secondary="" />
-
-                            </ListItem>
-                            <ListItem sx={{ marginTop: '10px' }} >
-                                <ListItemAvatar>
+                                    
+                                    </ListItem>
+                                    <ListItem sx={{ marginTop: '10px' }} >
+                                    <ListItemAvatar>
                                     <Avatar>
                                         <TwitterIcon />
+                                        </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                        primary={
+                                            <ThemeProvider theme={theme}>
+                                            <Typography variant="h6" display="block" gutterBottom>
+                                            @Gustavo84124185 @sergiounac @roberto_gattoni Y porque no en el 2015. Se tomó dos años, porque lo hizo en noviembre.Pero vamos a lo importante. Votarias a Larreta en el 2023?
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            https://twitter.com/user/status
+                                            /1484283206215999488
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            17/01/2022
+                                            </Typography>
+                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                            @Gustavo84124185
+                                            @sergiounac
+                                            @roberto_gattoni
+                                            </Typography>
+                                            </Typography>
+                                            </Typography>
+                                            </ThemeProvider>
+                                        }
+                                        secondary="#Gattoni" />
+                                        
+                                        </ListItem>
+                                        {/* <ListItem sx={{marginTop:'10px'}} >
+                                        <ListItemAvatar>
+                                        <Avatar>
+                                        <TwitterIcon />
+                                        </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                        primary={
+                                            <ThemeProvider theme={theme}>
+                                            <Typography variant="h6" display="block" gutterBottom>
+                                            Gioja solicita que se declare emergencia Hídrica Nacional
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            http://t.co/8DAOAj1H1
+                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                            @joseluisgioja @tdosoSanJuan @Frente DeTodos @Diputados_Todos #SanJuan
+                                            </Typography>
+                                            </Typography>
+                                            </Typography>
+            </ThemeProvider>
+        }
+        secondary="#EmergenciaHídrica"  />
+    </ListItem> */}
+
+                {/* <ListItem style={{ width: '130px', float: 'right' }}>
+                            <ListItemButton onClick={handleClickk} >
+                            <ListItemIcon>
+                            </ListItemIcon>
+                            <ListItemText />
+                            {/* Ver Mas */}
+                {/* {open ? <HorizontalRuleIcon /> : <AddIcon />}
+                                    </ListItemButton>
+                                    </ListItem>
+                                    <Collapse in={open} timeout="auto" unmountOnExit>
+                                    <ListItem sx={{ marginTop: '10px' }} >
+                                    <ListItemAvatar>
+                                    <Avatar >
+                                    <TwitterIcon />
                                     </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
+                                    </ListItemAvatar>
+                                    <ListItemText
                                     primary={
                                         <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                                @Gustavo84124185 @sergiounac @roberto_gattoni Y porque no en el 2015. Se tomó dos años, porque lo hizo en noviembre.Pero vamos a lo importante. Votarias a Larreta en el 2023?
-                                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                                    https://twitter.com/user/status
-                                                    /1484283206215999488
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        17/01/2022
-                                                    </Typography>
-                                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                                        @Gustavo84124185
-                                                        @sergiounac
-                                                        @roberto_gattoni
-                                                    </Typography>
-                                                </Typography>
-                                            </Typography>
+                                        <Typography variant="h6" display="block" gutterBottom>
+                                        @sergiounac @ferpeirano @agenciaidiar usted es un tipazo, no baje los brazos, estamos con usted
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        https://twitter.com/user/status
+                                        /1484224358495236107
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        18/01/2022
+                                        </Typography>
+                                        <Typography variant="subtitle2" display="block" gutterBottom>
+                                        @sergiounac
+                                        @ferpeirano
+                                        @agenciaidiar
+                                        </Typography>
+                                        </Typography>
+                                        </Typography>
                                         </ThemeProvider>
                                     }
-                                    secondary="#Gattoni" />
-
-                            </ListItem>
-                            {/* <ListItem sx={{marginTop:'10px'}} >
-              <ListItemAvatar>
-                <Avatar>
-                  <TwitterIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-              primary={
-            <ThemeProvider theme={theme}>
-                <Typography variant="h6" display="block" gutterBottom>
-                  Gioja solicita que se declare emergencia Hídrica Nacional
-                  <Typography variant="subtitle1" display="block" gutterBottom>
-                  http://t.co/8DAOAj1H1
-                  <Typography variant="subtitle2" display="block" gutterBottom>
-                  @joseluisgioja @tdosoSanJuan @Frente DeTodos @Diputados_Todos #SanJuan
-                </Typography>
-                </Typography>
-                </Typography>
-            </ThemeProvider>
-              }
-              secondary="#EmergenciaHídrica"  />
-            </ListItem> */}
-
-                            <ListItem style={{ width: '130px', float: 'right' }}>
-                                <ListItemButton onClick={handleClickk} >
-                                    <ListItemIcon>
-                                    </ListItemIcon>
-                                    <ListItemText />
-                                    {/* Ver Mas */}
-                                    {open ? <HorizontalRuleIcon /> : <AddIcon />}
-                                </ListItemButton>
-                            </ListItem>
-                            <Collapse in={open} timeout="auto" unmountOnExit>
-                                <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                        <Avatar >
-                                            <TwitterIcon />
+                                        secondary="#Uñac" />
+                                        
+                                        </ListItem>
+                                        </Collapse>
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                        <ListItem sx={{ marginTop: '10px' }} >
+                                        <ListItemAvatar>
+                                        <Avatar>
+                                        <TwitterIcon />
                                         </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
+                                        </ListItemAvatar>
+                                        <ListItemText
                                         primary={
                                             <ThemeProvider theme={theme}>
-                                                <Typography variant="h6" display="block" gutterBottom>
-                                                    @sergiounac @ferpeirano @agenciaidiar usted es un tipazo, no baje los brazos, estamos con usted
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        https://twitter.com/user/status
-                                                        /1484224358495236107
-                                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                                            18/01/2022
-                                                        </Typography>
-                                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                                            @sergiounac
-                                                            @ferpeirano
-                                                            @agenciaidiar
-                                                        </Typography>
-                                                    </Typography>
-                                                </Typography>
+                                            <Typography variant="h6" display="block" gutterBottom>
+                                            @sergiounac ojala siga ocupandose de la provincia como hasta ahora
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            https://twitter.com/user/
+                                            status
+                                            /1484223729412587522
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            19/01/2022
+                                            </Typography>
+                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                            @sergiounac
+                                            </Typography>
+                                            </Typography>
+                                            </Typography>
                                             </ThemeProvider>
                                         }
                                         secondary="#Uñac" />
 
-                                </ListItem>
-                            </Collapse>
-                            <Collapse in={open} timeout="auto" unmountOnExit>
-                                <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
+                                        </ListItem>
+                                        </Collapse>
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                        <ListItem sx={{ marginTop: '10px' }} >
+                                        <ListItemAvatar>
                                         <Avatar>
-                                            <TwitterIcon />
+                                        <TwitterIcon />
                                         </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
+                                        </ListItemAvatar>
+                                        <ListItemText
                                         primary={
                                             <ThemeProvider theme={theme}>
-                                                <Typography variant="h6" display="block" gutterBottom>
-                                                    @sergiounac ojala siga ocupandose de la provincia como hasta ahora
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        https://twitter.com/user/
-                                                        status
-                                                        /1484223729412587522
-                                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                                            19/01/2022
-                                                        </Typography>
-                                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                                            @sergiounac
-                                                        </Typography>
-                                                    </Typography>
-                                                </Typography>
-                                            </ThemeProvider>
-                                        }
-                                        secondary="#Uñac" />
-
-                                </ListItem>
-                            </Collapse>
-                            <Collapse in={open} timeout="auto" unmountOnExit>
-                                <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                        <Avatar>
-                                            <TwitterIcon />
-                                        </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                        primary={
-                                            <ThemeProvider theme={theme}>
-                                                <Typography variant="h6" display="block" gutterBottom>
-                                                    @sergiounac @ferpeirano @agenciaidiar lo felicito gobernador, la provincia merece esto y mucho mas.
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        https://twitter.com/user
-                                                        /status
-                                                        /1484223048345694214
-                                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                                            20/01/2022
-                                                        </Typography>
-                                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                                            @sergiounac
-                                                            @ferpeirano
-                                                            @agenciaidiar
-                                                        </Typography>
-                                                    </Typography>
-                                                </Typography>
+                                            <Typography variant="h6" display="block" gutterBottom>
+                                            @sergiounac @ferpeirano @agenciaidiar lo felicito gobernador, la provincia merece esto y mucho mas.
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            https://twitter.com/user
+                                            /status
+                                            /1484223048345694214
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            20/01/2022
+                                            </Typography>
+                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                            @sergiounac
+                                            @ferpeirano
+                                            @agenciaidiar
+                                            </Typography>
+                                            </Typography>
+                                            </Typography>
                                             </ThemeProvider>
                                         }
                                         secondary="#Gobernador" />
 
-                                </ListItem>
-                            </Collapse>
-                            <Collapse in={open} timeout="auto" unmountOnExit>
-                                <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
+                                        </ListItem>
+                                        </Collapse>
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                        <ListItem sx={{ marginTop: '10px' }} >
+                                        <ListItemAvatar>
                                         <Avatar>
-                                            <TwitterIcon />
+                                        <TwitterIcon />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText
-                                        primary={
+                                    primary={
                                             <ThemeProvider theme={theme}>
-                                                <Typography variant="h6" display="block" gutterBottom>
-                                                    @Gustavo84124185 @sergiounac @roberto_gattoni Eso fue un manotazo de ahogado cuando se estaba yendo (lo hizo en noviembre de 2017). Como EL IVA de los alimentos. Se objetivo. Queres baja de impuestos proba con el liberalismo.
-                                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                                        https://twitter.com/user
-                                                        /status
-                                                        /1484210845164916742
-                                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                                            21/01/2022
-                                                        </Typography>
-                                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                                            @Gustavo84124185
-                                                            @sergiounac
-                                                            @roberto_gattoni
-                                                        </Typography>
-                                                    </Typography>
-                                                </Typography>
+                                            <Typography variant="h6" display="block" gutterBottom>
+                                            @Gustavo84124185 @sergiounac @roberto_gattoni Eso fue un manotazo de ahogado cuando se estaba yendo (lo hizo en noviembre de 2017). Como EL IVA de los alimentos. Se objetivo. Queres baja de impuestos proba con el liberalismo.
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            https://twitter.com/user
+                                            /status
+                                            /1484210845164916742
+                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                            21/01/2022
+                                            </Typography>
+                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                            @Gustavo84124185
+                                            @sergiounac
+                                            @roberto_gattoni
+                                            </Typography>
+                                            </Typography>
+                                            </Typography>
                                             </ThemeProvider>
                                         }
                                         secondary="#Ahogado" />
-
-                                </ListItem>
-                            </Collapse>
-                            <ListItem sx={{ marginTop: '10px' }} >
-                                <Button variant="contained" href="/" color='secondary'>Volver</Button>
-
-                            </ListItem>
-                        </List>
-                    </Paper>
-                </Container>
+                                        
+                                        </ListItem>
+                                        </Collapse>
+                                        <ListItem sx={{ marginTop: '10px' }} >
+                                        <Button variant="contained" href="/" color='secondary'>Volver</Button>
+                                        
+                                    
+                                        </ListItem>
+                                    </List> */}
+                {/* </Paper>
+                    </Container>  */}
 
             </div>
         </div>

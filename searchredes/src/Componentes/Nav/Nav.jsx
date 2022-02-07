@@ -86,9 +86,9 @@ export default function Nav() {
                     </Box>
 
 
-                    <Box style={{ position: 'relative' }}>
+                    {/* <Box style={{ position: 'relative' }}>
                         <img style={{ height: '600px', position: 'absolute', zIndex: '-1', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
-                    </Box>
+                    </Box> */}
 
                     <InputBase
                         // hiddenLabel={true}
