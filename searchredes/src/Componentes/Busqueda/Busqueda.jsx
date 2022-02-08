@@ -358,7 +358,7 @@ export default function Busqueda() {
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '700px',maxWidth:'700px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio:'16/9 !important' }}
+                        style={{ margin: '0 auto', width: '700px',maxWidth:'700px',height:'750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio:'16/9 !important' }}
                     >
 
 
@@ -607,12 +607,12 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', height:'800px' }}>
 
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%',maxWidth:'500px' ,textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' , aspectRatio:'16/9'}}
+                        style={{ margin: '0 auto', width: '100%',maxWidth:'500px', height:'800px',textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' , aspectRatio:'16/9'}}
                     >
 
 

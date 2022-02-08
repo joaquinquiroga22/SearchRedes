@@ -9,16 +9,16 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import styles from '../Footer/Footer.Module.css'
 const buttons = [
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white', margin: '0 10px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white', margin: '0 2px'}}>
         <FacebookIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
         <TwitterIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
         <InstagramIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
         <LinkedInIcon />
     </IconButton>,
 ];
@@ -68,7 +68,7 @@ const buttons = [
 
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    alignItems: 'center',
+                                    alignItems: 'flex-start',
                                     '& > *': {
                                         m: 1,
                                     },
@@ -76,7 +76,7 @@ const buttons = [
                                     
                                 }}
                             >
-                                <ButtonGroup size="large" aria-label="small button group"  >
+                                <ButtonGroup size="large" aria-label="small button group" style={{}} >
                                     {buttons}
                                 </ButtonGroup>
 
