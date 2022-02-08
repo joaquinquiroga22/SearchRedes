@@ -1,0 +1,11 @@
+@media(max-width: 483px){
+    .elementos{
+      position: relative !important;
+      grid-gap:20px !important;
+      margin-left: 200px !important;
+    }
+    .ButtonGroup{
+        padding-left:200px !important;
+        text-align: center;
+    }
+}

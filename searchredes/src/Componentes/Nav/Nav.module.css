@@ -8,3 +8,15 @@
     
     display: inline-block;
 } */
+@media(max-width: 500px){
+ 
+    .Button{
+        width: 30% !important;
+        font-size: 10.5px !important;
+        padding-right: 15px !important;
+        padding-left: 20px !important;
+    }
+    .Input{
+        width: 100%;
+    }
+}

@@ -39,6 +39,7 @@ import { useSearchParams } from 'react-router-dom';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
+import { height, maxWidth } from '@mui/system';
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
@@ -50,7 +51,7 @@ const theme = createTheme({
 const usseStyles = makeStyles((theme) => ({
     modal: {
         position: 'absolute',
-        width: 320,
+        width: "40%",
         backgroundColor: 'white',
         border: '2px solid #2FBCED',
         borderRadius: '8px',
@@ -59,7 +60,10 @@ const usseStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        aspectRatio: '16/9',
+        maxWidth:'600px'
     }
+
 }))
 
 
@@ -308,6 +312,7 @@ export default function Busqueda() {
                                 </ListItemIcon>
                                 <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
                                 <Modal
+                                className={boxClass.burbuja}
                                     open={modal}
                                     onClose={abrirCerrarModal}>
                                     {body}
@@ -348,12 +353,12 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', aspectRatio:'16/9 !important' }}>
 
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
+                        style={{ margin: '0 auto', width: '700px',maxWidth:'700px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio:'16/9 !important' }}
                     >
 
 
@@ -378,10 +383,10 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    INTENTE NUEVAMENTE
+                                    Intente Nuevamente
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width: '100%' }}>
+                            <Box style={{ position: 'relative', width: '100%' , maxWidth:'500px'}}>
 
 
                                 <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
@@ -607,7 +612,7 @@ export default function Busqueda() {
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }}
+                        style={{ margin: '0 auto', width: '100%',maxWidth:'500px' ,textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' , aspectRatio:'16/9'}}
                     >
 
 
@@ -633,10 +638,10 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    INTENTE NUEVAMENTE
+                                    Intente Nuevamente
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width: '100%' }}>
+                            <Box style={{ position: 'relative', width: '100%', maxWidth:'500px' }}>
 
 
                                 <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
@@ -756,7 +761,7 @@ export default function Busqueda() {
                                     sx={{
                                         margin: '0 auto',
                                         width: '100%',
-                                        maxWidth: '100%',
+                                        maxWidth: '120%',
                                         bgcolor: 'white',
                                         borderRadius: '20px'
                                     }}
@@ -770,15 +775,16 @@ export default function Busqueda() {
                                         </ListItemAvatar>
                                         <ListItemText
                                             primary={
-                                                <ThemeProvider theme={theme}>
-                                                    <Typography variant="h6" display="block" gutterBottom>
+                                                <ThemeProvider theme={theme} >
+                                                    <Typography variant="h6" display="inline-block" gutterBottom className={boxClass.cuerpo}>
                                                         {item.cuerpo}
-                                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                                        <br />
+                                                        <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.url}>
                                                             {item.url}
-                                                            <Typography variant="subtitle1" display="block" gutterBottom>
+                                                            <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.fecha}>
                                                                 {item.fecha}
                                                             </Typography>
-                                                            <Typography variant="subtitle2" display="block" gutterBottom>
+                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
                                                                 {item.hashtag}
                                                             </Typography>
                                                         </Typography>

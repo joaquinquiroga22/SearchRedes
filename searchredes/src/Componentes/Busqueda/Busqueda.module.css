@@ -17,29 +17,32 @@
 }
 
 .ErrorBox {
-     
-    width: 50%;
-    height: 450px;
+
+    width: 100%;
+    /* height: 450px; */
     position: relative;
-    
-    margin: 50px auto ;
-    border-radius: 10px;  
+max-width: 700px ;
+    margin: 50px auto;
+    border-radius: 10px;
     border: 2px solid #F8F9F9;
     box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.3);
     background-color: white;
 }
-.Group8{
+
+.Group8 {
     position: relative;
     margin-top: 50px;
     width: 80px;
     height: 80px;
 
 }
-.h2{
+
+.h2 {
     position: relative;
     margin-top: 10px;
 
 }
+
 .Button {
     background-color: #2F9DED;
     color: white;
@@ -48,4 +51,30 @@
     border-radius: 20px;
 }
 
+@media(max-width: 600px) {
+    .cuerpo {
+        font-size: 13px !important;
+    }
 
+    .url {
+        font-size: 13px !important;
+    }
+
+    .fecha {
+        font-size: 13px !important;
+    }
+
+    .hashtag {
+        font-size: 13px !important;
+    }
+
+    .burbuja {
+        width: 200px;
+    }
+
+}
+@media(max-width: 700px){
+    .Paper{
+        width: 1000px !important;
+    }
+}

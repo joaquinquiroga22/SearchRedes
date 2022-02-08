@@ -16,3 +16,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.css-10bomdi-MuiButtonBase-root-MuiCheckbox-root:hover {
+  background-color: rgba(25, 118, 210, 0.4) !important;
+
+}

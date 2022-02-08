@@ -21,11 +21,15 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Box } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
 // import Busqueda from "../Busqueda/Busqueda.jsx"
+import Avatar from '@mui/material/Avatar';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import style from '../Nav/Nav.module.css'
+import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
@@ -41,21 +45,21 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Nav() {
 
-   const [input, setInput] = useState("");
+    const [input, setInput] = useState("");
     const navigate = useNavigate();
     const classes = useStyles();
 
-    const goTwitter = () =>{
-    if (input){
-        navigate({
-          pathname: '/busqueda',
-          search: '?search=' + input,
-        });
-    }
-};
+    const goTwitter = () => {
+        if (input) {
+            navigate({
+                pathname: '/busqueda',
+                search: '?search=' + input,
+            });
+        }
+    };
 
     return (
-        <section style={{ backgroundColor: '#024761' ,}}>
+        <section style={{ backgroundColor: '#024761', }}>
 
 
 
@@ -74,7 +78,7 @@ export default function Nav() {
 
                 <Paper
                     component="form"
-                    sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '60%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
+                    sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
                 >
 
                     <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
@@ -93,18 +97,22 @@ export default function Nav() {
                     <InputBase
                         // hiddenLabel={true}
                         // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                        className={style.Input}
                         sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                         placeholder="Que deseas buscar"
                         inputProps={{ 'aria-label': 'search google maps' }}
                         onChange={e => setInput(e.target.value)}
                         value={input}
                     />
-                    <Box style={{ position: 'absolute', marginTop: '150px', color: 'white', fontSize:'20px' }} >
+                    <Box style={{ position: 'absolute', marginTop: '150px', color: 'white', fontSize: '20px'}} >
+                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap:'5px', marginTop:'25px', paddingBottom:'25px' }} >
+                           Filtrar Por Redes
+                        </Box>
                         <Checkbox
-                        
-                            {...label}
-                            sx={{ '& .MuiSvgIcon-root': { fontSize: 35} }}
                             
+                            {...label}
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
+
                             icon={<InstagramIcon />}
                             color="primary"
                             checkedIcon={<InstagramIcon />}
@@ -114,7 +122,7 @@ export default function Nav() {
                             {...label}
                             icon={<TwitterIcon />}
                             checkedIcon={<TwitterIcon />}
-                            sx={{ '& .MuiSvgIcon-root': { fontSize: 35} }}
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                         <Checkbox
                             {...label}
@@ -129,33 +137,33 @@ export default function Nav() {
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                     </Box>
-                    <Box style={{ marginTop:'300px', position:'absolute', color:'white'}}>
-                        <ul style={{display:'flex',gap:'50px'}}>
+                    <Box style={{ marginTop: '300px', position: 'absolute', color: 'white' }}>
+                        <ul style={{ display: 'flex', gap: '50px', flexWrap: 'wrap', marginBottom: '-85px', paddingTop:'100px' }}>
                             <li>Nosotros</li>
                             <li>Api</li>
                             <li>Tendencias</li>
                             <li>Siguenos</li>
-                            
+
                         </ul>
                     </Box>
-                    <Button type="submit"  size="small" sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />}  onClick={() => goTwitter()}>
+                    <Button type="submit" size="small" className={style.Button} sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />} onClick={() => goTwitter()}>
                         Buscar
                         {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                     </Button>
-               
+
 
                     <Divider />
 
                 </Paper>
             </Box>
-                {/* <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
+            {/* <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
                     <img style={{ width: '20%',position: 'absolute', zIndex: '1',}} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
                 </Box> */}
 
-            <div style={{ height: '60px', zIndex: '1', position: 'relative', width:'100%'}}>
+            <div style={{ height: '60px', zIndex: '1', position: 'relative', width: '100%' }}>
 
             </div>
         </section>

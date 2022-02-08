@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+
+.css-10bomdi-MuiButtonBase-root-MuiCheckbox-root:hover {
+  background-color: rgba(25, 118, 210, 0.7);
+
+}

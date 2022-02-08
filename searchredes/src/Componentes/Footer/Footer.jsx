@@ -7,17 +7,18 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import styles from '../Footer/Footer.Module.css'
 const buttons = [
-    <IconButton color="inherit">
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white', margin: '0 10px'}}>
         <FacebookIcon />
     </IconButton>,
-    <IconButton color="inherit">
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
         <TwitterIcon />
     </IconButton>,
-    <IconButton color="inherit">
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
         <InstagramIcon />
     </IconButton>,
-    <IconButton color="inherit">
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 10px'}}>
         <LinkedInIcon />
     </IconButton>,
 ];
@@ -27,14 +28,14 @@ const buttons = [
 
     return (
 
-        <footer style={{ width:'100%', zIndex:'10000'}}>
-            <Box sx={{ backgroundColor: '#3498DB', }}  >
+        <footer style={{ width:'100%', zIndex:'10000'}} >
+            <Box sx={{ backgroundColor: '#3498DB', }}   >
                 <Container maxWidth="lg">
                     <Grid container spacing={11} sx={{}} flexDirection="row"
                         justifyContent="flex-start"
-                        alignItems="center">
+                        alignItems="center"  className={styles.elementos} >
                         <Grid item xs sm={4} color="white"  >
-                            <List sx={{ marginTop: '-80px', float: 'left' }} >
+                            <List sx={{ marginTop: '-80px', float: 'left' }}  >
                                 <Typography  sx={{justifyContent:'flex-start', fontFamily: 'Ubuntu, sans-serif'}}>
                                     Empresa
                               <br/>  
@@ -45,13 +46,13 @@ const buttons = [
 
                             {/* <p style={{marginTop:'-50px'}}>hola</p> */}
                         </Grid>
-                        <Grid item xs={6} sm={4} color="white" sx={{ marginTop: '-80px', float: 'left' }} >
+                        <Grid item xs={8} sm={4} color="white" sx={{ marginTop: '-80px', float: 'left' }} >
 
 
 
 
                             <Typography sx={{fontFamily: 'Ubuntu, sans-serif'}} >
-                                Mail: ejemplo@ejemplo.com
+                                Mail: ejemplo@
                             
                             <br />
                             <br />
@@ -75,7 +76,7 @@ const buttons = [
                                     
                                 }}
                             >
-                                <ButtonGroup size="large" aria-label="small button group" >
+                                <ButtonGroup size="large" aria-label="small button group"  >
                                     {buttons}
                                 </ButtonGroup>
 
