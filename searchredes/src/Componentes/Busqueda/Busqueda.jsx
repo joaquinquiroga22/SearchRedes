@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#2FBCED',
         display: "none",
         [theme.breakpoints.up("sm")]: {
-            
+
             display: "block"
         },
 
@@ -282,9 +282,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -403,7 +403,7 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    Intente Nuevamente
+                                    Intente Nueva Busqueda
                                 </Button>
                             </Box>
                             <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
@@ -543,9 +543,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -664,7 +664,7 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    Intente Nuevamente
+                                    Intente Nueva Busqueda
                                 </Button>
                             </Box>
                             <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
@@ -687,9 +687,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
 
@@ -793,6 +793,7 @@ export default function Busqueda() {
                         <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
                         {data ? (
                             data && data.map((item) => (
+
                                 <List
                                     sx={{
                                         margin: '0 auto',
@@ -829,7 +830,7 @@ export default function Busqueda() {
                                             }
                                             secondary={item.menciones}
                                         />
-
+                                     
                                     </ListItem>
                                 </List>
                             ))
@@ -837,7 +838,21 @@ export default function Busqueda() {
 
                         ) : (
                             <p>no hay nada</p>
+
                         )}
+{/* 
+                                        < ListItem style={{ width: '130px', float: 'right' }}>
+                                            <ListItemButton onClick={handleClickk} >
+                                                <ListItemIcon>
+                                                </ListItemIcon>
+                                                <ListItemText />
+                                                Ver Mas
+                                                {open ? <HorizontalRuleIcon /> : <AddIcon />}
+                                            </ListItemButton>
+                                        </ListItem> */}
+                                        <Button style={{marginLeft:'20px', marginTop:'-20px'}} variant='outlined' color='secondary' size='small' href="/">
+                                        Volver
+                                        </Button>
                     </Paper>
                 </Container>
                 {/* <List
@@ -1184,7 +1199,7 @@ export default function Busqueda() {
                     </Container>  */}
 
             </div>
-        </div>
+        </div >
     );
 
 }
