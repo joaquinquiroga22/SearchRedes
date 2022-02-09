@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { Box } from '@mui/system';
+import { Box, width } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
 // import Busqueda from "../Busqueda/Busqueda.jsx"
 import Avatar from '@mui/material/Avatar';
@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2)
     },
     title: {
-        flexGrow: 5
+        flexGrow: 5,
+        cursor:'pointer',
+        
     }
 }));
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -65,8 +67,10 @@ export default function Nav() {
 
             <AppBar position="static" style={{ borderRadius: "0 0 20px 20px", backgroundColor: 'white', boxShadow: '4px 4px 5px #566573', position: 'relative' }} >
                 <Toolbar >
-                    <Typography variant="h5" color='primary' className={classes.title}>
-                        LOGO
+                    <Typography variant="h5" color='primary'  onClick={() => window.open("https://nodoshub.com/", "_blank")}>
+                        <Typography variant="h5" onClick={() => window.open("https://nodoshub.com/", "_blank")} className={classes.title}>
+LOGO
+                        </Typography>
                     </Typography>
                 </Toolbar>
             </AppBar>

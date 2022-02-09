@@ -20,7 +20,7 @@ import Collapse from '@mui/material/Collapse';
 import AddIcon from '@mui/icons-material/Add';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import { Container, ThemeProvider } from 'react-bootstrap';
-import { Paper, Box } from '@material-ui/core';
+import { Paper, Box, Link } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
 // import { Modal } from 'react-bootstrap';
 import { Modal } from '@material-ui/core';
@@ -39,13 +39,16 @@ import { useSearchParams } from 'react-router-dom';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
-import { height, maxWidth } from '@mui/system';
+import { height, maxWidth, width } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
         fontSize: 50,
     },
 })
+
 
 
 const usseStyles = makeStyles((theme) => ({
@@ -61,7 +64,7 @@ const usseStyles = makeStyles((theme) => ({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         aspectRatio: '16/9',
-        maxWidth:'600px'
+        maxWidth: '600px'
     }
 
 }))
@@ -120,8 +123,10 @@ const useStyles = makeStyles((theme) => ({
         color: '#2FBCED',
         display: "none",
         [theme.breakpoints.up("sm")]: {
+            
             display: "block"
-        }
+        },
+
     },
     search: {
         backgroundColor: 'white',
@@ -135,16 +140,17 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
+            marginLeft: theme.spacing(1),
             width: 'auto',
         },
     },
     searchIcon: {
         color: '#2FBCED',
-        padding: theme.spacing(0, 2),
+        padding: theme.spacing(0, 1),
         height: '100%',
         position: 'absolute',
-        pointerEvents: 'none',
+        zIndex: '1',
+        //pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -154,10 +160,11 @@ const useStyles = makeStyles((theme) => ({
     },
     inputInput: {
         border: '1px solid #2FBCED',
+        position: 'relative',
         borderRadius: '12px',
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(6)}px)`,
+        paddingLeft: `calc(1em + ${theme.spacing(10)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
@@ -168,8 +175,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Busqueda() {
 
+    const goTwitter = () => {
+        if (input) {
+            navigate({
+                pathname: '/busqueda',
+                search: '?search=' + input,
+            });
+        }
+    };
+    const navigate = useNavigate();
 
-
+    const [input, setInput] = useState("");
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
     // const params = useParams();
@@ -266,15 +282,17 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap>
-                            Logo
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                            </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <div className={classes.searchIcon}>
+                            <Button type="submit" variant="contained" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
-                                <SearchIcon />
+                                Buscar
 
-                            </div>
+                            </Button>
 
                             <InputBase
 
@@ -284,6 +302,8 @@ export default function Busqueda() {
                                     input: classes.inputInput
                                 }}
                                 inputProps={{ "aria-label": "search" }}
+                                onChange={e => setInput(e.target.value)}
+                                value={input}
                             />
 
                         </div>
@@ -312,7 +332,7 @@ export default function Busqueda() {
                                 </ListItemIcon>
                                 <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
                                 <Modal
-                                className={boxClass.burbuja}
+                                    className={boxClass.burbuja}
                                     open={modal}
                                     onClose={abrirCerrarModal}>
                                     {body}
@@ -353,12 +373,12 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', aspectRatio:'16/9 !important' }}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', aspectRatio: '16/9 !important' }}>
 
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '700px',maxWidth:'700px',height:'750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio:'16/9 !important' }}
+                        style={{ margin: '0 auto', width: '700px', maxWidth: '700px', height: '750px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio: '16/9 !important' }}
                     >
 
 
@@ -386,7 +406,7 @@ export default function Busqueda() {
                                     Intente Nuevamente
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width: '100%' , maxWidth:'500px'}}>
+                            <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
 
 
                                 <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
@@ -409,15 +429,15 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap>
+                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.open("https://nodoshub.com/", "_blank")}>
                             Logo
                         </Typography>
                         <div className={classes.search}>
-                            <div className={classes.searchIcon}>
+                            <Button type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
-                                <SearchIcon />
+                                Buscar
 
-                            </div>
+                            </Button>
 
                             <InputBase
 
@@ -427,6 +447,8 @@ export default function Busqueda() {
                                     input: classes.inputInput
                                 }}
                                 inputProps={{ "aria-label": "search" }}
+                                onChange={e => setInput(e.target.value)}
+                                value={input}
                             />
 
                         </div>
@@ -521,15 +543,17 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap>
-                            Logo
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                            </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <div className={classes.searchIcon}>
+                            <Button className={classes.searchIcon} type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
-                                <SearchIcon />
+                                Buscar
 
-                            </div>
+                            </Button>
 
                             <InputBase
 
@@ -539,6 +563,8 @@ export default function Busqueda() {
                                     input: classes.inputInput
                                 }}
                                 inputProps={{ "aria-label": "search" }}
+                                onChange={e => setInput(e.target.value)}
+                                value={input}
                             />
 
                         </div>
@@ -607,12 +633,12 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', height:'800px' }}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', height: '800px' }}>
 
 
                 <Container>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%',maxWidth:'500px', height:'800px',textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' , aspectRatio:'16/9'}}
+                        style={{ margin: '0 auto', width: '100%', maxWidth: '500px', height: '800px', textAlign: 'center', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', aspectRatio: '16/9' }}
                     >
 
 
@@ -641,7 +667,7 @@ export default function Busqueda() {
                                     Intente Nuevamente
                                 </Button>
                             </Box>
-                            <Box style={{ position: 'relative', width: '100%', maxWidth:'500px' }}>
+                            <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
 
 
                                 <img style={{ width: '80%', marginTop: '5%' }} src={image7} alt="hola" />
@@ -661,15 +687,19 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap>
-                            Logo
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                            </Typography>
                         </Typography>
+
+
                         <div className={classes.search}>
-                            <div className={classes.searchIcon}>
+                            <Button type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                                Buscar
+                                {/* <SearchIcon /> */}
 
-                                <SearchIcon />
-
-                            </div>
+                            </Button>
 
                             <InputBase
 
@@ -678,7 +708,13 @@ export default function Busqueda() {
                                     root: classes.inputRoot,
                                     input: classes.inputInput
                                 }}
-                                inputProps={{ "aria-label": "search" }}
+                                inputProps={{ 'aria-label': 'search google maps' }}
+                                value={input}
+                                onChange={e => setInput(e.target.value)}
+                            // hiddenLabel={false}
+                            // disabled={false}
+                            // autoFocus={true}
+                            // required={false}
                             />
 
                         </div>
@@ -775,13 +811,13 @@ export default function Busqueda() {
                                         </ListItemAvatar>
                                         <ListItemText
                                             primary={
-                                                <ThemeProvider theme={theme} >
-                                                    <Typography variant="h6" display="inline-block" gutterBottom className={boxClass.cuerpo}>
+                                                <ThemeProvider theme={theme} display="block" >
+                                                    <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
                                                         {item.cuerpo}
                                                         <br />
-                                                        <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.url}>
+                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
                                                             {item.url}
-                                                            <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.fecha}>
+                                                            <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
                                                                 {item.fecha}
                                                             </Typography>
                                                             <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
