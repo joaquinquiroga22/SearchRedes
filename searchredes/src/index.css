@@ -17,12 +17,12 @@ code {
     monospace;
 }
 .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root{
-   color:#2fb8ed !important; 
-  background-color: white;
+   color:rgb(47, 184, 237) !important; 
+  
 }
 .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root:hover {
   background-color: rgba(25, 118, 210, 1) !important;
-  color:#f8f9f9;
+  color:#f8f9f9 !important;
 }
 .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
   color:#f8f9f9 !important;
