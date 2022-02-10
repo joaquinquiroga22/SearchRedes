@@ -116,25 +116,28 @@ LOGO
                             
                             {...label}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
-
+                            className={style.Instagram}
                             icon={<InstagramIcon />}
-                            color="primary"
+                            color="error"
                             checkedIcon={<InstagramIcon />}
                         />
 
                         <Checkbox
+                        className={style.Twitter}
                             {...label}
                             icon={<TwitterIcon />}
-                            checkedIcon={<TwitterIcon />}
+                            checkedIcon={ <TwitterIcon />}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                         <Checkbox
+                        className={style.Facebook}
                             {...label}
                             icon={<FacebookIcon />}
                             checkedIcon={<FacebookIcon />}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                         <Checkbox
+                        className={style.Linkedin}
                             {...label}
                             icon={<LinkedInIcon />}
                             checkedIcon={<LinkedInIcon />}

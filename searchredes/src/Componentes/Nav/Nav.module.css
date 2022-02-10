@@ -8,6 +8,48 @@
     
     display: inline-block;
 } */
+
+.Instagram{
+color: rgb(47, 184, 237) !important;
+/* background-color: white !important; */
+}
+.Twitter{
+color: rgb(47, 184, 237) !important;
+/* background-color: white !important; */
+ }
+.Facebook{
+color: rgb(47, 184, 237) !important;
+/* background-color: white !important; */
+}
+.Linkedin{
+ color: rgb(47, 184, 237) !important;
+ /* background-color: white !important; */
+ }
+
+.Instagram:hover{
+     background-color: #F7F9F9 !important ;
+ }
+.Twitter:hover{
+    background-color: #F7F9F9  !important;
+/* background-color: white !important; */
+ }
+.Facebook:hover{
+    background-color: #F7F9F9 !important ;
+/* background-color: white !important; */
+}
+.Linkedin:hover{
+    background-color: #F7F9F9  !important;
+    /* background-color: white !important; */
+ }
+
+  /* .Instagram .Mui-checked{
+     color: #F7F9F9  !important;
+     /* background-color: #f8f9f9 !important; */
+ /* }  */ 
+ /* .Mui-checked{
+     color:white;
+ } */
+
 @media(max-width: 500px){
  
     .Button{
