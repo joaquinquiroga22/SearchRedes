@@ -89,7 +89,7 @@ LOGO
                         <h1>BIENVENID@</h1>
                         <h2>AL BUSCADOR Y MONITOREO DE REDES SOCIALES</h2>
 
-                        <h6>BUSCA Y ANALIZA REDES SOCIALES EN TIEMPO REAL</h6>
+                        <h5 className={style.h5}>BUSCA Y ANALIZA REDES SOCIALES EN TIEMPO REAL</h5>
 
                     </Box>
 
@@ -108,9 +108,9 @@ LOGO
                         onChange={e => setInput(e.target.value)}
                         value={input}
                     />
-                    <Box style={{ position: 'absolute', marginTop: '150px', color: 'white', fontSize: '20px'}} >
-                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap:'5px', marginTop:'25px', paddingBottom:'25px' }} >
-                           Filtrar Por Redes
+                    <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems:'center', textAlign:'center'}} >
+                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap:'5px', marginTop:'5px', paddingBottom:'0px', textAlign:'center' }} >
+                           SELECCIONA LA RED DONDE QUIERES REALIZAR TU BUSQUEDA
                         </Box>
                         <Checkbox
                             
@@ -141,12 +141,13 @@ LOGO
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                     </Box>
-                    <Box style={{ marginTop: '300px', position: 'absolute', color: 'white' }}>
-                        <ul style={{ display: 'flex', gap: '50px', flexWrap: 'wrap', marginBottom: '-85px', paddingTop:'100px' }}>
+                    <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign:'center' }}>
+                        <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop:'100px', textAlign:'center' }}>
                             <li>Nosotros</li>
                             <li>Api</li>
                             <li>Tendencias</li>
                             <li>Siguenos</li>
+                            <li>Preguntas Frecuentes</li>
 
                         </ul>
                     </Box>

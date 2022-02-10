@@ -284,7 +284,7 @@ export default function Busqueda() {
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }}  onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -421,6 +421,7 @@ export default function Busqueda() {
         </div>
     }
     console.log(busqueda)
+    //onClick={() => window.open("https://nodoshub.com/", "_blank")}
 
     if (loading) {
         //if (true) {
@@ -429,7 +430,7 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.open("https://nodoshub.com/", "_blank")}>
+                        <Typography className={classes.title} variant="h4" noWrap  onClick={() => window.location.replace("/")}>
                             Logo
                         </Typography>
                         <div className={classes.search}>
@@ -545,7 +546,7 @@ export default function Busqueda() {
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -689,7 +690,7 @@ export default function Busqueda() {
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
 
@@ -831,15 +832,6 @@ export default function Busqueda() {
                                             secondary={item.menciones}
                                         />
                                      
-                                    </ListItem>
-                                </List>
-                            ))
-
-
-                        ) : (
-                            <p>no hay nada</p>
-
-                        )}
 {/* 
                                         < ListItem style={{ width: '130px', float: 'right' }}>
                                             <ListItemButton onClick={handleClickk} >
@@ -849,7 +841,44 @@ export default function Busqueda() {
                                                 Ver Mas
                                                 {open ? <HorizontalRuleIcon /> : <AddIcon />}
                                             </ListItemButton>
-                                        </ListItem> */}
+                                        </ListItem> 
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                    <ListItem sx={{ marginTop: '10px' }} >
+                                    <ListItemAvatar>
+                                    <Avatar >
+                                    <TwitterIcon />
+                                    </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                    primary={
+                                        <ThemeProvider theme={theme}>
+                                        <Typography variant="h6" display="block" gutterBottom>
+                                        {item.cuerpo}
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                      {item.url}
+                                        <Typography variant="subtitle1" display="block" gutterBottom>
+                                        {item.fecha}
+                                        </Typography>
+                                        <Typography variant="subtitle2" display="block" gutterBottom>
+                                     {item.hashtag}
+                                        </Typography>
+                                        </Typography>
+                                        </Typography>
+                                        </ThemeProvider>
+                                    }
+                                        secondary={item.menciones} />
+                                        
+                                        </ListItem>
+                                        </Collapse> */}
+                                    </ListItem>
+                                </List>
+                            ))
+
+
+                        ) : (
+                            <p>no hay nada</p>
+
+                        )}
                                         <Button style={{marginLeft:'20px', marginTop:'-20px'}} variant='outlined' color='secondary' size='small' href="/">
                                         Volver
                                         </Button>

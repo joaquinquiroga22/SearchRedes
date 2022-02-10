@@ -9,16 +9,16 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import styles from '../Footer/Footer.Module.css'
 const buttons = [
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white', margin: '0 2px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white', margin: '0 1px'}}>
         <FacebookIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 1px'}}>
         <TwitterIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 1px'}}>
         <InstagramIcon />
     </IconButton>,
-    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 2px'}}>
+    <IconButton style={{color:'#2F9DED', backgroundColor:'white',  margin: '0 1px'}}>
         <LinkedInIcon />
     </IconButton>,
 ];
@@ -56,7 +56,7 @@ const buttons = [
                             
                             <br />
                             <br />
-                                Dirección: Ejemplo calle nº 2344 (e)
+                            Desarrollado por Nodos SAS. 2022
                             </Typography>
 
 
