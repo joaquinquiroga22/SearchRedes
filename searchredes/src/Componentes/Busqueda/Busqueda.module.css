@@ -62,7 +62,11 @@
 .hashtag{
     word-wrap: break-word;
 }
-
+.menciones{
+    
+        word-wrap: break-word;
+    
+}
 
 @media(max-width: 600px) {
     .cuerpo {

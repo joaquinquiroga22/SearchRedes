@@ -5,6 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from '@material-ui/core/Button';
@@ -24,6 +26,7 @@ import { Paper, Box, Link } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
 // import { Modal } from 'react-bootstrap';
 import { Modal } from '@material-ui/core';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { createTheme } from '@material-ui/core/styles';
 import { useState, useEffect } from 'react';
 import Menu from '@material-ui/core/Menu';
@@ -41,6 +44,8 @@ import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
 import { height, maxWidth, width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+
 
 const theme = createTheme({
     typography: {
@@ -123,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#2FBCED',
         display: "none",
         [theme.breakpoints.up("sm")]: {
-            
+
             display: "block"
         },
 
@@ -226,7 +231,7 @@ export default function Busqueda() {
             <div align="center" >
                 <h1 style={{ color: '#34495E' }} >Burbuja</h1>
             </div>
-            {<BurbujaTwitter/>}
+            {<BurbujaTwitter />}
             <div>
 
                 <Button align="center" variant="outlined" color="secondary" size="small" onClick={() => abrirCerrarModal()} >Close</Button>
@@ -282,9 +287,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -543,9 +548,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -687,9 +692,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                    <Typography  variant="h4"  className={classes.title}   >
-                            <Typography  variant="subtitle"  >
-                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
 
@@ -791,6 +796,9 @@ export default function Busqueda() {
                         sx={{ margin: '0 auto', width: '100%' }}
                     >
                         <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
+                        <IconButton color="primary" style={{marginTop:'-75px'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
+                            <ArrowBackIcon />
+                        </IconButton>
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
@@ -816,9 +824,9 @@ export default function Busqueda() {
                                                         Cuerpo: {item.cuerpo}
                                                         <br />
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
-                                                        <Link style={{cursor:'pointer'}} onClick={() => window.open(`${item.url}`, `_blank`)}>
-                                                            {item.url}
-                                                        </Link>
+                                                            <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
+                                                                {item.url}
+                                                            </Link>
                                                             <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
                                                                 Fecha: {item.fecha}
                                                             </Typography>
@@ -829,8 +837,12 @@ export default function Busqueda() {
                                                     </Typography>
                                                 </ThemeProvider>
                                             }
-                                            secondary=  {item.menciones}
-                                        /> 
+                                            secondary={
+                                                <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
+                                                    Menciones: {item.menciones}
+                                                </Typography>
+                                            }
+                                        />
 
                                     </ListItem>
                                 </List>
