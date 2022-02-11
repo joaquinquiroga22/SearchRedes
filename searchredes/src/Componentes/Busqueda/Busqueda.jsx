@@ -543,7 +543,7 @@ export default function Busqueda() {
         </div>
     }
 
-    if (!data || data.length == 0) {
+    if (!data || data.listadoTwitter.length == 0) {
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
