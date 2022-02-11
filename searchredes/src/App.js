@@ -6,6 +6,7 @@ import Footer from './Componentes/Footer/Footer.jsx';
 import Nav from './Componentes/Nav/Nav.jsx';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Busqueda from '../src/Componentes/Busqueda/Busqueda.jsx'
+import Prueba from '../src/Componentes/Prueba/Prueba.js'
 // import Prueba from '../src/Componentes/Prueba/Prueba.js'
 function App() {
   
@@ -27,7 +28,7 @@ function App() {
 
          <Route exact path="busqueda" exact element={<Busqueda/>}/>
          
-          {/* <Route path="/Prueba"  element={<Prueba/>} />  */}
+          <Route path="/Prueba"  element={<Prueba/>} />  
 
         </Routes>
       </Router>

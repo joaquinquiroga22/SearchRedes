@@ -24,12 +24,19 @@ import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+import IconButton from '@mui/material/IconButton';
+
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import style from '../Nav/Nav.module.css'
 import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
+    const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
@@ -39,13 +46,69 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 5,
-        cursor:'pointer',
-        
+        cursor: 'pointer',
+
     }
 }));
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+// const theme = useTheme();
+// const colorMode = React.useContext(ColorModeContext);
+
+function MyApp() {
+    const theme = useTheme();
+    const colorMode = React.useContext(ColorModeContext);
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          width: '20%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bgcolor: 'background.default',
+          color: 'text.primary',
+          borderRadius: 1,
+          p: 3,
+        }}
+      >
+        {theme.palette.mode} mode
+        <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+      </Box>
+    );
+  }
+  
+
+
+
 export default function Nav() {
+
+    
+    //DARK MODE
+
+    const [mode, setMode] = React.useState('light');
+    const colorMode = React.useMemo(
+        () => ({
+            toggleColorMode: () => {
+                setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+            },
+        }),
+        [],
+    );
+
+    const theme = React.useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode,
+                },
+            }),
+        [mode],
+    );
+
+    //////////////////////////////
+
 
     const [input, setInput] = useState("");
     const navigate = useNavigate();
@@ -62,14 +125,16 @@ export default function Nav() {
 
     return (
         <section style={{ backgroundColor: '#024761', }}>
+        <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
 
 
 
             <AppBar position="static" style={{ borderRadius: "0 0 20px 20px", backgroundColor: 'white', boxShadow: '4px 4px 5px #566573', position: 'relative' }} >
                 <Toolbar >
-                    <Typography variant="h5" color='primary'  onClick={() => window.open("https://nodoshub.com/", "_blank")}>
+                    <Typography variant="h5" color='primary' onClick={() => window.open("https://nodoshub.com/", "_blank")}>
                         <Typography variant="h5" onClick={() => window.open("https://nodoshub.com/", "_blank")} className={classes.title}>
-LOGO
+                            LOGO
                         </Typography>
                     </Typography>
                 </Toolbar>
@@ -108,12 +173,12 @@ LOGO
                         onChange={e => setInput(e.target.value)}
                         value={input}
                     />
-                    <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems:'center', textAlign:'center'}} >
-                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap:'5px', marginTop:'5px', paddingBottom:'0px', textAlign:'center' }} >
-                           SELECCIONA LA RED DONDE QUIERES REALIZAR TU BUSQUEDA
+                    <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
+                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '5px', paddingBottom: '0px', textAlign: 'center' }} >
+                            SELECCIONA LA RED DONDE QUIERES REALIZAR TU BUSQUEDA
                         </Box>
                         <Checkbox
-                            
+
                             {...label}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                             className={style.Instagram}
@@ -123,29 +188,29 @@ LOGO
                         />
 
                         <Checkbox
-                        className={style.Twitter}
+                            className={style.Twitter}
                             {...label}
                             icon={<TwitterIcon />}
-                            checkedIcon={ <TwitterIcon />}
+                            checkedIcon={<TwitterIcon />}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                         <Checkbox
-                        className={style.Facebook}
+                            className={style.Facebook}
                             {...label}
                             icon={<FacebookIcon />}
                             checkedIcon={<FacebookIcon />}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                         <Checkbox
-                        className={style.Linkedin}
+                            className={style.Linkedin}
                             {...label}
                             icon={<LinkedInIcon />}
                             checkedIcon={<LinkedInIcon />}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                         />
                     </Box>
-                    <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign:'center' }}>
-                        <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop:'100px', textAlign:'center' }}>
+                    <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign: 'center' }}>
+                        <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop: '100px', textAlign: 'center' }}>
                             <li>Nosotros</li>
                             <li>Api</li>
                             <li>Tendencias</li>
@@ -174,6 +239,8 @@ LOGO
             <div style={{ height: '60px', zIndex: '1', position: 'relative', width: '100%' }}>
 
             </div>
+        </ThemeProvider>
+    </ColorModeContext.Provider>
         </section>
     );
 }

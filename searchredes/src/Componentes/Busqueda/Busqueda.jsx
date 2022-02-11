@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#2FBCED',
         display: "none",
         [theme.breakpoints.up("sm")]: {
-
+            
             display: "block"
         },
 
@@ -226,7 +226,7 @@ export default function Busqueda() {
             <div align="center" >
                 <h1 style={{ color: '#34495E' }} >Burbuja</h1>
             </div>
-            {<BurbujaTwitter />}
+            {<BurbujaTwitter/>}
             <div>
 
                 <Button align="center" variant="outlined" color="secondary" size="small" onClick={() => abrirCerrarModal()} >Close</Button>
@@ -282,9 +282,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography variant="h4" className={classes.title}   >
-                            <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }}  onClick={() => window.location.replace("/")}>Logo</span>
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -403,7 +403,7 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    Intente Nueva Busqueda
+                                    Intente Nuevamente
                                 </Button>
                             </Box>
                             <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
@@ -421,7 +421,6 @@ export default function Busqueda() {
         </div>
     }
     console.log(busqueda)
-    //onClick={() => window.open("https://nodoshub.com/", "_blank")}
 
     if (loading) {
         //if (true) {
@@ -430,7 +429,7 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap  onClick={() => window.location.replace("/")}>
+                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.open("https://nodoshub.com/", "_blank")}>
                             Logo
                         </Typography>
                         <div className={classes.search}>
@@ -544,9 +543,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography variant="h4" className={classes.title}   >
-                            <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -665,7 +664,7 @@ export default function Busqueda() {
                                     }}
                                     color="secondary"
                                     href="/" >
-                                    Intente Nueva Busqueda
+                                    Intente Nuevamente
                                 </Button>
                             </Box>
                             <Box style={{ position: 'relative', width: '100%', maxWidth: '500px' }}>
@@ -688,9 +687,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography variant="h4" className={classes.title}   >
-                            <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
+                    <Typography  variant="h4"  className={classes.title}   >
+                            <Typography  variant="subtitle"  >
+                                <span style={{cursor:'pointer', fontFamily:'Raleway, Arial'}} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
                             </Typography>
                         </Typography>
 
@@ -792,9 +791,8 @@ export default function Busqueda() {
                         sx={{ margin: '0 auto', width: '100%' }}
                     >
                         <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
-                        {data ? (
-                            data && data.map((item) => (
-
+                        {data.listadoTwitter ? (
+                            data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
                                     sx={{
                                         margin: '0 auto',
@@ -815,61 +813,25 @@ export default function Busqueda() {
                                             primary={
                                                 <ThemeProvider theme={theme} display="block" >
                                                     <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
-                                                        {item.cuerpo}
+                                                        Cuerpo: {item.cuerpo}
                                                         <br />
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
+                                                        <Link style={{cursor:'pointer'}} onClick={() => window.open(`${item.url}`, `_blank`)}>
                                                             {item.url}
+                                                        </Link>
                                                             <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
-                                                                {item.fecha}
+                                                                Fecha: {item.fecha}
                                                             </Typography>
                                                             <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                {item.hashtag}
+                                                                Hashtag: {item.hashtag}
                                                             </Typography>
                                                         </Typography>
                                                     </Typography>
                                                 </ThemeProvider>
                                             }
-                                            secondary={item.menciones}
-                                        />
-                                     
-{/* 
-                                        < ListItem style={{ width: '130px', float: 'right' }}>
-                                            <ListItemButton onClick={handleClickk} >
-                                                <ListItemIcon>
-                                                </ListItemIcon>
-                                                <ListItemText />
-                                                Ver Mas
-                                                {open ? <HorizontalRuleIcon /> : <AddIcon />}
-                                            </ListItemButton>
-                                        </ListItem> 
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                    <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                    <Avatar >
-                                    <TwitterIcon />
-                                    </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                        <Typography variant="h6" display="block" gutterBottom>
-                                        {item.cuerpo}
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                      {item.url}
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        {item.fecha}
-                                        </Typography>
-                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                     {item.hashtag}
-                                        </Typography>
-                                        </Typography>
-                                        </Typography>
-                                        </ThemeProvider>
-                                    }
-                                        secondary={item.menciones} />
-                                        
-                                        </ListItem>
-                                        </Collapse> */}
+                                            secondary=  {item.menciones}
+                                        /> 
+
                                     </ListItem>
                                 </List>
                             ))
@@ -877,11 +839,7 @@ export default function Busqueda() {
 
                         ) : (
                             <p>no hay nada</p>
-
                         )}
-                                        <Button style={{marginLeft:'20px', marginTop:'-20px'}} variant='outlined' color='secondary' size='small' href="/">
-                                        Volver
-                                        </Button>
                     </Paper>
                 </Container>
                 {/* <List
@@ -1228,7 +1186,7 @@ export default function Busqueda() {
                     </Container>  */}
 
             </div>
-        </div >
+        </div>
     );
 
 }

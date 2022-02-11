@@ -1,6 +1,7 @@
 import React from "react";
 import WordCloud from "react-d3-cloud";
 import data from "../../data.json";
+import busqueda from '../Busqueda/Busqueda.jsx'
 
        const shortText = function (text) {
         var newText = text.substring(0, 20);
