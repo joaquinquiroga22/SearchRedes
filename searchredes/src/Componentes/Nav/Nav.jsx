@@ -151,8 +151,8 @@ export default function Nav() {
                 >
 
                     <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
-                        <h1>BIENVENID@</h1>
-                        <h2>AL BUSCADOR Y MONITOREO DE REDES SOCIALES</h2>
+                        <h1 className={style.h1}>BIENVENID@</h1>
+                        <h2 className={style.h2}>AL BUSCADOR Y MONITOREO DE REDES SOCIALES</h2>
 
                         <h5 className={style.h5}>BUSCA Y ANALIZA REDES SOCIALES EN TIEMPO REAL</h5>
 
@@ -174,8 +174,8 @@ export default function Nav() {
                         value={input}
                     />
                     <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
-                        <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '5px', paddingBottom: '0px', textAlign: 'center' }} >
-                            SELECCIONA LA RED DONDE QUIERES REALIZAR TU BUSQUEDA
+                        <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '5px', paddingBottom: '0px', textAlign: 'center', fontFamily: 'sans-serif' }} >
+                        Selecciona la red con que deseas buscar
                         </Box>
                         <Checkbox
 

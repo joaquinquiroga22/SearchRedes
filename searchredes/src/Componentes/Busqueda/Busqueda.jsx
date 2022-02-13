@@ -293,7 +293,7 @@ export default function Busqueda() {
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <Button type="submit" variant="contained" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button type="submit" title="Buscar" value="Search" variant="contained" style={{borderRadius:'10px'}} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
                                 Buscar
 
@@ -438,7 +438,7 @@ export default function Busqueda() {
                             Logo
                         </Typography>
                         <div className={classes.search}>
-                            <Button type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
+                            <Button type="submit" title="Buscar" style={{borderRadius:'10px'}} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
                                 Buscar
 
@@ -531,7 +531,7 @@ export default function Busqueda() {
                     >
                         <Box className={boxClass.hola} style={{ width: '50%', height: '300px', border: '', borderRadius: '10px', margin: '200px auto', textAlign: 'center' }}>
 
-                            <h1 style={{ color: '#2FBCED' }}>Cargando...</h1>
+                            <h1 style={{ color: '#2FBCED' }}>Buscando...</h1>
                             {/* <Spinner /> */}
                             <CircularProgress style={{ color: '#2FBCED', width: '10%' }} />
                         </Box>
@@ -554,7 +554,7 @@ export default function Busqueda() {
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <Button className={classes.searchIcon} type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button className={classes.searchIcon} type="submit" style={{borderRadius:'10px'}} title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
                                 Buscar
 
@@ -700,7 +700,7 @@ export default function Busqueda() {
 
 
                         <div className={classes.search}>
-                            <Button type="submit" title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button  type="submit" title="Buscar" value="Search" style={{borderRadius:'10px'}}  className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
                                 Buscar
                                 {/* <SearchIcon /> */}
 
@@ -788,12 +788,12 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' }}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' , minHeight:'750px'}}>
 
 
                 <Container>
                     <Paper
-                        sx={{ margin: '0 auto', width: '100%' }}
+                        sx={{ margin: '0 auto', width: '100%', minHeight:'750px' }}
                     >
                         <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
                         <IconButton color="primary" style={{marginTop:'-75px'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
