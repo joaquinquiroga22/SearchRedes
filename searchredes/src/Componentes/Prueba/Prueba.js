@@ -32,7 +32,7 @@ export default function Prueba() {
     useEffect(() => {
 
 
-        axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/gioja`, {
+        axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/g`, {
             //   method: 'GET',
             //   headers: {
             //       "dataType": "json",
@@ -45,7 +45,7 @@ export default function Prueba() {
                 setData(datos);
 
                 // console.log(datos[0].name)
-
+console.log(datos.estadistica.palabrasClaves[0].palabra)
             }).catch((err) => {
                 console.log(err);
 
@@ -57,10 +57,12 @@ export default function Prueba() {
     return (
         <div style={{ height: '1200px' }}>
 
-                     {data.palabrasClaves ? (
-                            data.palabrasClaves && data.palabrasClaves.map((item) => (
+                     {data.estadistica.palabrasClaves ? (
+                            data.estadistica.palabrasClaves && data.estadistica.palabrasClaves.map((item) => (
                                <div>
                                    <p>{item.palabra}</p>
+                                   <p>{item.cantidad}</p>
+
                                </div>
                             ))
 

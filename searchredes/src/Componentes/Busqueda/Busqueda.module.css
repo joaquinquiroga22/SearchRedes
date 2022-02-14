@@ -91,6 +91,19 @@
 
 }
 
+@media(max-width: 550px){
+    .MenuEsquemas{
+        width:200px;
+        height: 200px;
+    }
+    .Burbuja {
+        margin-right: -20px;
+    }
+    .BotonVolver{
+        margin-left: 55px !important;  
+    }
+}
+
 @media(max-width: 700px) {
     .Paper {
         width: 1000px !important;

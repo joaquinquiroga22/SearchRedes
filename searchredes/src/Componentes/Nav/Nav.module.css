@@ -9,38 +9,42 @@
     display: inline-block;
 } */
 
-.Instagram{
+/* .Instagram{
 color: rgb(47, 184, 237) !important;
 /* background-color: white !important; */
-}
-.Twitter{
+/* }  */
+
+/* .Twitter{
 color: rgb(47, 184, 237) !important;
 /* background-color: white !important; */
- }
-.Facebook{
+ /* }  */
+/* .Facebook{
 color: rgb(47, 184, 237) !important;
 /* background-color: white !important; */
-}
-.Linkedin{
+/* }  */
+/* .Linkedin{
  color: rgb(47, 184, 237) !important;
  /* background-color: white !important; */
- }
+ /* }  */
 
-.Instagram:hover{
+/* .Instagram:hover{
      background-color: #F7F9F9 !important ;
- }
-.Twitter:hover{
+ } */
+ .Instagram:checked{
+    background-color: white !important;
+}
+/* .Twitter:hover{
     background-color: #F7F9F9  !important;
 /* background-color: white !important; */
- }
+ /* }
 .Facebook:hover{
     background-color: #F7F9F9 !important ;
 /* background-color: white !important; */
-}
-.Linkedin:hover{
+/* } */ 
+/* .Linkedin:hover{
     background-color: #F7F9F9  !important;
     /* background-color: white !important; */
- }
+ /* } */ 
 
   /* .Instagram .Mui-checked{
      color: #F7F9F9  !important;
@@ -49,6 +53,20 @@ color: rgb(47, 184, 237) !important;
  /* .Mui-checked{
      color:white;
  } */
+
+
+  /* .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root{
+   color:rgb(47, 184, 237) !important; 
+  
+} 
+ .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root:hover {
+  background-color: rgba(25, 118, 210, 1) !important;
+  color:#f8f9f9 !important;
+}  
+  .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+  color:#f8f9f9 !important;
+  
+} */
 
 @media(max-width: 500px){
  

@@ -155,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         position: 'absolute',
         zIndex: '1',
-        //pointerEvents: 'none',
+        pointerEvents: 'auto',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -180,17 +180,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Busqueda() {
 
+    const [inputBusqueda, setInput] = useState("");
     const goTwitter = () => {
-        if (input) {
+        if (inputBusqueda) {
             navigate({
                 pathname: '/busqueda',
-                search: '?search=' + input,
+                search: '?search=' + inputBusqueda,
             });
         }
     };
     const navigate = useNavigate();
 
-    const [input, setInput] = useState("");
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
     // const params = useParams();
@@ -205,14 +205,14 @@ export default function Busqueda() {
     const styless = usseStyles();
     const [modal, setModal] = useState(false)
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = React.useState();
 
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
     const handleClosee = () => {
-        setAnchorEl(null);
+        setAnchorEl();
     };
 
 
@@ -293,7 +293,7 @@ export default function Busqueda() {
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <Button type="submit" title="Buscar" value="Search" variant="contained" style={{borderRadius:'10px'}} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button type="submit" title="Buscar" value="Search" variant="contained" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
                                 Buscar
 
@@ -308,7 +308,7 @@ export default function Busqueda() {
                                 }}
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
-                                value={input}
+                                value={inputBusqueda}
                             />
 
                         </div>
@@ -330,9 +330,10 @@ export default function Busqueda() {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClosee}
+                            className={boxClass.MenuEsquemas}
                         >
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <BubbleChartIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
@@ -342,36 +343,20 @@ export default function Busqueda() {
                                     onClose={abrirCerrarModal}>
                                     {body}
                                 </Modal>
-                                {/* onClick={modalOpen} */}
-                                {/* <div class="modal-body">
-              <div class="container-fluid">
-
-                <Modal show={show} onHide={modalClose}>
-                  <Modal.Body><BurbujaTwitter /></Modal.Body>
-                  <Modal.Footer>
-                    <Button onClick={modalClose}>
-                      Close
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-              </div>
-            </div> */}
-
-
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <DraftsIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Barras" />
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <InboxIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
                                 Volver
                             </Button>
                         </StyledMenu>
@@ -428,7 +413,7 @@ export default function Busqueda() {
     console.log(busqueda)
 
     if (loading) {
-        //if (true) {
+           // if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
@@ -438,7 +423,7 @@ export default function Busqueda() {
                             Logo
                         </Typography>
                         <div className={classes.search}>
-                            <Button type="submit" title="Buscar" style={{borderRadius:'10px'}} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
+                            <Button type="submit" title="Buscar" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
                                 Buscar
 
@@ -453,7 +438,7 @@ export default function Busqueda() {
                                 }}
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
-                                value={input}
+                                value={inputBusqueda}
                             />
 
                         </div>
@@ -475,47 +460,34 @@ export default function Busqueda() {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClosee}
+                            style={{top:'0px'}}
+                            className={boxClass.MenuEsquemas}
+
                         >
-                            <StyledMenuItem>
-                                <ListItemIcon>
+                            <StyledMenuItem >
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <BubbleChartIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()}/>
                                 <Modal
                                     open={modal}
                                     onClose={abrirCerrarModal}>
                                     {body}
                                 </Modal>
-                                {/* onClick={modalOpen} */}
-                                {/* <div class="modal-body">
-              <div class="container-fluid">
-
-                <Modal show={show} onHide={modalClose}>
-                  <Modal.Body><BurbujaTwitter /></Modal.Body>
-                  <Modal.Footer>
-                    <Button onClick={modalClose}>
-                      Close
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-              </div>
-            </div> */}
-
-
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <DraftsIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Barras" />
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <InboxIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
                                 Volver
                             </Button>
                         </StyledMenu>
@@ -554,7 +526,7 @@ export default function Busqueda() {
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
-                            <Button className={classes.searchIcon} type="submit" style={{borderRadius:'10px'}} title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button className={classes.searchIcon} type="submit" style={{ borderRadius: '10px' }} title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
 
                                 Buscar
 
@@ -569,7 +541,7 @@ export default function Busqueda() {
                                 }}
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
-                                value={input}
+                                value={inputBusqueda}
                             />
 
                         </div>
@@ -591,9 +563,10 @@ export default function Busqueda() {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClosee}
+                            className={boxClass.MenuEsquemas}
                         >
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <BubbleChartIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
@@ -602,36 +575,21 @@ export default function Busqueda() {
                                     onClose={abrirCerrarModal}>
                                     {body}
                                 </Modal>
-                                {/* onClick={modalOpen} */}
-                                {/* <div class="modal-body">
-          <div class="container-fluid">
-
-            <Modal show={show} onHide={modalClose}>
-              <Modal.Body><BurbujaTwitter /></Modal.Body>
-              <Modal.Footer>
-                <Button onClick={modalClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal>
-          </div>
-        </div> */}
-
 
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <DraftsIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Barras" />
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <InboxIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
                                 Volver
                             </Button>
                         </StyledMenu>
@@ -700,7 +658,7 @@ export default function Busqueda() {
 
 
                         <div className={classes.search}>
-                            <Button  type="submit" title="Buscar" value="Search" style={{borderRadius:'10px'}}  className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button  value="Search" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
                                 Buscar
                                 {/* <SearchIcon /> */}
 
@@ -709,17 +667,14 @@ export default function Busqueda() {
                             <InputBase
 
                                 placeholder="Que deseas buscar"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput
-                                }}
+                                    classes={{
+                                        root: classes.inputRoot,
+                                        input: classes.inputInput
+                                    }}
                                 inputProps={{ 'aria-label': 'search google maps' }}
-                                value={input}
                                 onChange={e => setInput(e.target.value)}
-                            // hiddenLabel={false}
-                            // disabled={false}
-                            // autoFocus={true}
-                            // required={false}
+                                value={inputBusqueda}
+
                             />
 
                         </div>
@@ -741,9 +696,11 @@ export default function Busqueda() {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClosee}
+                            className={boxClass.MenuEsquemas}
+
                         >
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <BubbleChartIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
@@ -752,51 +709,35 @@ export default function Busqueda() {
                                     onClose={abrirCerrarModal}>
                                     {body}
                                 </Modal>
-                                {/* onClick={modalOpen} */}
-                                {/* <div class="modal-body">
-                <div class="container-fluid">
-
-                  <Modal show={show} onHide={modalClose}>
-                    <Modal.Body><BurbujaTwitter /></Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={modalClose}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </div>
-              </div> */}
-
-
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <DraftsIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Barras" />
                             </StyledMenuItem>
                             <StyledMenuItem>
-                                <ListItemIcon>
+                                <ListItemIcon className={boxClass.Burbuja}>
                                     <InboxIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/">
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
                                 Volver
                             </Button>
                         </StyledMenu>
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%' , minHeight:'750px'}}>
+            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', minHeight: '750px' }}>
 
 
                 <Container>
                     <Paper
-                        sx={{ margin: '0 auto', width: '100%', minHeight:'750px' }}
+                        sx={{ margin: '0 auto', width: '100%', minHeight: '750px' }}
                     >
                         <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
-                        <IconButton color="primary" style={{marginTop:'-75px'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
+                        <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
                             <ArrowBackIcon />
                         </IconButton>
                         {data.listadoTwitter ? (
@@ -854,206 +795,7 @@ export default function Busqueda() {
                         )}
                     </Paper>
                 </Container>
-                {/* <List
-                            sx={{
-                                margin: '0 auto',
-                                width: '100%',
-                                maxWidth: '100%',
-                                bgcolor: 'white',
-                                borderRadius: '20px'
-                            }}
-                            theme={theme}
-                            >
-                            <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twits @Sergio Uñac</h4>
-                            <ListItem >
-                            <ListItemAvatar>
-                            <Avatar>
-                            <TwitterIcon />
-                            </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText
-                            primary={
-                                <ThemeProvider theme={theme}>
-                                <Typography variant="h6" display="block" gutterBottom>
-                                Con foco en el desarrollo de la ciencia, tecnología e innovación,
-                                Sergio Uñac se reunió con Fernando Peirano
-                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                https://twitter.com/user/status
-                                /1483863563408183297
-                                <Typography variant="subtitle1" display="block" gutterBottom>
-                                12/01/2022
-                                </Typography>
-                                </Typography>
-                                </Typography>
-                                </ThemeProvider>
-                            }
-                            secondary="#ciencia"
-                            />
-                            
-                            
-                            </ListItem>
-                            
-                            <ListItem sx={{ marginTop: '10px' }}>
-                            <ListItemAvatar>
-                            <Avatar>
-                            <TwitterIcon />
-                            </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
-                                primary={
-                                    <ThemeProvider theme={theme}>
-                                    <Typography variant="h6" display="block" gutterBottom>
-                                    Desarrollo Humano continúa con las inscripciones al programa #Progresar
-                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                    http://t.co/8DAOAj1H1
-                                    <Typography variant="subtitle1" display="block" gutterBottom>
-                                    13/01/2022
-                                    </Typography>
-                                    <Typography variant="subtitle2" display="block" gutterBottom>
-                                    @sergiounac
-                                    </Typography>
-                                    </Typography>
-                                    </Typography>
-                                    </ThemeProvider>
-                                }
-                                secondary="#Progresar" />
-                                </ListItem>
-                                
-                                <ListItem sx={{ marginTop: '10px', width: '100%' }}>
-                                <ListItemAvatar>
-                                <Avatar>
-                                <TwitterIcon />
-                                </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText sx={{ width: '100%' }}
-                                primary={
-                                        <ThemeProvider theme={theme}>
-                                        <Typography variant="h6" display="block" gutterBottom>
-                                        En la mañana del día miércoles, el gobernador @sergiounac recibió al campeón Nacional de Malambo, Sergio Zalazar, en Casa de Gobierno.
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        https://twitter.com/user/status
-                                        /1483839269215121409
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        14/01/2022
-                                        </Typography>
-                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                        @sergiounac
-                                        </Typography>
-                                        </Typography>
-                                        </Typography>
-                                        </ThemeProvider>
-                                    }
-                                    secondary="#Campeonato" />
-                                    </ListItem>
-                                    
-                                    <ListItem sx={{ marginTop: '10px' }}>
-                                    <ListItemAvatar>
-                                    <Avatar>
-                                    <TwitterIcon />
-                                    </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                        <Typography variant="h6" display="block" gutterBottom>
-                                        "@diegodesanjuan Juan domingo Biden le llamó a Sergio para adelantarle la noticia y Uñac medio enojado le exigió que no lo den a conocer hasta que Alberto no viniera a la Provincia y así poderle contar de primera mano"
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        https://twitter.com/user/status
-                                        /1483605376255737860
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        15/01/2022
-                                        </Typography>
-                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                        @diegodesanjuan
-                                        </Typography>
-                                        </Typography>
-                                        </Typography>
-                                        </ThemeProvider>
-                                    }
-                                    secondary="#Biden" />
-                                    </ListItem>
-                                    
-                                    <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                    <Avatar>
-                                    <TwitterIcon />
-                                    </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                        <Typography variant="h6" display="block" gutterBottom>
-                                        @Gustavo84124185 @sergiounac @roberto_gattoni No me respondiste. Sos larretista ahora?
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        https://twitter.com/user/status
-                                        /1484314138536865799
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        16/01/2022
-                                        </Typography>
-                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                        @Gustavo84124185
-                                        @sergiounac
-                                        @roberto_gattoni
-                                        </Typography>
-                                        </Typography>
-                                        </Typography>
-                                        </ThemeProvider>
-                                    }
-                                    secondary="" />
-                                    
-                                    </ListItem>
-                                    <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                    <Avatar>
-                                        <TwitterIcon />
-                                        </Avatar>
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        primary={
-                                            <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                            @Gustavo84124185 @sergiounac @roberto_gattoni Y porque no en el 2015. Se tomó dos años, porque lo hizo en noviembre.Pero vamos a lo importante. Votarias a Larreta en el 2023?
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            https://twitter.com/user/status
-                                            /1484283206215999488
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            17/01/2022
-                                            </Typography>
-                                            <Typography variant="subtitle2" display="block" gutterBottom>
-                                            @Gustavo84124185
-                                            @sergiounac
-                                            @roberto_gattoni
-                                            </Typography>
-                                            </Typography>
-                                            </Typography>
-                                            </ThemeProvider>
-                                        }
-                                        secondary="#Gattoni" />
-                                        
-                                        </ListItem>
-                                        {/* <ListItem sx={{marginTop:'10px'}} >
-                                        <ListItemAvatar>
-                                        <Avatar>
-                                        <TwitterIcon />
-                                        </Avatar>
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        primary={
-                                            <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                            Gioja solicita que se declare emergencia Hídrica Nacional
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            http://t.co/8DAOAj1H1
-                                            <Typography variant="subtitle2" display="block" gutterBottom>
-                                            @joseluisgioja @tdosoSanJuan @Frente DeTodos @Diputados_Todos #SanJuan
-                                            </Typography>
-                                            </Typography>
-                                            </Typography>
-            </ThemeProvider>
-        }
-        secondary="#EmergenciaHídrica"  />
-    </ListItem> */}
-
+                {/* <List> */}
                 {/* <ListItem style={{ width: '130px', float: 'right' }}>
                             <ListItemButton onClick={handleClickk} >
                             <ListItemIcon>

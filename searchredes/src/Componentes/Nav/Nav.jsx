@@ -21,8 +21,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Box, width } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
 // import Busqueda from "../Busqueda/Busqueda.jsx"
-import Avatar from '@mui/material/Avatar';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
+
 
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -35,7 +34,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import style from '../Nav/Nav.module.css'
-import { ListItem, ListItemIcon, ListItemText, TextField } from '@mui/material';
     const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -183,7 +181,8 @@ export default function Nav() {
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 35 } }}
                             className={style.Instagram}
                             icon={<InstagramIcon />}
-                            color="error"
+                            
+                            type="checkbox"
                             checkedIcon={<InstagramIcon />}
                         />
 
