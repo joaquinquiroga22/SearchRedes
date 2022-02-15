@@ -854,7 +854,7 @@ export default function Busqueda() {
                                             primary={
                                                 <ThemeProvider theme={theme} display="block" >
                                                     <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
-                                                        Cuerpo: {item.cuerpo}
+                                                         {item.cuerpo}
                                                         <br />
 
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
