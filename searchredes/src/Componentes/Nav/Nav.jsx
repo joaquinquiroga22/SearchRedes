@@ -209,7 +209,7 @@ export default function Nav() {
                         />
                     </Box>
                     <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign: 'center' }}>
-                        <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop: '100px', textAlign: 'center' }}>
+                        <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop: '100px', textAlign: 'center', }}>
                             <li>Nosotros</li>
                             <li>Api</li>
                             <li>Tendencias</li>

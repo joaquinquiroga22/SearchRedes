@@ -15,6 +15,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+
 import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -38,6 +40,13 @@ import { withStyles } from '@material-ui/core/styles';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
 import { useSearchParams } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 // import Spinner from '../Spinner/Spinner.js';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
@@ -45,6 +54,8 @@ import Group8 from '../imagenes/Group8.png'
 import { height, maxWidth, width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
+import Fab from '@mui/material/Fab';
+
 
 
 const theme = createTheme({
@@ -179,6 +190,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Busqueda() {
+    const [openAlert, setOpenAlert] = React.useState(false);
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [inputBusqueda, setInput] = useState("");
     const goTwitter = () => {
@@ -222,7 +235,13 @@ export default function Busqueda() {
         setAnchorEl();
     };
 
+    const handleClickOpenAlert = () => {
+        setOpenAlert(true);
+    };
 
+    const handleCloseAlert = () => {
+        setOpenAlert(false);
+    };
 
     const [open, setOpen] = React.useState(false);
 
@@ -296,7 +315,7 @@ export default function Busqueda() {
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -316,11 +335,12 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-                                onKeyPress={ event => {
+                                onKeyPress={event => {
                                     if (event.key === 'Enter') {
-                                      goTwitter()
+
+                                        goTwitter()
                                     }
-                                  }}
+                                }}
                             />
 
                         </div>
@@ -425,13 +445,13 @@ export default function Busqueda() {
     console.log(busqueda)
 
     if (loading) {
-           // if (true) {
+        //if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.open("https://nodoshub.com/", "_blank")}>
+                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.location.replace("/")}>
                             Logo
                         </Typography>
                         <div className={classes.search}>
@@ -451,11 +471,11 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-                                onKeyPress={ event => {
+                                onKeyPress={event => {
                                     if (event.key === 'Enter') {
-                                      goTwitter()
+                                        goTwitter()
                                     }
-                                  }}
+                                }}
                             />
 
                         </div>
@@ -477,7 +497,7 @@ export default function Busqueda() {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleClosee}
-                            style={{top:'0px'}}
+                            style={{ top: '0px' }}
                             className={boxClass.MenuEsquemas}
 
                         >
@@ -485,7 +505,7 @@ export default function Busqueda() {
                                 <ListItemIcon className={boxClass.Burbuja}>
                                     <BubbleChartIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()}/>
+                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
                                 <Modal
                                     open={modal}
                                     onClose={abrirCerrarModal}>
@@ -539,7 +559,7 @@ export default function Busqueda() {
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
                         <div className={classes.search}>
@@ -559,11 +579,11 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-                                onKeyPress={ event => {
+                                onKeyPress={event => {
                                     if (event.key === 'Enter') {
-                                      goTwitter()
+                                        goTwitter()
                                     }
-                                  }}
+                                }}
                             />
 
                         </div>
@@ -668,21 +688,21 @@ export default function Busqueda() {
         </div >
     }
     return (
-      
+
         <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.open("https://nodoshub.com/", "_blank")}>Logo</span>
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
 
 
                         <div className={classes.search}>
-                        
-                            <Button  value="Search" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+
+                            <Button value="Search" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
                                 Buscar
                                 {/* <SearchIcon /> */}
 
@@ -691,19 +711,51 @@ export default function Busqueda() {
                             <InputBase
 
                                 placeholder="Que deseas buscar"
-                                    classes={{
-                                        root: classes.inputRoot,
-                                        input: classes.inputInput
-                                    }}
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput
+                                }}
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-                                onKeyPress={ event => {
+                                onKeyPress={event => {
                                     if (event.key === 'Enter') {
-                                      goTwitter()
+                                        if (busqueda && busqueda == inputBusqueda) {
+                                            // return alert("Busca otra cosa")
+                                            return setOpenAlert(true)
+                                        }
+                                        goTwitter()
                                     }
-                                  }}
+                                }}
+                                endIcon={<SearchIcon />}
                             />
+                            <div>
+
+                                <Dialog
+                                    
+                                    open={openAlert}
+                                    onClose={handleCloseAlert}
+                                    aria-labelledby="responsive-dialog-title"
+                                >
+                                    <DialogTitle id="responsive-dialog-title" sx={{textAlign:'center'}}>
+                                        Busqueda: {""}{busqueda}
+                                    </DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText sx={{textAlign:'center'}}>
+                                            ESTA BUSQUEDA YA SE REALIZÓ
+                                             <br/>
+                                            REALICE OTRA
+                                            
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{marginRight:'50px'}}>
+                                            Intentar Nuevamente
+                                        </Button>
+                                      
+                                    </DialogActions>
+                                </Dialog>
+                            </div>
 
                         </div>
                         <Button
@@ -764,10 +816,19 @@ export default function Busqueda() {
                     <Paper
                         sx={{ margin: '0 auto', width: '100%', minHeight: '750px' }}
                     >
-                        <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
-                        <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
-                            <ArrowBackIcon />
-                        </IconButton>
+                        <Box className={boxClass.BusquedaTwitt} >
+
+                            <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
+
+                            {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
+                                <TwitterIcon sx={{ mr: 1 }} />
+                                Busqueda Twitt: {busqueda}
+                            </Fab> */}
+                        </Box>
+                        {/* <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
+                          <ArrowBackIcon /> Nueva Busqueda 
+                        </IconButton> */}
+                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height:'40px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
@@ -781,8 +842,8 @@ export default function Busqueda() {
                                     theme={theme}
                                 >
                                     <ListItem >
-                                        <ListItemAvatar>
-                                            <Avatar>
+                                        <ListItemAvatar >
+                                            <Avatar style={{ backgroundColor: '#2FBCED' }}>
                                                 <TwitterIcon />
                                             </Avatar>
                                         </ListItemAvatar>
@@ -792,6 +853,7 @@ export default function Busqueda() {
                                                     <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
                                                         Cuerpo: {item.cuerpo}
                                                         <br />
+
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
                                                             <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
                                                                 {item.url}
@@ -802,6 +864,12 @@ export default function Busqueda() {
                                                             <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
                                                                 Hashtag: {item.hashtag}
                                                             </Typography>
+                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
+                                                                Retwitt: 200
+                                                            </Typography>
+                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
+                                                                Likes: 15
+                                                            </Typography>
                                                         </Typography>
                                                     </Typography>
                                                 </ThemeProvider>
@@ -809,8 +877,10 @@ export default function Busqueda() {
                                             secondary={
                                                 <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
                                                     Menciones: {item.menciones}
+                                                    <Divider></Divider>
                                                 </Typography>
                                             }
+
                                         />
 
                                     </ListItem>
