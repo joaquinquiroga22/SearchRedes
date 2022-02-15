@@ -749,7 +749,7 @@ export default function Busqueda() {
                                         </DialogContentText>
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{marginRight:'50px'}}>
+                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{marginRight:'45px'}}>
                                             Intentar Nuevamente
                                         </Button>
                                       
