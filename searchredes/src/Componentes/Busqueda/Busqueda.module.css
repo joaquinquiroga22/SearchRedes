@@ -109,18 +109,29 @@
         width: 1000px !important;
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 1200px) {
     .nueva{
-        width: 100%;
+        width: 70% !important;
+        margin-left: 16% !important;
         height: 43px;
         font-size: 14px !important;
         padding-bottom: 10px !important;
-        margin-top: -142px !important;
+        margin-top: 20px !important;
         margin-bottom: 21px !important;
+        position: relative !important;
     }
      .BusquedaTwitt{
-        
-        padding-top: 30px !important;
+        position: relative !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        top: 110px !important;
+        color: black !important;
+        left: 50% !important;
+        font-size: 11px !important;
+        text-align: center;
+        margin-top: -20px !important;
+        padding-bottom: 15px;
     } 
      /* @media(max-width: 550px){
         .nueva{

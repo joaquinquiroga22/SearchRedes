@@ -691,7 +691,7 @@ export default function Busqueda() {
 
         <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
-                <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
+                <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573', marginBottom: '150px' }}>
                     <Toolbar>
                         <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
@@ -702,7 +702,7 @@ export default function Busqueda() {
 
                         <div className={classes.search}>
 
-                            <Button value="Search" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
+                            <Button value="Search" style={{ borderRadius: '10px', fontFamily: 'Minimalust' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
                                 Buscar
                                 {/* <SearchIcon /> */}
 
@@ -732,27 +732,27 @@ export default function Busqueda() {
                             <div>
 
                                 <Dialog
-                                    
+
                                     open={openAlert}
                                     onClose={handleCloseAlert}
                                     aria-labelledby="responsive-dialog-title"
                                 >
-                                    <DialogTitle id="responsive-dialog-title" sx={{textAlign:'center'}}>
+                                    <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
                                         Busqueda: {""}{busqueda}
                                     </DialogTitle>
                                     <DialogContent>
-                                        <DialogContentText sx={{textAlign:'center'}}>
+                                        <DialogContentText sx={{ textAlign: 'center' }}>
                                             ESTA BUSQUEDA YA SE REALIZÓ
-                                             <br/>
+                                            <br />
                                             REALICE OTRA
-                                            
+
                                         </DialogContentText>
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{marginRight:'45px'}}>
+                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{ marginRight: '45px' }}>
                                             Intentar Nuevamente
                                         </Button>
-                                      
+
                                     </DialogActions>
                                 </Dialog>
                             </div>
@@ -811,24 +811,27 @@ export default function Busqueda() {
             </div>
             <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', minHeight: '750px' }}>
 
-
-                <Container>
+                <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
+                <Box className={boxClass.BusquedaTwitt}   style={{ paddingTop: '-100px', colo: 'white', fontSize:'25px' }}>
+                    <h4 display='inline'>BUSQUEDA DE TWITTS {""} {""} @{busqueda} <br /> RESULTADOS: </h4>
+                    </Box>
+                </Paper>
+                <Container style={{ borderRadius: '20px' }}>
                     <Paper
-                        sx={{ margin: '0 auto', width: '100%', minHeight: '750px' }}
+                        style={{ margin: '0 auto', width: '100%', minHeight: '750px', borderRadius: '20px' }}
                     >
-                        <Box className={boxClass.BusquedaTwitt} >
+                        
 
-                            <h4 style={{ textAlign: 'center' }} display='inline'>Busqueda Twitt {""} {""} @{busqueda}</h4>
 
                             {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
                                 <TwitterIcon sx={{ mr: 1 }} />
                                 Busqueda Twitt: {busqueda}
                             </Fab> */}
-                        </Box>
+                        
                         {/* <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
                           <ArrowBackIcon /> Nueva Busqueda 
                         </IconButton> */}
-                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height:'40px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
+                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px', right:'3px',fontSize:'10px',width:'9%' ,position:'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> 
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
@@ -891,6 +894,8 @@ export default function Busqueda() {
                         ) : (
                             <p>no hay nada</p>
                         )}
+                        {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
+
                     </Paper>
                 </Container>
                 {/* <List> */}
