@@ -207,6 +207,13 @@ export default function Busqueda() {
 
     const [anchorEl, setAnchorEl] = React.useState();
 
+    const handle = (e) => {
+        if(e.key == "Enter"){
+            inputBusqueda()
+        }
+        return false;
+    }
+
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -646,6 +653,7 @@ export default function Busqueda() {
         </div >
     }
     return (
+      
         <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
@@ -658,6 +666,7 @@ export default function Busqueda() {
 
 
                         <div className={classes.search}>
+                        
                             <Button  value="Search" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
                                 Buscar
                                 {/* <SearchIcon /> */}
@@ -674,7 +683,11 @@ export default function Busqueda() {
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-
+                                onKeyPress={ event => {
+                                    if (event.key === 'Enter') {
+                                      goTwitter()
+                                    }
+                                  }}
                             />
 
                         </div>
