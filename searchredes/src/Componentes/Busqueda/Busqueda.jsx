@@ -207,12 +207,12 @@ export default function Busqueda() {
 
     const [anchorEl, setAnchorEl] = React.useState();
 
-    const handle = (e) => {
-        if(e.key == "Enter"){
-            inputBusqueda()
-        }
-        return false;
-    }
+    // const handle = (e) => {
+    //     if(e.key == "Enter"){
+    //         inputBusqueda()
+    //     }
+    //     return false;
+    // }
 
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
@@ -316,6 +316,11 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
+                                onKeyPress={ event => {
+                                    if (event.key === 'Enter') {
+                                      goTwitter()
+                                    }
+                                  }}
                             />
 
                         </div>
@@ -446,6 +451,11 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
+                                onKeyPress={ event => {
+                                    if (event.key === 'Enter') {
+                                      goTwitter()
+                                    }
+                                  }}
                             />
 
                         </div>
@@ -549,6 +559,11 @@ export default function Busqueda() {
                                 inputProps={{ "aria-label": "search" }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
+                                onKeyPress={ event => {
+                                    if (event.key === 'Enter') {
+                                      goTwitter()
+                                    }
+                                  }}
                             />
 
                         </div>
