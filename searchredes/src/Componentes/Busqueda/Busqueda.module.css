@@ -109,6 +109,16 @@
         width: 1000px !important;
     }
 }
+/* @media((min-width: 600px) and (max-width: 465px)){
+    .ButtonInput{
+
+    }
+} */
+
+/* .ButtonInput{
+    right: 0;
+    position: absolute;
+} */
 @media (max-width: 1200px) {
     .nueva{
         width: 70% !important;

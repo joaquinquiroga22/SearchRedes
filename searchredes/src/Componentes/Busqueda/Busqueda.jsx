@@ -51,10 +51,12 @@ import { useTheme } from '@mui/material/styles';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
-import { height, maxWidth, width } from '@mui/system';
+import { borderRadius, height, maxWidth, width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Fab from '@mui/material/Fab';
+import RepeatSharpIcon from '@material-ui/icons/RepeatSharp';
+import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 
 
 
@@ -147,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
     search: {
         backgroundColor: 'white',
         position: 'relative',
-        borderRadius: theme.shape.borderRadius,
+        // borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         '&:hover': {
             backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -159,23 +161,33 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(1),
             width: 'auto',
         },
+        
     },
     searchIcon: {
         color: '#2FBCED',
         padding: theme.spacing(0, 1),
-        height: '100%',
+        height: '80%',
         position: 'absolute',
         zIndex: '1',
         pointerEvents: 'auto',
         display: 'flex',
+        flexDirection:'column',
         alignItems: 'center',
         justifyContent: 'center',
+        fontFamily:'',
+        // border:'1px solid #7FB3D5',
+        // backgroundColor:'#7FB3D5',
+        marginTop:'4px',
+        // marginLeft:'3px',
+        // color:'white',
+        // width:'80px'
+        
     },
     inputRoot: {
         color: '#808B96',
     },
     inputInput: {
-        border: '1px solid #2FBCED',
+        border: '2px solid #2FBCED',
         position: 'relative',
         borderRadius: '12px',
         padding: theme.spacing(1, 1, 1, 0),
@@ -702,11 +714,16 @@ export default function Busqueda() {
 
                         <div className={classes.search}>
 
-                            <Button value="Search" style={{ borderRadius: '10px', fontFamily: 'Minimalust' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
-                                Buscar
-                                {/* <SearchIcon /> */}
-
-                            </Button>
+                                    <Button value="Search" style={{ borderRadius: '10px', fontFamily: 'Minimalust' }}
+        
+                                        className={classes.searchIcon}
+                                        onClick={() => goTwitter()}
+                                        endIcon={<SearchIcon />}
+                                    >
+                                        Buscar
+                                        {/* <SearchIcon /> */}
+        
+                                    </Button>
 
                             <InputBase
 
@@ -812,26 +829,26 @@ export default function Busqueda() {
             <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', minHeight: '750px' }}>
 
                 <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
-                <Box className={boxClass.BusquedaTwitt}   style={{ paddingTop: '-100px', colo: 'white', fontSize:'25px' }}>
-                    <h4 display='inline'>BUSQUEDA DE TWITTS {""} {""} @{busqueda} <br /> RESULTADOS: </h4>
+                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px' }}>
+                        <h4 display='inline'>BUSQUEDA DE TWITTS {""} {""} @{busqueda} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper>
                 <Container style={{ borderRadius: '20px' }}>
                     <Paper
                         style={{ margin: '0 auto', width: '100%', minHeight: '750px', borderRadius: '20px' }}
                     >
-                        
 
 
-                            {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
+
+                        {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
                                 <TwitterIcon sx={{ mr: 1 }} />
                                 Busqueda Twitt: {busqueda}
                             </Fab> */}
-                        
+
                         {/* <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
                           <ArrowBackIcon /> Nueva Busqueda 
                         </IconButton> */}
-                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px', right:'3px',fontSize:'10px',width:'9%' ,position:'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> 
+                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{textAlign:'center',bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
@@ -854,7 +871,7 @@ export default function Busqueda() {
                                             primary={
                                                 <ThemeProvider theme={theme} display="block" >
                                                     <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
-                                                         {item.cuerpo}
+                                                        {item.cuerpo}
                                                         <br />
 
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
@@ -867,11 +884,16 @@ export default function Busqueda() {
                                                             <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
                                                                 Hashtag: {item.hashtag}
                                                             </Typography>
-                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                Retwitt: 200
+                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+                                                                <ListItemText   >
+                                                                <RepeatSharpIcon /> {item.retweet}
+                                                                </ListItemText>
                                                             </Typography>
-                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                Likes: 15
+                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+                                                                
+                                                                <ListItemText   >
+                                                                <FavoriteBorderSharpIcon /> {item.likes}
+                                                                </ListItemText>
                                                             </Typography>
                                                         </Typography>
                                                     </Typography>

@@ -170,6 +170,14 @@ export default function Nav() {
                         inputProps={{ 'aria-label': 'search google maps' }}
                         onChange={e => setInput(e.target.value)}
                         value={input}
+                        onKeyPress= {(e) =>{
+                            if(e.key == "Enter"){
+                                if(input == ""){
+                                    alert("Flaco Tenes Que Escribir Algo");
+                                }
+                                goTwitter()
+                            }
+                        }}
                     />
                     <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
                         <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '5px', paddingBottom: '0px', textAlign: 'center', fontFamily: 'sans-serif' }} >
