@@ -98,3 +98,8 @@ color: rgb(47, 184, 237) !important;
                         font-size: 19px;
                     }
                 }
+                @media(max-width: 394px){
+                    .BoxSeleccion{
+                        margin-bottom: -20px !important;
+                    }
+                }
