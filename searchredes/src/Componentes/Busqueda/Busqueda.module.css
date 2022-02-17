@@ -62,6 +62,9 @@
 .hashtag{
     word-wrap: break-word;
 }
+.name{
+    word-wrap: break-word;
+}
 .menciones{
     
         word-wrap: break-word;
