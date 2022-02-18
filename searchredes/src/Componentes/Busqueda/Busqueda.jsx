@@ -62,6 +62,8 @@ import TagSharpIcon from '@mui/icons-material/TagSharp';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LinkIcon from '@mui/icons-material/Link';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+
 
 const theme = createTheme({
     typography: {
@@ -333,32 +335,31 @@ export default function Busqueda() {
                                 <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
-                        <div className={classes.search}>
-                            <Button type="submit" title="Buscar" value="Search" variant="contained" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
-
-                                Buscar
-
-                            </Button>
-
+                        <Box className={boxClass.BoxInput}>
                             <InputBase
+                                // hiddenLabel={true}
+                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                                className={boxClass.Input}
 
+                                sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput
-                                }}
-                                inputProps={{ "aria-label": "search" }}
+                                inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
                                 onKeyPress={event => {
                                     if (event.key === 'Enter') {
-
                                         goTwitter()
                                     }
                                 }}
                             />
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                                Buscar
+                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
+                    <SearchOutlinedIcon />
+                </IconButton> */}
 
-                        </div>
+                            </Button>
+                            </Box>
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
@@ -460,7 +461,7 @@ export default function Busqueda() {
     console.log(busqueda)
 
     if (loading) {
-        //if (true) {
+    //if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
@@ -469,8 +470,8 @@ export default function Busqueda() {
                         <Typography className={classes.title} variant="h4" noWrap onClick={() => window.location.replace("/")}>
                             Logo
                         </Typography>
-                        <div className={classes.search}>
-                            <Button type="submit" title="Buscar" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
+                        {/* <div className={classes.search}> */}
+                        {/* <Button type="submit" title="Buscar" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
                                 Buscar
 
@@ -491,58 +492,84 @@ export default function Busqueda() {
                                         goTwitter()
                                     }
                                 }}
+                            /> */}
+
+                        <Box className={boxClass.BoxInput}>
+                            <InputBase
+                                // hiddenLabel={true}
+                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                                className={boxClass.Input}
+
+                                sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
+                                placeholder="Que deseas buscar"
+                                inputProps={{ 'aria-label': 'search google maps' }}
+                                onChange={e => setInput(e.target.value)}
+                                value={inputBusqueda}
+                                onKeyPress={event => {
+                                    if (event.key === 'Enter') {
+                                        goTwitter()
+                                    }
+                                }}
                             />
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                                Buscar
+                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
+                    <SearchOutlinedIcon />
+                </IconButton> */}
 
-                        </div>
-                        <Button
-                            style={{ borderRadius: '8px' }}
-                            variant="outlined"
-                            color="primary"
-                            size="large"
-                            className={classes.button}
-                            startIcon={<AnalyticsOutlinedIcon />}
-
-                            onClick={handleClicke}
-                        >
-                            Esquemas
-                        </Button>
-                        <StyledMenu
-                            id="customized-menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={handleClosee}
-                            style={{ top: '0px' }}
-                            className={boxClass.MenuEsquemas}
-
-                        >
-                            <StyledMenuItem >
-                                <ListItemIcon className={boxClass.Burbuja}>
-                                    <BubbleChartIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
-                                <Modal
-                                    open={modal}
-                                    onClose={abrirCerrarModal}>
-                                    {body}
-                                </Modal>
-                            </StyledMenuItem>
-                            <StyledMenuItem>
-                                <ListItemIcon className={boxClass.Burbuja}>
-                                    <DraftsIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Grafico Barras" />
-                            </StyledMenuItem>
-                            <StyledMenuItem>
-                                <ListItemIcon className={boxClass.Burbuja}>
-                                    <InboxIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Grafico Lineas" />
-                            </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
-                                Volver
                             </Button>
-                        </StyledMenu>
+                            </Box>
+
+                            {/* </div> */}
+                            <Button
+                                style={{ borderRadius: '8px' }}
+                                variant="outlined"
+                                color="primary"
+                                size="large"
+                                className={classes.button}
+                                startIcon={<AnalyticsOutlinedIcon />}
+
+                                onClick={handleClicke}
+                            >
+                                Esquemas
+                            </Button>
+                            <StyledMenu
+                                id="customized-menu"
+                                anchorEl={anchorEl}
+                                keepMounted
+                                open={Boolean(anchorEl)}
+                                onClose={handleClosee}
+                                style={{ top: '0px' }}
+                                className={boxClass.MenuEsquemas}
+
+                            >
+                                <StyledMenuItem >
+                                    <ListItemIcon className={boxClass.Burbuja}>
+                                        <BubbleChartIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+                                    <Modal
+                                        open={modal}
+                                        onClose={abrirCerrarModal}>
+                                        {body}
+                                    </Modal>
+                                </StyledMenuItem>
+                                <StyledMenuItem>
+                                    <ListItemIcon className={boxClass.Burbuja}>
+                                        <DraftsIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Grafico Barras" />
+                                </StyledMenuItem>
+                                <StyledMenuItem>
+                                    <ListItemIcon className={boxClass.Burbuja}>
+                                        <InboxIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Grafico Lineas" />
+                                </StyledMenuItem>
+                                <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
+                                    Volver
+                                </Button>
+                            </StyledMenu>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -577,21 +604,15 @@ export default function Busqueda() {
                                 <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
                         </Typography>
-                        <div className={classes.search}>
-                            <Button className={classes.searchIcon} type="submit" style={{ borderRadius: '10px' }} title="Buscar" className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />}>
-
-                                Buscar
-
-                            </Button>
-
+                        <Box className={boxClass.BoxInput}>
                             <InputBase
+                                // hiddenLabel={true}
+                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                                className={boxClass.Input}
 
+                                sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput
-                                }}
-                                inputProps={{ "aria-label": "search" }}
+                                inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
                                 onKeyPress={event => {
@@ -600,8 +621,14 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                                Buscar
+                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
+                    <SearchOutlinedIcon />
+                </IconButton> */}
 
-                        </div>
+                            </Button>
+                            </Box>
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
@@ -715,40 +742,35 @@ export default function Busqueda() {
                         </Typography>
 
 
-                        <div className={classes.search}>
-
-                            <Button value="Search" style={{ borderRadius: '10px', fontFamily: 'Minimalust' }}
-
-                                className={classes.searchIcon}
-                                onClick={() => goTwitter()}
-                                endIcon={<SearchIcon />}
-                            >
-                                Buscar
-                                {/* <SearchIcon /> */}
-
-                            </Button>
-
+                        <Box className={boxClass.BoxInput}>
                             <InputBase
+                                // hiddenLabel={true}
+                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+                                className={boxClass.Input}
 
+                                sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput
-                                }}
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
-                                onKeyPress={event => {
+                                onKeyDown={event => {
                                     if (event.key === 'Enter') {
-                                        if (busqueda && busqueda == inputBusqueda) {
-                                            // return alert("Busca otra cosa")
-                                            return setOpenAlert(true)
+                                        if(busqueda && busqueda == inputBusqueda){
+
+                                            setOpenAlert(true)
                                         }
-                                        goTwitter()
+                                        goTwitter();
                                     }
                                 }}
-                                endIcon={<SearchIcon />}
                             />
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                                Buscar
+                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
+                    <SearchOutlinedIcon />
+                </IconButton> */}
+
+                            </Button>
+                            </Box>
                             <div >
 
                                 <Dialog
@@ -763,18 +785,18 @@ export default function Busqueda() {
                                         </Box>
                                     </DialogTitle>
                                     <DialogContent>
-                                        
-                                            <h3 style={{textAlign:'center'}}>
- 
+
+                                        <h3 style={{ textAlign: 'center' }}>
+
                                             ESTA BUSQUEDA YA SE REALIZÓ
                                             <br />
                                             REALICE OTRA
-                                            </h3>
+                                        </h3>
 
-                                       
+
                                     </DialogContent>
                                     <DialogActions>
-                                        <Button onClick={handleCloseAlert} color="secondary"  variant="contained" style={{ marginRight: '16%' }}>
+                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{ marginRight: '16%' }}>
                                             Intentar Nuevamente
                                         </Button>
 
@@ -782,7 +804,7 @@ export default function Busqueda() {
                                 </Dialog>
                             </div>
 
-                        </div>
+                        
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
