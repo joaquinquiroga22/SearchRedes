@@ -5,10 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 import { alpha, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
 import Button from '@material-ui/core/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -16,13 +14,10 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
-import ListItemButton from '@mui/material/ListItemButton';
-import Collapse from '@mui/material/Collapse';
-import AddIcon from '@mui/icons-material/Add';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+
 import { Container, ThemeProvider } from 'react-bootstrap';
 import { Paper, Box, Link } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
@@ -63,6 +58,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LinkIcon from '@mui/icons-material/Link';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const theme = createTheme({
@@ -206,7 +202,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const shortText = function (text) {
+    var newText = text.substring(0, 19);
+    newText = newText.charAt(0).toUpperCase() + newText.slice(1);
+  
+    if (text.length > 19) {
+      return newText + "";
+    }
+    return newText;
+  };
+
 export default function Busqueda() {
+
+   
+
+
     const [openAlert, setOpenAlert] = React.useState(false);
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -229,8 +239,8 @@ export default function Busqueda() {
     // console.log(params)
 
     const [search] = useSearchParams();
-    var busqueda = search.get('search')
-    console.log(busqueda);
+    var busqueda = search.get('search').toLowerCase()
+    
 
     const styless = usseStyles();
     const [modal, setModal] = useState(false)
@@ -352,14 +362,14 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                             </Button>
-                            </Box>
+                        </Box>
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
@@ -511,65 +521,65 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                             </Button>
-                            </Box>
+                        </Box>
 
-                            {/* </div> */}
-                            <Button
-                                style={{ borderRadius: '8px' }}
-                                variant="outlined"
-                                color="primary"
-                                size="large"
-                                className={classes.button}
-                                startIcon={<AnalyticsOutlinedIcon />}
+                        {/* </div> */}
+                        <Button
+                            style={{ borderRadius: '8px' }}
+                            variant="outlined"
+                            color="primary"
+                            size="large"
+                            className={classes.button}
+                            startIcon={<AnalyticsOutlinedIcon />}
 
-                                onClick={handleClicke}
-                            >
-                                Esquemas
+                            onClick={handleClicke}
+                        >
+                            Esquemas
+                        </Button>
+                        <StyledMenu
+                            id="customized-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClosee}
+                            style={{ top: '0px' }}
+                            className={boxClass.MenuEsquemas}
+
+                        >
+                            <StyledMenuItem >
+                                <ListItemIcon className={boxClass.Burbuja}>
+                                    <BubbleChartIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
+                                <Modal
+                                    open={modal}
+                                    onClose={abrirCerrarModal}>
+                                    {body}
+                                </Modal>
+                            </StyledMenuItem>
+                            <StyledMenuItem>
+                                <ListItemIcon className={boxClass.Burbuja}>
+                                    <DraftsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Grafico Barras" />
+                            </StyledMenuItem>
+                            <StyledMenuItem>
+                                <ListItemIcon className={boxClass.Burbuja}>
+                                    <InboxIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Grafico Lineas" />
+                            </StyledMenuItem>
+                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
+                                Volver
                             </Button>
-                            <StyledMenu
-                                id="customized-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClosee}
-                                style={{ top: '0px' }}
-                                className={boxClass.MenuEsquemas}
-
-                            >
-                                <StyledMenuItem >
-                                    <ListItemIcon className={boxClass.Burbuja}>
-                                        <BubbleChartIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Burbuja" onClick={() => abrirCerrarModal()} />
-                                    <Modal
-                                        open={modal}
-                                        onClose={abrirCerrarModal}>
-                                        {body}
-                                    </Modal>
-                                </StyledMenuItem>
-                                <StyledMenuItem>
-                                    <ListItemIcon className={boxClass.Burbuja}>
-                                        <DraftsIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Grafico Barras" />
-                                </StyledMenuItem>
-                                <StyledMenuItem>
-                                    <ListItemIcon className={boxClass.Burbuja}>
-                                        <InboxIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Grafico Lineas" />
-                                </StyledMenuItem>
-                                <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
-                                    Volver
-                                </Button>
-                            </StyledMenu>
+                        </StyledMenu>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -621,14 +631,14 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                             </Button>
-                            </Box>
+                        </Box>
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
@@ -748,14 +758,14 @@ export default function Busqueda() {
                                 // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
                                 className={boxClass.Input}
 
-                                sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
+                                style={{fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft:'5px' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={inputBusqueda}
                                 onKeyDown={event => {
                                     if (event.key === 'Enter') {
-                                        if(busqueda && busqueda == inputBusqueda){
+                                        if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
 
                                             setOpenAlert(true)
                                         }
@@ -763,48 +773,48 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px'}} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon  className={boxClass.IconButton}/>} onClick={() => goTwitter()}>
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
                 </IconButton> */}
 
                             </Button>
-                            </Box>
-                            <div >
+                        </Box>
+                        <div >
 
-                                <Dialog
+                            <Dialog
 
-                                    open={openAlert}
-                                    onClose={handleCloseAlert}
-                                    aria-labelledby="responsive-dialog-title"
-                                >
-                                    <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
-                                        <Box>
-                                            <img className={boxClass.Group8} src={Group8} alt="" />
-                                        </Box>
-                                    </DialogTitle>
-                                    <DialogContent>
+                                open={openAlert}
+                                onClose={handleCloseAlert}
+                                aria-labelledby="responsive-dialog-title"
+                            >
+                                <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
+                                    <Box>
+                                        <img className={boxClass.Group8} src={Group8} alt="" />
+                                    </Box>
+                                </DialogTitle>
+                                <DialogContent>
 
-                                        <h3 style={{ textAlign: 'center' }}>
+                                    <h3 style={{ textAlign: 'center' }}>
 
-                                            ESTA BUSQUEDA YA SE REALIZÓ
-                                            <br />
-                                            REALICE OTRA
-                                        </h3>
+                                        ESTA BUSQUEDA YA SE REALIZÓ
+                                        <br />
+                                        REALICE OTRA
+                                    </h3>
 
 
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{ marginRight: '16%' }}>
-                                            Intentar Nuevamente
-                                        </Button>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleCloseAlert} color="secondary" variant="contained" style={{ marginRight: '16%' }}>
+                                        Intentar Nuevamente
+                                    </Button>
 
-                                    </DialogActions>
-                                </Dialog>
-                            </div>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
 
-                        
+
                         <Button
                             style={{ borderRadius: '8px' }}
                             variant="outlined"
@@ -856,18 +866,22 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 16, margin: '10px auto 80px', maxWidth: '80%', minHeight: '750px' }}>
-
+            <div style={{ padding: 0, margin: '0px 0 auto  10px', maxWidth: '100%', minHeight: '750px', display:'flex', flexDirection:'row', gap:'10px',alignItems:'flex-start', justifyContent:'flex-start' }}>
+{/* 
                 <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} @{busqueda} <br /> RESULTADOS: </h4>
+                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
-                </Paper>
+                </Paper> */}
+                
                 <Container style={{ borderRadius: '20px' }}>
                     <Paper
-                        style={{ margin: '0 auto', width: '100%', minHeight: '750px', borderRadius: '20px' }}
+                        style={{ margin:'0' ,width: '70%', minHeight: '750px', borderRadius: '20px' }}
                     >
-
+                     <Paper
+                style={{margin:'0',width: '30%', minHeight: '750px', borderRadius: '20px' }}
+                >
+                
 
 
                         {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
@@ -891,10 +905,13 @@ export default function Busqueda() {
                                     }}
                                     theme={theme}
                                 >
-                                    <ListItem >
+                                        <ListItem >
+
                                         <ListItemAvatar >
-                                            <Avatar style={{ backgroundColor: '#2FBCED', width: '90%', height: '30%' }}>
-                                                {/* <TwitterIcon /> */}<img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
+                                            <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio:'1/1', imageRendering:'crisp-edges'}}>
+                                               <a style={{width: '100%',height:'100%'}} href={item.url_user} target = "_blank" rel='noopener noreferrer'>
+                                                    {/* <TwitterIcon /> */}<img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
+                                                   </a>
 
                                             </Avatar>
 
@@ -906,13 +923,13 @@ export default function Busqueda() {
                                                         {item.cuerpo}
                                                         <br />
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.name}>
-                                                            <PersonOutlineIcon style={{ height: '15px' }} />{item.name}
+                                                            <AccountCircleIcon style={{ height: '15px'}} />{item.name}
                                                         </Typography>
 
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
-                                                            <LinkIcon style={{ height: '15px' }} />
+                                                            <TwitterIcon style={{color:'#2FBCED', height: '15px', cursor:'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}/>
                                                             <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
-                                                                {item.url}
+                                                                {shortText(item.url)}
                                                             </Link>
                                                             <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
                                                                 <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {item.fecha}
@@ -928,7 +945,7 @@ export default function Busqueda() {
                                                             <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
 
                                                                 <ListItemText   >
-                                                                    <FavoriteBorderSharpIcon style={{ height: '15px', display: 'inline-block' }} /> {item.likes}
+                                                                    <FavoriteIcon style={{ height: '15px', display: 'inline-block', color:'red'}} /> {item.likes}
                                                                 </ListItemText>
                                                             </Typography>
                                                         </Typography>
@@ -953,7 +970,7 @@ export default function Busqueda() {
                             <p>no hay nada</p>
                         )}
                         {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
-
+                        </Paper>
                     </Paper>
                 </Container>
                 {/* <List> */}

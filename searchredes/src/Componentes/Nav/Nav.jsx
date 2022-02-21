@@ -85,6 +85,15 @@ function MyApp() {
 
 
 export default function Nav() {
+
+    const handleEvent = (event) => {
+        if (event.key === "Click") {
+             if(input === "" ){
+                 alert("Hola");
+             }
+             goTwitter();
+        }
+    }
  
 
     const [openAlertNav, setOpenAlertNav] = React.useState(false);
