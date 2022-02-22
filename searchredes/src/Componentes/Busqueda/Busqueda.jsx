@@ -19,7 +19,7 @@ import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
 
 import { Container, ThemeProvider } from 'react-bootstrap';
-import { Paper, Box, Link } from '@material-ui/core';
+import { Paper, Box, Link, Grid } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
 // import { Modal } from 'react-bootstrap';
 import { Modal } from '@material-ui/core';
@@ -205,16 +205,16 @@ const useStyles = makeStyles((theme) => ({
 const shortText = function (text) {
     var newText = text.substring(0, 19);
     newText = newText.charAt(0).toUpperCase() + newText.slice(1);
-  
+
     if (text.length > 19) {
-      return newText + "";
+        return newText + "";
     }
     return newText;
-  };
+};
 
 export default function Busqueda() {
 
-   
+
 
 
     const [openAlert, setOpenAlert] = React.useState(false);
@@ -240,7 +240,7 @@ export default function Busqueda() {
 
     const [search] = useSearchParams();
     var busqueda = search.get('search').toLowerCase()
-    
+
 
     const styless = usseStyles();
     const [modal, setModal] = useState(false)
@@ -471,7 +471,7 @@ export default function Busqueda() {
     console.log(busqueda)
 
     if (loading) {
-    //if (true) {
+        //if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
@@ -758,7 +758,7 @@ export default function Busqueda() {
                                 // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
                                 className={boxClass.Input}
 
-                                style={{fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft:'5px' }}
+                                style={{ fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft: '5px' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
@@ -866,22 +866,134 @@ export default function Busqueda() {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div style={{ padding: 0, margin: '0px 0 auto  10px', maxWidth: '100%', minHeight: '750px', display:'flex', flexDirection:'row', gap:'10px',alignItems:'flex-start', justifyContent:'flex-start' }}>
-{/* 
+            <div style={{ padding: 0, margin: '0px 0px 0px  0px', maxWidth: '100%', minHeight: '750px', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+                {/* 
                 <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
                         <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper> */}
-                
-                <Container style={{ borderRadius: '20px' }}>
+
+                {/* Contenedor Margen Izquierdo */}
+
+                <Paper style={{ margin: '0 auto',position:'absolute', width: '15%', marginTop: '-140px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust'}}>
+                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-50px', marginLeft:'25%', color: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
+                        <Button style={{borderRadius:'20px', marginBottom:'20px',width: '100%'}} size="large" variant="contained" color="primary">DATOS</Button>
+                    </Box>
+
+                    <Grid container spacing={1} style={{marginTop:'-10px', marginLeft:'11%'}}>
+                        <Grid item xs={12}>
+                            <Paper style={{height:'100px', borderRadius:'10px',textAlign:'center'}}>1</Paper>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Paper style={{height:'70px', borderRadius:'10px',textAlign:'center'}}>2</Paper>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Paper style={{height:'70px', borderRadius:'10px',textAlign:'center'}}>3</Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper style={{height:'45px', borderRadius:'10px',textAlign:'center'}}>4</Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper style={{height:'45px', borderRadius:'10px', textAlign:'center'}}>5</Paper>
+                        </Grid>
+                    </Grid>
+                </Paper> 
+
+
+                <Container style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid black', marginTop:'220px' }}>
                     <Paper
-                        style={{ margin:'0' ,width: '70%', minHeight: '750px', borderRadius: '20px' }}
+                        style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px' }} //Paper margen izquierdo
                     >
-                     <Paper
-                style={{margin:'0',width: '30%', minHeight: '750px', borderRadius: '20px' }}
-                >
-                
+                        {data.listadoTwitter ? (
+                            data.listadoTwitter && data.listadoTwitter.map((item) => (
+                                <List
+                                    sx={{
+                                        margin: '0 auto',
+                                        width: '100%',
+                                        maxWidth: '120%',
+                                        bgcolor: 'white',
+                                        borderRadius: '20px'
+                                    }}
+                                    theme={theme}
+                                >
+                                    <ListItem >
+
+                                        {/* <ListItemAvatar >
+                                            <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio: '1/1', imageRendering: 'crisp-edges' }}>
+                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer'>
+                                                //     {/* <TwitterIcon /> */}
+                                                {/* <img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
+                                                 </a>  */}
+
+                                            {/* </Avatar>
+
+                                        </ListItemAvatar> */}
+                                        <ListItemText
+                                            primary={
+                                                <ThemeProvider theme={theme} display="block" >
+                                                    <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
+                                                        {item.cuerpo}
+                                                        <br />
+                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.name}>
+                                                            <AccountCircleIcon style={{ height: '15px' }} />{item.name}
+                                                        </Typography>
+
+                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
+                                                            <TwitterIcon style={{ color: '#2FBCED', height: '15px', cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)} />
+                                                            <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
+                                                                {shortText(item.url)}
+                                                            </Link>
+                                                            <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
+                                                                <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {item.fecha}
+                                                            </Typography>
+                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
+                                                                <TagSharpIcon style={{ height: '15px' }} />{item.hashtag}
+                                                            </Typography>
+                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+                                                                <ListItemText   >
+                                                                    <RepeatSharpIcon style={{ height: '15px' }} /> {item.retweet}
+                                                                </ListItemText>
+                                                            </Typography>
+                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+
+                                                                <ListItemText   >
+                                                                    <FavoriteIcon style={{ height: '15px', display: 'inline-block', color: 'red' }} /> {item.likes}
+                                                                </ListItemText>
+                                                            </Typography>
+                                                        </Typography>
+                                                    </Typography>
+                                                </ThemeProvider>
+                                            }
+                                            secondary={
+                                                <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
+                                                    <AlternateEmailIcon style={{ height: '15px' }} /> {item.menciones}
+                                                    <Divider></Divider>
+                                                </Typography>
+                                            }
+
+                                        />
+
+                                    </ListItem>
+                                </List>
+                            ))
+
+
+                        ) : (
+                            <p>no hay nada</p>
+                        )}
+
+
+                    </Paper>
+                </Container>
+                <Divider style={{ backgroundColor: 'white', color:"white", marginLeft:'10px', marginTop:'-150px', marginBottom:'100px', width:'1px' }} orientation='vertical' flexItem variant='middle' />
+                <Container style={{ borderRadius: '20px', marginBottom: '100px', marginLeft: '10px', width: '57%', border: '10px solid red' }}>
+
+                    <Divider style={{ backgroundColor: 'white', color:"white" }} orientation="vertical" />
+                    <Paper
+                        style={{ width: '100%', minHeight: '750px', borderRadius: '5px', float: 'right' }}
+                    >
+
 
 
                         {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
@@ -905,13 +1017,13 @@ export default function Busqueda() {
                                     }}
                                     theme={theme}
                                 >
-                                        <ListItem >
+                                    <ListItem >
 
                                         <ListItemAvatar >
-                                            <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio:'1/1', imageRendering:'crisp-edges'}}>
-                                               <a style={{width: '100%',height:'100%'}} href={item.url_user} target = "_blank" rel='noopener noreferrer'>
+                                            <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio: '1/1', imageRendering: 'crisp-edges' }}>
+                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer'>
                                                     {/* <TwitterIcon /> */}<img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
-                                                   </a>
+                                                </a>
 
                                             </Avatar>
 
@@ -923,11 +1035,11 @@ export default function Busqueda() {
                                                         {item.cuerpo}
                                                         <br />
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.name}>
-                                                            <AccountCircleIcon style={{ height: '15px'}} />{item.name}
+                                                            <AccountCircleIcon style={{ height: '15px' }} />{item.name}
                                                         </Typography>
 
                                                         <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
-                                                            <TwitterIcon style={{color:'#2FBCED', height: '15px', cursor:'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}/>
+                                                            <TwitterIcon style={{ color: '#2FBCED', height: '15px', cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)} />
                                                             <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
                                                                 {shortText(item.url)}
                                                             </Link>
@@ -945,7 +1057,7 @@ export default function Busqueda() {
                                                             <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
 
                                                                 <ListItemText   >
-                                                                    <FavoriteIcon style={{ height: '15px', display: 'inline-block', color:'red'}} /> {item.likes}
+                                                                    <FavoriteIcon style={{ height: '15px', display: 'inline-block', color: 'red' }} /> {item.likes}
                                                                 </ListItemText>
                                                             </Typography>
                                                         </Typography>
@@ -970,9 +1082,9 @@ export default function Busqueda() {
                             <p>no hay nada</p>
                         )}
                         {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
-                        </Paper>
                     </Paper>
                 </Container>
+
                 {/* <List> */}
                 {/* <ListItem style={{ width: '130px', float: 'right' }}>
                             <ListItemButton onClick={handleClickk} >
