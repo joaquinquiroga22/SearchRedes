@@ -180,6 +180,7 @@
     .Input{
         width: 100%;
     }
+  
     .IconButton{
         margin-right: -15px !important;
     }
@@ -193,9 +194,9 @@
         height: 30px !important;
         margin-top: -2px !important;
     }
-    .BoxInput .Input::placeholder{
+    .Input::placeholder{
         font-size: 5px !important;
-        color: red !important;
+        background-color: red !important;
         
     }
     .IconButton{
