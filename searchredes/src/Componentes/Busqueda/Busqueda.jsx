@@ -212,10 +212,27 @@ const shortText = function (text) {
     return newText;
 };
 
+const Progress = ({ done }) => {
+    const [style, setStyle] = React.useState({});
+
+    setTimeout(() => {
+        const newStyle = {
+            opacity: 1,
+            width: `${done}%`
+        }
+
+        setStyle(newStyle);
+    }, 200);
+
+    return (
+        <div className={boxClass["progress"]}>
+            <div className={boxClass["progress-done"]} style={style}>
+                {done}%
+            </div>
+        </div>
+    )
+}
 export default function Busqueda() {
-
-
-
 
     const [openAlert, setOpenAlert] = React.useState(false);
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -876,122 +893,158 @@ export default function Busqueda() {
 
                 {/* Contenedor Margen Izquierdo */}
 
-                <Paper style={{ margin: '0 auto',position:'absolute', width: '15%', marginTop: '-140px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust'}}>
-                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-50px', marginLeft:'25%', color: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                        <Button style={{borderRadius:'20px', marginBottom:'20px',width: '100%'}} size="large" variant="contained" color="primary">DATOS</Button>
+                <Paper className={boxClass.PaperGrid} style={{ margin: '0 auto', position: 'absolute', width: '15%', marginTop: '-140px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
+                    <Box style={{ paddingTop: '-50px', marginLeft: '25%', color: 'white', fontSize: '25px' }}>
+                        <Button className={boxClass.ButtonDatos} style={{ borderRadius: '20px', marginBottom: '20px', width: '100%' }} size="large" variant="contained" color="primary">DATOS</Button>
                     </Box>
 
-                    <Grid container spacing={1} style={{marginTop:'-10px', marginLeft:'11%'}}>
-                        <Grid item xs={12}>
-                            <Paper style={{height:'100px', borderRadius:'10px',textAlign:'center'}}>1</Paper>
+                    <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
+                        <Grid item xs={6}>
+                        <Paper className={boxClass.Grid12}>
+                               <h2 > 6%</h2>
+                               <h3 style={{marginTop:'-25px'}}>Strength</h3>
+                            </Paper>
                         </Grid>
                         <Grid item xs={6}>
-                            <Paper style={{height:'70px', borderRadius:'10px',textAlign:'center'}}>2</Paper>
+                        <Paper className={boxClass.Grid12}>
+                               <h2 > 10:1</h2>
+                               <h3 style={{marginTop:'-25px'}}>sentiment</h3>
+                            </Paper>
                         </Grid>
                         <Grid item xs={6}>
-                            <Paper style={{height:'70px', borderRadius:'10px',textAlign:'center'}}>3</Paper>
+                            <Paper className={boxClass.Grid12}>
+                               <h2 > 64%</h2>
+                               <h3 style={{marginTop:'-25px'}}>Passion</h3>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6}>
+                        <Paper className={boxClass.Grid12}>
+                               <h2 > 17%</h2>
+                               <h3 style={{marginTop:'-25px'}}>Reach</h3>
+                            </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                            <Paper style={{height:'45px', borderRadius:'10px',textAlign:'center'}}>4</Paper>
+                        <Paper className={boxClass.Grid13}>
+                               <h3>Likes</h3>
+                              
+                            </Paper>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                        <Paper className={boxClass.Grid13}>
+                               <h3>Retweets</h3>
+                              
+                            </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                            <Paper style={{height:'45px', borderRadius:'10px', textAlign:'center'}}>5</Paper>
+                        <Paper className={boxClass.Grid13}>
+                               <h3>Ultima Mencion 3 Dias Atras</h3>
+                              
+                            </Paper>
                         </Grid>
                     </Grid>
-                </Paper> 
+                </Paper>
 
 
-                <Container style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid black', marginTop:'220px' }}>
+                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '220px', }}>
                     <Paper
-                        style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px' }} //Paper margen izquierdo
+                        style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }} //Paper margen izquierdo
                     >
-                        {data.listadoTwitter ? (
-                            data.listadoTwitter && data.listadoTwitter.map((item) => (
-                                <List
-                                    sx={{
-                                        margin: '0 auto',
-                                        width: '100%',
-                                        maxWidth: '120%',
-                                        bgcolor: 'white',
-                                        borderRadius: '20px'
-                                    }}
-                                    theme={theme}
-                                >
-                                    <ListItem >
+                        {/* {data.listadoTwitter ? (
+                            data.listadoTwitter && data.listadoTwitter.map((item) => ( */}
+                        <List
+                            sx={{
+                                margin: '0 auto',
+                                width: '100%',
+                                maxWidth: '120%',
+                                bgcolor: 'transparent',
+                                borderRadius: '20px',
+                                boxShadow: 'none',
+                                borderColor: 'transparent'
+                            }}
+                            theme={theme}
+                        >
+                            <ListItem >
 
-                                        {/* <ListItemAvatar >
+                                {/* <ListItemAvatar >
                                             <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio: '1/1', imageRendering: 'crisp-edges' }}>
                                                 <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer'>
                                                 //     {/* <TwitterIcon /> */}
-                                                {/* <img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
+                                {/* <img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
                                                  </a>  */}
 
-                                            {/* </Avatar>
+                                {/* </Avatar>
 
                                         </ListItemAvatar> */}
-                                        <ListItemText
-                                            primary={
-                                                <ThemeProvider theme={theme} display="block" >
-                                                    <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
-                                                        {item.cuerpo}
-                                                        <br />
-                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.name}>
-                                                            <AccountCircleIcon style={{ height: '15px' }} />{item.name}
-                                                        </Typography>
+                                <Box sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
 
-                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
-                                                            <TwitterIcon style={{ color: '#2FBCED', height: '15px', cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)} />
-                                                            <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
-                                                                {shortText(item.url)}
-                                                            </Link>
-                                                            <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
-                                                                <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {item.fecha}
-                                                            </Typography>
-                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                <TagSharpIcon style={{ height: '15px' }} />{item.hashtag}
-                                                            </Typography>
-                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
-                                                                <ListItemText   >
-                                                                    <RepeatSharpIcon style={{ height: '15px' }} /> {item.retweet}
-                                                                </ListItemText>
-                                                            </Typography>
-                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
 
-                                                                <ListItemText   >
-                                                                    <FavoriteIcon style={{ height: '15px', display: 'inline-block', color: 'red' }} /> {item.likes}
-                                                                </ListItemText>
-                                                            </Typography>
-                                                        </Typography>
-                                                    </Typography>
-                                                </ThemeProvider>
-                                            }
-                                            secondary={
-                                                <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
-                                                    <AlternateEmailIcon style={{ height: '15px' }} /> {item.menciones}
-                                                    <Divider></Divider>
-                                                </Typography>
-                                            }
 
-                                        />
 
-                                    </ListItem>
-                                </List>
-                            ))
+                                    <h1>Sentimientos</h1>
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h3>Positivo</h3>
+                                    <Progress done="80" />
+
+
+
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+
+                                    <h1>Palabras Principales</h1>
+
+                                    <Progress done="30" />
+                                    <Progress done="50" />
+                                    <Progress done="20" />
+                                    <Progress done="10" />
+                                    <Progress done="90" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h1>Usuarios Principales</h1>
+
+                                    <Progress done="60" />
+                                    <Progress done="40" />
+                                    <Progress done="30" />
+                                    <Progress done="20" />
+                                    <Progress done="50" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h1>Hashtag Principales</h1>
+
+                                    <Progress done="50" />
+                                    <Progress done="50" />
+                                    <Progress done="70" />
+                                    <Progress done="80" />
+                                    <Progress done="90" />
+
+
+
+                                </Box>
+                            </ListItem>
+                        </List>
+                        {/* ))
 
 
                         ) : (
                             <p>no hay nada</p>
-                        )}
+                        )} */}
 
 
                     </Paper>
                 </Container>
-                <Divider style={{ backgroundColor: 'white', color:"white", marginLeft:'10px', marginTop:'-150px', marginBottom:'100px', width:'1px' }} orientation='vertical' flexItem variant='middle' />
-                <Container style={{ borderRadius: '20px', marginBottom: '100px', marginLeft: '10px', width: '57%', border: '10px solid red' }}>
 
-                    <Divider style={{ backgroundColor: 'white', color:"white" }} orientation="vertical" />
+                <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' />
+
+
+                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
+                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
+                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
+                    </Box>
+                </Paper>
+
+                <Container className={boxClass.ContenedorDerecho} style={{ borderRadius: '20px', marginBottom: '100px', marginLeft: '60px', width: '60%', border: '0px solid #3498DB' }}>
+
+                    <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'yellow', color: "white" }} orientation="vertical" />
                     <Paper
                         style={{ width: '100%', minHeight: '750px', borderRadius: '5px', float: 'right' }}
+
                     >
 
 
@@ -1008,6 +1061,7 @@ export default function Busqueda() {
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
                                 <List
+                                    className={boxClass.ListPaperDerecho}
                                     sx={{
                                         margin: '0 auto',
                                         width: '100%',
