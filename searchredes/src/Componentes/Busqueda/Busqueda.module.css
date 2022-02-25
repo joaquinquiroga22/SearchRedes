@@ -202,6 +202,7 @@
         padding-right: 0px !important;
         margin-right: -5px !important;
     }
+ 
 }
 
 @media(max-width: 700px) {
@@ -227,7 +228,7 @@
         width: 70% !important;
         margin-left: 16% !important;
         height: 43px;
-        font-size: 14px !important;
+        font-size: 13px !important;
         padding-bottom: 10px !important;
         margin-top: 20px !important;
         margin-bottom: 21px !important;
@@ -240,12 +241,12 @@
         align-items: center !important; */
         top: 210px !important;
         color: black !important;
-        left: 68% !important;
+        left: 63% !important;
         font-size: 11px !important;
         text-align: center;
         margin-top: 185px !important;
         padding-bottom: 15px !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 40px !important;
     } 
     .LineaDivisora{
        display: none !important;
