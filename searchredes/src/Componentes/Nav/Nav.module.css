@@ -68,9 +68,12 @@ color: rgb(47, 184, 237) !important;
                     
                 } */
                 .Dialogo1{
-                    background-color: rgba(0, 0, 0, 0) !important;
+                    background-color: rgba(0, 0, 0, 0.5) !important;
                     position: absolute !important;
-                    z-index: 1 !important;
+                    z-index: 1000000000 !important;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
                     
                 }
                 

@@ -86,15 +86,10 @@ function MyApp() {
 
 export default function Nav() {
 
-    const handleEvent = (event) => {
-        if (event.key === "Click") {
-             if(input === "" ){
-                 alert("Hola");
-             }
-             goTwitter();
-        }
+    const handleEvent = () => {
+        return openAlertNav(true)
     }
- 
+
 
     const [openAlertNav, setOpenAlertNav] = React.useState(false);
 
@@ -184,33 +179,7 @@ export default function Nav() {
                         <img style={{ height: '600px', position: 'absolute', zIndex: '-1', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
                     </Box> */}
 
-                            <div className={style.Dialogo1}>
 
-                                <Dialog
-                                    className={style.Dialogo1}
-                                    open={openAlertNav}
-                                    onClose={handleCloseAlertNav}
-                                    aria-labelledby="responsive-dialog-title"
-                                >
-                                     <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
-                                        
-                                    </DialogTitle> 
-                                    <DialogContent>
-                                        <DialogContentText sx={{ textAlign: 'center' }}>
-                                            DEBE REALIZAR UNA BUSQUEDA
-                                            <br />
-                                            GRACIAS!
-
-                                        </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleCloseAlertNav} color="secondary" variant="contained" style={{ marginRight: '45px' }}>
-                                            Intentar Nuevamente
-                                        </Button>
-
-                                    </DialogActions>
-                                </Dialog>
-                            </div>
                             <InputBase
                                 // hiddenLabel={true}
                                 // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
@@ -220,20 +189,20 @@ export default function Nav() {
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInput(e.target.value)}
                                 value={input}
-                                // onKeyDown={event => {
-                                //     if (event.key === 'Enter') {
-                                //         if (input == "") {
-                                //             // return alert("Busca otra cosa")
-                                //             return setOpenAlertNav(true)
-                                //         }
-                                //         goTwitter()
-                                //     }
-                                // }}
+                                onKeyDown={event => {
+                                    if (event.key === 'Enter') {
+                                        if (input == "" || input == "?") {
+                                            // return alert("Busca otra cosa")
+                                            return setOpenAlertNav(true)
+                                        }
+                                        goTwitter()
+                                    }
+                                }}
                             />
                             <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
                                 <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '1px', paddingBottom: '0px !important', textAlign: 'center', fontFamily: 'Trebuchet MS ' }} >
                                     <h4>
-                                    Selecciona la red con que deseas buscar
+                                        Selecciona la red con que deseas buscar
                                     </h4>
                                 </Box>
                                 <Checkbox
@@ -279,7 +248,21 @@ export default function Nav() {
 
                                 </ul>
                             </Box>
-                            <Button type="submit" size="small" className={style.Button} sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon />} onClick={() => goTwitter()}>
+                            <Button
+                                
+                                size="small"
+                                className={style.Button}
+                                sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }}
+                                variant="contained"
+                                title="Buscar"
+                                endIcon={<SearchOutlinedIcon />}
+                                onClick={() => {
+                                    if (input == "" || input ==  "?") {
+                                        return setOpenAlertNav(true)
+                                    }
+                                    return goTwitter()
+                                }
+                                }>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
@@ -292,6 +275,33 @@ export default function Nav() {
 
                         </Paper>
                     </Box>
+                    <div className={style.Dialogo1}>
+
+                        <Dialog
+                            className={style.Dialogo1}
+                            open={openAlertNav}
+                            onClose={handleCloseAlertNav}
+                            aria-labelledby="responsive-dialog-title"
+                        >
+                            <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
+
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText sx={{ textAlign: 'center' }}>
+                                    DEBE REALIZAR UNA BUSQUEDA
+                                    <br />
+                                    GRACIAS!
+
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleCloseAlertNav} color="secondary" variant="contained" style={{ marginRight: '45px' }}>
+                                    Intentar Nuevamente
+                                </Button>
+
+                            </DialogActions>
+                        </Dialog>
+                    </div>
                     {/* <Box style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
                     <img style={{ width: '20%',position: 'absolute', zIndex: '1',}} className='img-fluid shadow-4' src={lineasrosa} alt='hola' title='Image' />
                 </Box> */}
