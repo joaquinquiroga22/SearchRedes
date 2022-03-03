@@ -3,30 +3,26 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
-// import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import SearchIcon from '@mui/icons-material/Search';
-// import ListItemButton from '@mui/material/ListItemButton';
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import wachin from '../imagenes/wachin.png'
-import lineasrosa from '../imagenes/lineasrosa.png'
+// import wachin from '../imagenes/wachin.png'
+// import lineasrosa from '../imagenes/lineasrosa.png'
 import lineasamarillas from '../imagenes/lineasamarillas.png'
 import Button from '@mui/material/Button';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { Box, width } from '@mui/system';
+import { Box } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
 // import Busqueda from "../Busqueda/Busqueda.jsx"
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import Group8 from '../imagenes/Group8.png'
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -191,7 +187,7 @@ export default function Nav() {
                                 value={input}
                                 onKeyDown={event => {
                                     if (event.key === 'Enter') {
-                                        if (input == "" || input == "?") {
+                                        if (input === "" || input === "?") {
                                             // return alert("Busca otra cosa")
                                             return setOpenAlertNav(true)
                                         }
@@ -249,7 +245,7 @@ export default function Nav() {
                                 </ul>
                             </Box>
                             <Button
-                                
+
                                 size="small"
                                 className={style.Button}
                                 sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }}
@@ -257,7 +253,7 @@ export default function Nav() {
                                 title="Buscar"
                                 endIcon={<SearchOutlinedIcon />}
                                 onClick={() => {
-                                    if (input == "" || input ==  "?") {
+                                    if (input === "" || input === "?") {
                                         return setOpenAlertNav(true)
                                     }
                                     return goTwitter()
@@ -275,7 +271,7 @@ export default function Nav() {
 
                         </Paper>
                     </Box>
-                    <div className={style.Dialogo1}>
+                    <div >
 
                         <Dialog
                             className={style.Dialogo1}
@@ -284,18 +280,23 @@ export default function Nav() {
                             aria-labelledby="responsive-dialog-title"
                         >
                             <DialogTitle id="responsive-dialog-title" sx={{ textAlign: 'center' }}>
-
+                                <Box>
+                                    <img className={style.Group8} src={Group8} alt="" />
+                                </Box>
                             </DialogTitle>
                             <DialogContent>
-                                <DialogContentText sx={{ textAlign: 'center' }}>
+
+                                <h3 style={{ textAlign: 'center' }}>
+
                                     DEBE REALIZAR UNA BUSQUEDA
                                     <br />
-                                    GRACIAS!
+                                    GRACIAS
+                                </h3>
 
-                                </DialogContentText>
+
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleCloseAlertNav} color="secondary" variant="contained" style={{ marginRight: '45px' }}>
+                                <Button onClick={handleCloseAlertNav}  variant="contained" style={{ margin:'0 auto', backgroundColor:'#FA4343'}}>
                                     Intentar Nuevamente
                                 </Button>
 

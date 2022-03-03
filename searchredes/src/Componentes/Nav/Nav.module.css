@@ -76,6 +76,13 @@ color: rgb(47, 184, 237) !important;
                     justify-content: center;
                     
                 }
+                .Group8 {
+                    position: relative;
+                    margin-top: 10px;
+                    width: 80px;
+                    height: 80px;
+                
+                }
                 
                 @media(max-width: 500px){
                     

@@ -38,25 +38,17 @@ import { useSearchParams } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 // import Spinner from '../Spinner/Spinner.js';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
-import { borderRadius, height, maxWidth, width } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
-import IconButton from '@mui/material/IconButton';
-import Fab from '@mui/material/Fab';
 import RepeatSharpIcon from '@material-ui/icons/RepeatSharp';
-import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import TagSharpIcon from '@mui/icons-material/TagSharp';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import LinkIcon from '@mui/icons-material/Link';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
@@ -222,7 +214,7 @@ const Progress = ({ done }) => {
         }
 
         setStyle(newStyle);
-    }, 200);
+    }, 100);
 
     return (
         <div className={boxClass["progress"]}>
@@ -231,6 +223,13 @@ const Progress = ({ done }) => {
             </div>
         </div>
     )
+}
+
+const hashtag = (item) =>{
+   if(item.length === 0){
+       return ""
+   }
+   return <TagSharpIcon style={{ height: '15px' }}/>;
 }
 export default function Busqueda() {
 
@@ -1100,9 +1099,6 @@ export default function Busqueda() {
                                                             <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
                                                                 <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {item.fecha}
                                                             </Typography>
-                                                            <Typography variant="subtitle2" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                <TagSharpIcon style={{ height: '15px' }} />{item.hashtag}
-                                                            </Typography>
                                                             <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
                                                                 <ListItemText   >
                                                                     <RepeatSharpIcon style={{ height: '15px' }} /> {item.retweet}
@@ -1114,15 +1110,25 @@ export default function Busqueda() {
                                                                     <FavoriteIcon style={{ height: '15px', display: 'inline-block', color: 'red' }} /> {item.likes}
                                                                 </ListItemText>
                                                             </Typography>
+                                                            
+                                                            <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
+                                                    <AlternateEmailIcon style={{ height: '15px' }} /> {item.menciones}
+                                                    
+                                                 </Typography>
+                                                       
+
                                                         </Typography>
                                                     </Typography>
                                                 </ThemeProvider>
                                             }
                                             secondary={
-                                                <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
-                                                    <AlternateEmailIcon style={{ height: '15px' }} /> {item.menciones}
-                                                    <Divider></Divider>
-                                                </Typography>
+                                                
+                                                <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.hashtag}>
+                                                                
+                                                                 {/* <  TagSharpIcon style={{ height: '15px' }}  />{item.hashtag} */}
+                                                                 {hashtag(item.hashtag)} {item.hashtag}
+                                                                 <Divider></Divider>
+                                                            </Typography>
                                             }
 
                                         />
