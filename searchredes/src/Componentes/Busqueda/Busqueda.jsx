@@ -229,7 +229,7 @@ const hashtag = (item) =>{
    if(item.length === 0){
        return ""
    }
-   return <TagSharpIcon style={{ height: '15px' }}/>;
+   return <>  <TagSharpIcon style={{ height: '15px' }}/> {item} </>;
 }
 export default function Busqueda() {
 
@@ -1126,7 +1126,7 @@ export default function Busqueda() {
                                                 <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.hashtag}>
                                                                 
                                                                  {/* <  TagSharpIcon style={{ height: '15px' }}  />{item.hashtag} */}
-                                                                 {hashtag(item.hashtag)} {item.hashtag}
+                                                                 {hashtag(item.hashtag)} 
                                                                  <Divider></Divider>
                                                             </Typography>
                                             }
