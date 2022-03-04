@@ -225,12 +225,19 @@ const Progress = ({ done }) => {
     )
 }
 
-const hashtag = (item) =>{
-   if(item.length === 0){
-       return ""
-   }
-   return <>  <TagSharpIcon style={{ height: '15px' }}/> {item} </>;
+const hashtag = (item) => {
+    if (item.length === 0) {
+        return ""
+    }
+    return <>  <TagSharpIcon style={{ height: '15px' }} /> {item} </>;
 }
+const menciones = (item) => {
+    if (item.length === 0) {
+        return ""
+    }
+    return <> <AlternateEmailIcon style={{ height: '15px' }} /> {item} </>
+}
+
 export default function Busqueda() {
 
     const [openAlert, setOpenAlert] = React.useState(false);
@@ -789,7 +796,22 @@ export default function Busqueda() {
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
+                            <Button
+
+                                size="small"
+                                className={boxClass.ButtonInput}
+                                style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }}
+                                variant="contained"
+                                title="Buscar"
+                                endIcon={<SearchOutlinedIcon
+                                    className={boxClass.IconButton} />}
+                                onClick={() => {
+                                    if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
+                                        setOpenAlert(true);
+                                    }
+                                    goTwitter()
+                                }
+                                }>
                                 Buscar
                                 {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
                     <SearchOutlinedIcon />
@@ -875,9 +897,9 @@ export default function Busqueda() {
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
+                            {/* <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
                                 Volver
-                            </Button>
+                            </Button> */}
                         </StyledMenu>
                     </Toolbar>
                 </AppBar>
@@ -899,46 +921,46 @@ export default function Busqueda() {
 
                     <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
                         <Grid item xs={6}>
-                        <Paper className={boxClass.Grid12}>
-                               <h2 > 6%</h2>
-                               <h3 style={{marginTop:'-25px'}}>Strength</h3>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6}>
-                        <Paper className={boxClass.Grid12}>
-                               <h2 > 10:1</h2>
-                               <h3 style={{marginTop:'-25px'}}>sentiment</h3>
+                            <Paper className={boxClass.Grid12}>
+                                <h1 > 6%</h1>
+                                <h4 style={{ marginTop: '-25px' }}>Strength</h4>
                             </Paper>
                         </Grid>
                         <Grid item xs={6}>
                             <Paper className={boxClass.Grid12}>
-                               <h2 > 64%</h2>
-                               <h3 style={{marginTop:'-25px'}}>Passion</h3>
+                                <h1 > 10:1</h1>
+                                <h4 style={{ marginTop: '-25px' }}>sentiment</h4>
                             </Paper>
                         </Grid>
                         <Grid item xs={6}>
-                        <Paper className={boxClass.Grid12}>
-                               <h2 > 17%</h2>
-                               <h3 style={{marginTop:'-25px'}}>Reach</h3>
+                            <Paper className={boxClass.Grid12}>
+                                <h1 > 64%</h1>
+                                <h4 style={{ marginTop: '-25px' }}>Passion</h4>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Paper className={boxClass.Grid12}>
+                                <h1 > 17%</h1>
+                                <h4 style={{ marginTop: '-25px' }}>Reach</h4>
                             </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                        <Paper className={boxClass.Grid13}>
-                               <h3>Likes</h3>
-                              
+                            <Paper className={boxClass.Grid13}>
+                                <h4>Likes</h4>
+
                             </Paper>
                         </Grid>
 
                         <Grid item xs={12}>
-                        <Paper className={boxClass.Grid13}>
-                               <h3>Retweets</h3>
-                              
+                            <Paper className={boxClass.Grid13}>
+                                <h4>Retweets</h4>
+
                             </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                        <Paper className={boxClass.Grid13}>
-                               <h3>Ultima Mencion 3 Dias Atras</h3>
-                              
+                            <Paper className={boxClass.Grid13}>
+                                <h4>Ultima Mencion hace 10hs</h4>
+
                             </Paper>
                         </Grid>
                     </Grid>
@@ -965,25 +987,16 @@ export default function Busqueda() {
                         >
                             <ListItem >
 
-                                {/* <ListItemAvatar >
-                                            <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio: '1/1', imageRendering: 'crisp-edges' }}>
-                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer'>
-                                                //     {/* <TwitterIcon /> */}
-                                {/* <img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
-                                                 </a>  */}
 
-                                {/* </Avatar>
-
-                                        </ListItemAvatar> */}
                                 <Box sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
-
-
-
 
                                     <h1>Sentimientos</h1>
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h3>Positivo</h3>
                                     <Progress done="80" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h3>Neutral</h3>
+                                    <Progress done="20" />
 
 
 
@@ -1110,25 +1123,25 @@ export default function Busqueda() {
                                                                     <FavoriteIcon style={{ height: '15px', display: 'inline-block', color: 'red' }} /> {item.likes}
                                                                 </ListItemText>
                                                             </Typography>
-                                                            
+
                                                             <Typography variant="subtitle2" display='inline-block' className={boxClass.menciones}>
-                                                    <AlternateEmailIcon style={{ height: '15px' }} /> {item.menciones}
-                                                    
-                                                 </Typography>
-                                                       
+                                                                {menciones(item.menciones)}
+
+                                                            </Typography>
+
 
                                                         </Typography>
                                                     </Typography>
                                                 </ThemeProvider>
                                             }
                                             secondary={
-                                                
+
                                                 <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.hashtag}>
-                                                                
-                                                                 {/* <  TagSharpIcon style={{ height: '15px' }}  />{item.hashtag} */}
-                                                                 {hashtag(item.hashtag)} 
-                                                                 <Divider></Divider>
-                                                            </Typography>
+
+                                                    {/* <  TagSharpIcon style={{ height: '15px' }}  />{item.hashtag} */}
+                                                    {hashtag(item.hashtag)}
+                                                    <Divider></Divider>
+                                                </Typography>
                                             }
 
                                         />
@@ -1144,151 +1157,6 @@ export default function Busqueda() {
                         {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
                     </Paper>
                 </Container>
-
-                {/* <List> */}
-                {/* <ListItem style={{ width: '130px', float: 'right' }}>
-                            <ListItemButton onClick={handleClickk} >
-                            <ListItemIcon>
-                            </ListItemIcon>
-                            <ListItemText />
-                            {/* Ver Mas */}
-                {/* {open ? <HorizontalRuleIcon /> : <AddIcon />}
-                                    </ListItemButton>
-                                    </ListItem>
-                                    <Collapse in={open} timeout="auto" unmountOnExit>
-                                    <ListItem sx={{ marginTop: '10px' }} >
-                                    <ListItemAvatar>
-                                    <Avatar >
-                                    <TwitterIcon />
-                                    </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                    primary={
-                                        <ThemeProvider theme={theme}>
-                                        <Typography variant="h6" display="block" gutterBottom>
-                                        @sergiounac @ferpeirano @agenciaidiar usted es un tipazo, no baje los brazos, estamos con usted
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        https://twitter.com/user/status
-                                        /1484224358495236107
-                                        <Typography variant="subtitle1" display="block" gutterBottom>
-                                        18/01/2022
-                                        </Typography>
-                                        <Typography variant="subtitle2" display="block" gutterBottom>
-                                        @sergiounac
-                                        @ferpeirano
-                                        @agenciaidiar
-                                        </Typography>
-                                        </Typography>
-                                        </Typography>
-                                        </ThemeProvider>
-                                    }
-                                        secondary="#Uñac" />
-                                        
-                                        </ListItem>
-                                        </Collapse>
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                        <ListItem sx={{ marginTop: '10px' }} >
-                                        <ListItemAvatar>
-                                        <Avatar>
-                                        <TwitterIcon />
-                                        </Avatar>
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        primary={
-                                            <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                            @sergiounac ojala siga ocupandose de la provincia como hasta ahora
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            https://twitter.com/user/
-                                            status
-                                            /1484223729412587522
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            19/01/2022
-                                            </Typography>
-                                            <Typography variant="subtitle2" display="block" gutterBottom>
-                                            @sergiounac
-                                            </Typography>
-                                            </Typography>
-                                            </Typography>
-                                            </ThemeProvider>
-                                        }
-                                        secondary="#Uñac" />
-
-                                        </ListItem>
-                                        </Collapse>
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                        <ListItem sx={{ marginTop: '10px' }} >
-                                        <ListItemAvatar>
-                                        <Avatar>
-                                        <TwitterIcon />
-                                        </Avatar>
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                        primary={
-                                            <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                            @sergiounac @ferpeirano @agenciaidiar lo felicito gobernador, la provincia merece esto y mucho mas.
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            https://twitter.com/user
-                                            /status
-                                            /1484223048345694214
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            20/01/2022
-                                            </Typography>
-                                            <Typography variant="subtitle2" display="block" gutterBottom>
-                                            @sergiounac
-                                            @ferpeirano
-                                            @agenciaidiar
-                                            </Typography>
-                                            </Typography>
-                                            </Typography>
-                                            </ThemeProvider>
-                                        }
-                                        secondary="#Gobernador" />
-
-                                        </ListItem>
-                                        </Collapse>
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                        <ListItem sx={{ marginTop: '10px' }} >
-                                        <ListItemAvatar>
-                                        <Avatar>
-                                        <TwitterIcon />
-                                        </Avatar>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                    primary={
-                                            <ThemeProvider theme={theme}>
-                                            <Typography variant="h6" display="block" gutterBottom>
-                                            @Gustavo84124185 @sergiounac @roberto_gattoni Eso fue un manotazo de ahogado cuando se estaba yendo (lo hizo en noviembre de 2017). Como EL IVA de los alimentos. Se objetivo. Queres baja de impuestos proba con el liberalismo.
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            https://twitter.com/user
-                                            /status
-                                            /1484210845164916742
-                                            <Typography variant="subtitle1" display="block" gutterBottom>
-                                            21/01/2022
-                                            </Typography>
-                                            <Typography variant="subtitle2" display="block" gutterBottom>
-                                            @Gustavo84124185
-                                            @sergiounac
-                                            @roberto_gattoni
-                                            </Typography>
-                                            </Typography>
-                                            </Typography>
-                                            </ThemeProvider>
-                                        }
-                                        secondary="#Ahogado" />
-                                        
-                                        </ListItem>
-                                        </Collapse>
-                                        <ListItem sx={{ marginTop: '10px' }} >
-                                        <Button variant="contained" href="/" color='secondary'>Volver</Button>
-                                        
-                                    
-                                        </ListItem>
-                                    </List> */}
-                {/* </Paper>
-                    </Container>  */}
-
             </div>
         </div>
     );
