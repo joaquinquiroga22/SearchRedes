@@ -51,7 +51,7 @@ import TagSharpIcon from '@mui/icons-material/TagSharp';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-
+import PersonIcon from '@mui/icons-material/Person';
 
 const theme = createTheme({
     typography: {
@@ -988,14 +988,14 @@ export default function Busqueda() {
                             <ListItem >
 
 
-                                <Box sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
+                                <Box className = {boxClass.BoxMargen} sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
 
                                     <h1>Sentimientos</h1>
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h3>Positivo</h3>
+                                    <h4 >Positivo</h4>
                                     <Progress done="80" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h3>Neutral</h3>
+                                    <h4>Neutral</h4>
                                     <Progress done="20" />
 
 
@@ -1003,28 +1003,66 @@ export default function Busqueda() {
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <h1>Palabras Principales</h1>
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
 
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4>Nice</h4>
                                     <Progress done="30" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4>Ukraine</h4>
                                     <Progress done="50" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4>Guerra</h4>
                                     <Progress done="20" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4>Rusia</h4>
                                     <Progress done="10" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4>News</h4>
                                     <Progress done="90" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
+
+
+
                                     <h1>Usuarios Principales</h1>
 
+
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Comunidad Madrid</h4>
                                     <Progress done="60" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Ukranie</h4>
                                     <Progress done="40" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>WarRussian</h4>
                                     <Progress done="30" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Russian</h4>
                                     <Progress done="20" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>CivilWar</h4>
                                     <Progress done="50" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                   
                                     <h1>Hashtag Principales</h1>
 
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4> #NoAlasGuerras</h4>
                                     <Progress done="50" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4> #SangredeCampeón</h4>
                                     <Progress done="50" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4> #Russland</h4>
                                     <Progress done="70" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4> #Militare</h4>
                                     <Progress done="80" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    <h4> #Krieg</h4>
                                     <Progress done="90" />
+                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+
 
 
 
@@ -1051,11 +1089,11 @@ export default function Busqueda() {
                     </Box>
                 </Paper>
 
-                <Container className={boxClass.ContenedorDerecho} style={{ borderRadius: '20px', marginBottom: '100px', marginLeft: '60px', width: '60%', border: '0px solid #3498DB' }}>
+                <Container className={boxClass.ContenedorDerecho} style={{ borderRadius: '25px', marginBottom: '100px', marginLeft: '60px', width: '60%', border: '0px solid #3498DB' }}>
 
                     <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'yellow', color: "white" }} orientation="vertical" />
                     <Paper
-                        style={{ width: '100%', minHeight: '750px', borderRadius: '5px', float: 'right' }}
+                        style={{ width: '100%', minHeight: '750px', borderRadius: '20px', float: 'right' }}
 
                     >
 
@@ -1087,7 +1125,7 @@ export default function Busqueda() {
 
                                         <ListItemAvatar >
                                             <Avatar style={{ backgroundColor: 'transparent', width: '100%', height: '100%', aspectRatio: '1/1', imageRendering: 'crisp-edges' }}>
-                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer'>
+                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer' alt={item.url_user} title={item.name_screen}>
                                                     {/* <TwitterIcon /> */}<img style={{ width: '100%', height: '100%' }} src={item.foto_perfil} />
                                                 </a>
 
