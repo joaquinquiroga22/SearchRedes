@@ -17,7 +17,7 @@ import Divider from '@mui/material/Divider';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
-
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import { Container, ThemeProvider } from 'react-bootstrap';
 import { Paper, Box, Link, Grid } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
@@ -52,6 +52,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonIcon from '@mui/icons-material/Person';
+import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 
 const theme = createTheme({
     typography: {
@@ -1006,19 +1007,19 @@ export default function Busqueda() {
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>Nice</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Nice</h4>
                                     <Progress done="30" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>Ukraine</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Ukraine</h4>
                                     <Progress done="50" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>Guerra</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Guerra</h4>
                                     <Progress done="20" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>Rusia</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Rusia</h4>
                                     <Progress done="10" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>News</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>News</h4>
                                     <Progress done="90" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
