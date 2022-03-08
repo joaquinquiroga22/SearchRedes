@@ -239,6 +239,19 @@ const menciones = (item) => {
     return <> <AlternateEmailIcon style={{ height: '15px' }} /> {item} </>
 }
 
+const positivo = (item) => {
+    if (item >= 100000) {
+        return (item / 10000).toFixed(2);
+    }
+    else if (item >= 10000) {
+        return (item / 1000).toFixed(2);
+    } 
+    else if (item >= 1000) {
+        return item / 100
+    }
+
+}
+
 export default function Busqueda() {
 
     const [openAlert, setOpenAlert] = React.useState(false);
@@ -908,10 +921,10 @@ export default function Busqueda() {
             <div style={{ padding: 0, margin: '0px 0px 0px  0px', maxWidth: '100%', minHeight: '750px', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
                 {/* 
                 <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
-                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
-                    </Box>
-                </Paper> */}
+                <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
+                <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
+                </Box>
+            </Paper> */}
 
                 {/* Contenedor Margen Izquierdo */}
 
@@ -919,6 +932,7 @@ export default function Busqueda() {
                     <Box style={{ paddingTop: '-50px', marginLeft: '25%', color: 'white', fontSize: '25px' }}>
                         <Button className={boxClass.ButtonDatos} style={{ borderRadius: '20px', marginBottom: '20px', width: '100%' }} size="large" variant="contained" color="primary">DATOS</Button>
                     </Box>
+
 
                     <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
                         <Grid item xs={6}>
@@ -947,14 +961,14 @@ export default function Busqueda() {
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
-                                <h4>Likes</h4>
+                                <h4><FavoriteIcon style={{ marginBottom: '-7px', width: '20px', color: 'red' }} />{data.estadistica.likes}</h4>
 
                             </Paper>
                         </Grid>
 
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
-                                <h4>Retweets</h4>
+                                <h4><RepeatSharpIcon style={{ marginBottom: '-7px', width: '20px' }} />{data.estadistica.retweet}</h4>
 
                             </Paper>
                         </Grid>
@@ -965,15 +979,17 @@ export default function Busqueda() {
                             </Paper>
                         </Grid>
                     </Grid>
+
                 </Paper>
 
-
-                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '220px', }}>
+                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '220px' }}>
                     <Paper
                         style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }} //Paper margen izquierdo
                     >
-                        {/* {data.listadoTwitter ? (
-                            data.listadoTwitter && data.listadoTwitter.map((item) => ( */}
+                        {/* 
+                        {data.estadistica[0] ? (
+                            data.estadistica[0] && data.estadistica[0].map((item) => ( */}
+
                         <List
                             sx={{
                                 margin: '0 auto',
@@ -989,12 +1005,12 @@ export default function Busqueda() {
                             <ListItem >
 
 
-                                <Box className = {boxClass.BoxMargen} sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
+                                <Box className={boxClass.BoxMargen} sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
 
                                     <h1>Sentimientos</h1>
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4 >Positivo</h4>
-                                    <Progress done="80" />
+                                    <Progress done={positivo(data.estadistica.likes)} />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4>Neutral</h4>
                                     <Progress done="20" />
@@ -1007,19 +1023,19 @@ export default function Busqueda() {
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Nice</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Nice</h4>
                                     <Progress done="30" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Ukraine</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Ukraine</h4>
                                     <Progress done="50" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Guerra</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Guerra</h4>
                                     <Progress done="20" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>Rusia</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Rusia</h4>
                                     <Progress done="10" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{marginBottom:'-6px'}}/>News</h4>
+                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />News</h4>
                                     <Progress done="90" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
@@ -1029,22 +1045,22 @@ export default function Busqueda() {
 
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Comunidad Madrid</h4>
+                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Comunidad Madrid</h4>
                                     <Progress done="60" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Ukranie</h4>
+                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Ukranie</h4>
                                     <Progress done="40" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>WarRussian</h4>
+                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />WarRussian</h4>
                                     <Progress done="30" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>Russian</h4>
+                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Russian</h4>
                                     <Progress done="20" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{marginBottom:'-6px'}}/>CivilWar</h4>
+                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />CivilWar</h4>
                                     <Progress done="50" />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                   
+
                                     <h1>Hashtag Principales</h1>
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
@@ -1076,7 +1092,6 @@ export default function Busqueda() {
                         ) : (
                             <p>no hay nada</p>
                         )} */}
-
 
                     </Paper>
                 </Container>
