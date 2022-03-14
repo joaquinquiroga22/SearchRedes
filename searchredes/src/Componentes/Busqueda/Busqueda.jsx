@@ -18,7 +18,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import { Container, ThemeProvider } from 'react-bootstrap';
+import { Container, NavItem, ThemeProvider } from 'react-bootstrap';
 import { Paper, Box, Link, Grid } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
 // import { Modal } from 'react-bootstrap';
@@ -242,21 +242,31 @@ const menciones = (item) => {
 const positivo = (item) => {
     if (item >= 100000) {
         return (item / 10000).toFixed(2);
-    }
-    else if (item >= 10000) {
+    } else if (item >= 10000) {
         return (item / 1000).toFixed(2);
-    } 
-    else if (item >= 1000) {
+    } else if (item >= 1000) {
         return item / 100
+    } else if (item >= 100) {
+        return (item / 10).toFixed(2);
     }
-
+    return item
 }
 
-export default function Busqueda() {
+const neutral = (item1,item2) =>{
+    
+    const prom = item1/item2
+    if(prom > 10){
+        return 100;
+    }
+    return (prom * 10).toFixed(2);
+}
 
+
+export default function Busqueda() {
+    
     const [openAlert, setOpenAlert] = React.useState(false);
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
+    
     const [inputBusqueda, setInput] = useState("");
     const goTwitter = () => {
         if (inputBusqueda) {
@@ -266,6 +276,9 @@ export default function Busqueda() {
             });
         }
     };
+
+
+ 
     const navigate = useNavigate();
 
     const [data, setData] = useState();
@@ -935,7 +948,7 @@ export default function Busqueda() {
 
 
                     <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
-                        <Grid item xs={6}>
+                        {/* <Grid item xs={6}>
                             <Paper className={boxClass.Grid12}>
                                 <h1 > 6%</h1>
                                 <h4 style={{ marginTop: '-25px' }}>Strength</h4>
@@ -958,7 +971,7 @@ export default function Busqueda() {
                                 <h1 > 17%</h1>
                                 <h4 style={{ marginTop: '-25px' }}>Reach</h4>
                             </Paper>
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
                                 <h4><FavoriteIcon style={{ marginBottom: '-7px', width: '20px', color: 'red' }} />{data.estadistica.likes}</h4>
@@ -982,7 +995,7 @@ export default function Busqueda() {
 
                 </Paper>
 
-                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '220px' }}>
+                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '50px' }}>
                     <Paper
                         style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }} //Paper margen izquierdo
                     >
@@ -1013,75 +1026,63 @@ export default function Busqueda() {
                                     <Progress done={positivo(data.estadistica.likes)} />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4>Neutral</h4>
-                                    <Progress done="20" />
+                                    <Progress done={neutral(data.estadistica.retweet,data.estadistica.likes)} />
 
 
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <h1>Palabras Principales</h1>
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    {data.estadistica.palabrasClaves.words ? (
+                                        data.estadistica.palabrasClaves.words && data.estadistica.palabrasClaves.words.map((item) => (
+                                            <Box>
 
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Nice</h4>
-                                    <Progress done="30" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Ukraine</h4>
-                                    <Progress done="50" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Guerra</h4>
-                                    <Progress done="20" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />Rusia</h4>
-                                    <Progress done="10" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />News</h4>
-                                    <Progress done="90" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                                <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />{item.palabra}</h4>
+                                                <Progress done={item.cantidad} />
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                            </Box>
+                                        ))
 
 
+                                    ) : (
+                                        <p>no hay nada</p>
+                                    )}
 
                                     <h1>Usuarios Principales</h1>
 
+                                    {data.estadistica.palabrasClaves.mentions ? (
+                                        data.estadistica.palabrasClaves.mentions && data.estadistica.palabrasClaves.mentions.map((item) => (
+                                            <Box>
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                                <h4 style={{ marginBottom: '-6px' }} >{item.palabra}</h4>
+                                                <Progress done={item.cantidad} />
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
 
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Comunidad Madrid</h4>
-                                    <Progress done="60" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Ukranie</h4>
-                                    <Progress done="40" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />WarRussian</h4>
-                                    <Progress done="30" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />Russian</h4>
-                                    <Progress done="20" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4><PersonIcon style={{ marginBottom: '-6px' }} />CivilWar</h4>
-                                    <Progress done="50" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                            </Box>
+                                        ))
 
+
+                                    ) : (
+                                        <p>no hay nada</p>
+                                    )}
                                     <h1>Hashtag Principales</h1>
-
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4> #NoAlasGuerras</h4>
-                                    <Progress done="50" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4> #SangredeCampeón</h4>
-                                    <Progress done="50" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4> #Russland</h4>
-                                    <Progress done="70" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4> #Militare</h4>
-                                    <Progress done="80" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4> #Krieg</h4>
-                                    <Progress done="90" />
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                    {data.estadistica.palabrasClaves.hashtag ? (
+                                        data.estadistica.palabrasClaves.hashtag && data.estadistica.palabrasClaves.hashtag.map((item) => (
+                                            <Box>
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                                <h4> {item.palabra} </h4>
+                                                <Progress done={item.cantidad}/>
+                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
+                                            </Box>
+                                        ))
 
 
-
+                                    ) : (
+                                        <p>no hay nada</p>
+                                    )}
 
                                 </Box>
                             </ListItem>
