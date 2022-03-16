@@ -41,7 +41,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 // import Spinner from '../Spinner/Spinner.js';
-import boxClass from './Busqueda.module.css'
+import boxClass from '../Medios/Medios.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonIcon from '@mui/icons-material/Person';
 import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 import CachedIcon from '@mui/icons-material/Cached';
-import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
+
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
@@ -262,32 +262,6 @@ const neutral = (item1, item2) => {
     return (prom * 10).toFixed(2);
 }
 
-// const porcentajesHashtag = (item) => {
-//     // const array = [];
-//     var total = 0;
-
-//     item.estadistica.palabrasClaves.hashtag.forEach(element => {
-//         // array.push(element.cantidad);
-//         total+= element.cantidad;
-
-//     });
-
-//    for(var i = 0; i < item.estadistica.palabrasClaves.hashtag.length; i++){
-//         item.estadistica.palabrasClaves.hashtag[i].cantidad = (item.estadistica.palabrasClaves.hashtag[i].cantidad * 100) / total 
-//    }
-
-//    return item
-// // return total
-
-
-// }
-
-const cuenta = (item) => {
-   if(item >= 100){
-       return 100
-   }
-   return item * 10
-}
 
 export default function Busqueda() {
 
@@ -295,25 +269,16 @@ export default function Busqueda() {
     const [openMedios, setOpenMedios] = React.useState(false);
 
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
     const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
-    const [inputBusqueda, setInput] = useState("");
     const goTwitter = () => {
-        if (inputBusqueda) {
+        if (inputBusquedaMedios) {
             navigate({
                 pathname: '/busqueda',
-                search: '?search=' + inputBusqueda,
+                search: '?search=' + inputBusquedaMedios,
             });
         }
     };
-
-    const goMedios = () => {
-        if (inputBusquedaMedios) {
-            navigate({
-                pathname: '/busquedaMedios',
-                search: '?search=' + inputBusquedaMedios,
-            })
-        }
-    }
 
 
 
@@ -431,12 +396,11 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <ListItemAvatar className={classes.title}>
-
-                            <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
-                            </Avatar>
-                        </ListItemAvatar>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
+                            </Typography>
+                        </Typography>
                         <Box className={boxClass.BoxInput}>
                             <InputBase
                                 // hiddenLabel={true}
@@ -446,8 +410,8 @@ export default function Busqueda() {
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
-                                onChange={e => setInput(e.target.value)}
-                                value={inputBusqueda}
+                                onChange={e => setInputBusquedaMedios(e.target.value)}
+                                value={inputBusquedaMedios}
                                 onKeyPress={event => {
                                     if (event.key === 'Enter') {
                                         goTwitter()
@@ -560,7 +524,7 @@ export default function Busqueda() {
             </div>
         </div>
     }
-    console.log(data)
+    // console.log(busqueda)
 
     if (loading) {
         //if (true) {
@@ -569,12 +533,9 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <ListItemAvatar className={classes.title}>
-
-                            <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
-                            </Avatar>
-                        </ListItemAvatar>
+                        <Typography className={classes.title} variant="h4" noWrap onClick={() => window.location.replace("/")}>
+                            Logo
+                        </Typography>
                         {/* <div className={classes.search}> */}
                         {/* <Button type="submit" title="Buscar" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
@@ -590,7 +551,7 @@ export default function Busqueda() {
                                     input: classes.inputInput
                                 }}
                                 inputProps={{ "aria-label": "search" }}
-                                onChange={e => setInput(e.target.value)}
+                                onChange={e => setInputBusquedaMedios(e.target.value)}
                                 value={inputBusqueda}
                                 onKeyPress={event => {
                                     if (event.key === 'Enter') {
@@ -608,8 +569,8 @@ export default function Busqueda() {
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
-                                onChange={e => setInput(e.target.value)}
-                                value={inputBusqueda}
+                                onChange={e => setInputBusquedaMedios(e.target.value)}
+                                value={inputBusquedaMedios}
                                 onKeyPress={event => {
                                     if (event.key === 'Enter') {
                                         goTwitter()
@@ -704,12 +665,11 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
-                        <ListItemAvatar className={classes.title}>
-
-                            <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
-                            </Avatar>
-                        </ListItemAvatar>
+                        <Typography variant="h4" className={classes.title}   >
+                            <Typography variant="subtitle"  >
+                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
+                            </Typography>
+                        </Typography>
                         <Box className={boxClass.BoxInput}>
                             <InputBase
                                 // hiddenLabel={true}
@@ -719,8 +679,8 @@ export default function Busqueda() {
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
-                                onChange={e => setInput(e.target.value)}
-                                value={inputBusqueda}
+                                onChange={e => setInputBusquedaMedios(e.target.value)}
+                                value={inputBusquedaMedios}
                                 onKeyPress={event => {
                                     if (event.key === 'Enter') {
                                         goTwitter()
@@ -835,25 +795,18 @@ export default function Busqueda() {
             </div>
         </div >
     }
-
-
     return (
 
         <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573', marginBottom: '150px' }}>
                     <Toolbar>
-                        {/* <Typography variant="h4" className={classes.title}   >
+                        <Typography variant="h4" className={classes.title}   >
                             <Typography variant="subtitle"  >
                                 <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
                             </Typography>
-                        </Typography> */}
-                        <ListItemAvatar className={classes.title}>
+                        </Typography>
 
-                            <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
-                            </Avatar>
-                        </ListItemAvatar>
 
                         <Box className={boxClass.BoxInput}>
                             <InputBase
@@ -864,11 +817,11 @@ export default function Busqueda() {
                                 style={{ fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft: '5px' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
-                                onChange={e => setInput(e.target.value)}
-                                value={inputBusqueda}
+                                onChange={e => setInputBusquedaMedios(e.target.value)}
+                                value={inputBusquedaMedios}
                                 onKeyDown={event => {
                                     if (event.key === 'Enter') {
-                                        if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
+                                        if (busqueda && busqueda.toLowerCase() == inputBusquedaMedios.toLowerCase()) {
 
                                             setOpenAlert(true)
                                         }
@@ -886,7 +839,7 @@ export default function Busqueda() {
                                 endIcon={<SearchOutlinedIcon
                                     className={boxClass.IconButton} />}
                                 onClick={() => {
-                                    if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
+                                    if (busqueda && busqueda.toLowerCase() == inputBusquedaMedios.toLowerCase()) {
                                         setOpenAlert(true);
                                     }
                                     goTwitter()
@@ -996,19 +949,7 @@ export default function Busqueda() {
 
                 <Paper className={boxClass.PaperGrid} style={{ margin: '0 auto', position: 'absolute', width: '15%', marginTop: '-140px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
                     <Box style={{ paddingTop: '-50px', marginLeft: '25%', color: 'white', fontSize: '25px' }}>
-                        <Button
-                            className={boxClass.ButtonDatos}
-                            style={{ borderRadius: '20px', marginBottom: '20px', width: '100%' }}
-                            size="large"
-                            variant="contained"
-                            color="primary"
-                            // href="/busquedaMedios"
-                            onClick={() => data}
-                        >
-
-                            datos
-
-                        </Button>
+                        <Button className={boxClass.ButtonDatos} style={{ borderRadius: '20px', marginBottom: '20px', width: '100%' }} size="large" variant="contained" color="primary">MEDIOS</Button>
                     </Box>
 
 
@@ -1123,7 +1064,7 @@ export default function Busqueda() {
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ marginBottom: '-6px' }} >{item.palabra}</h4>
-                                                <Progress done={cuenta(item.cantidad)} />
+                                                <Progress done={item.cantidad} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                             </Box>
@@ -1139,7 +1080,7 @@ export default function Busqueda() {
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4> {item.palabra} </h4>
-                                                <Progress done={cuenta(item.cantidad)}  />
+                                                <Progress done={item.cantidad} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
@@ -1188,7 +1129,7 @@ export default function Busqueda() {
                             Medios
                         </Button> */}
 
-
+                        
 
 
 
@@ -1308,12 +1249,12 @@ export default function Busqueda() {
                             <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                
                             {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
-                {/* </Dialog>
-                        </div> */}
+                        {/* </Dialog>
+                        </div> */} 
             </div>
         </div>
 
-
+        
     );
 
 }

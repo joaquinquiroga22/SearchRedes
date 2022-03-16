@@ -34,6 +34,12 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import style from '../Nav/Nav.module.css'
+import { Avatar, ListItemAvatar } from '@mui/material';
+import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
+import { Container } from 'react-bootstrap';
+
+
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -144,11 +150,12 @@ export default function Nav() {
 
                     <AppBar position="static" style={{ borderRadius: "0 0 20px 20px", backgroundColor: 'white', boxShadow: '4px 4px 5px #566573', position: 'relative' }} >
                         <Toolbar >
-                            <Typography variant="h5" color='primary' onClick={() => window.open("https://nodoshub.com/", "_blank")}>
-                                <Typography variant="h5" onClick={() => window.open("https://nodoshub.com/", "_blank")} className={classes.title}>
-                                    LOGO
-                                </Typography>
-                            </Typography>
+                            <ListItemAvatar >
+
+                                <Avatar variant="rounded" sx={{ width: 120, height: 56, backgroundColor: 'transparent' }}>
+                                    <a style={{ width: '100%' }}><img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                </Avatar>
+                            </ListItemAvatar>
                         </Toolbar>
                     </AppBar>
                     <Box style={{ display: 'flex', flexDirection: 'column ', alignItems: 'flex-end' }}>
@@ -296,7 +303,7 @@ export default function Nav() {
 
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleCloseAlertNav}  variant="contained" style={{ margin:'0 auto', backgroundColor:'#FA4343'}}>
+                                <Button onClick={handleCloseAlertNav} variant="contained" style={{ margin: '0 auto', backgroundColor: '#FA4343' }}>
                                     Intentar Nuevamente
                                 </Button>
 

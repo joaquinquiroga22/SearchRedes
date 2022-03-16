@@ -1,0 +1,307 @@
+.progress {
+	background-color: #d8d8d8;
+	border-radius: 20px;
+	position: relative;
+	margin: 15px 0;
+	height: 25px;
+	width: 100%;
+}
+
+.progress-done {
+	background: linear-gradient(to left, #41D8DD, #5583EE);
+	box-shadow: 0 3px 3px -5px #41D8DD, 0 2px 5px #5583EE;
+	border-radius: 20px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+}
+.Grid12{
+    color: #024761 !important;
+    height: 80px !important;
+     border-radius : 20px !important;
+     display: flex !important;
+    flex-direction: column !important;
+     justify-content: center !important;
+     align-items: center !important;
+    text-align: center !important;
+}
+.Grid13{
+    color: #024761 !important;
+    height: 45px !important;
+     border-radius : 20px !important;
+     display: flex !important;
+    flex-direction: column !important;
+     justify-content: center !important;
+     align-items: center !important;
+    text-align: center !important;
+}
+
+.hola span {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.ErrorBox {
+
+    width: 100%;
+    /* height: 450px; */
+    position: relative;
+    max-width: 700px;
+    margin: 50px auto;
+    border-radius: 10px;
+    border: 2px solid #F8F9F9;
+    box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.3);
+    background-color: white;
+}
+
+.Group8 {
+    position: relative;
+    margin-top: 50px;
+    width: 80px;
+    height: 80px;
+
+}
+
+.h2 {
+    position: relative;
+    margin-top: 10px;
+
+}
+
+.Button {
+    background-color: #2F9DED;
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+.cuerpo{
+    word-wrap: break-word;
+}
+.url{
+    word-wrap: break-word;
+}
+.fecha{
+    word-wrap: break-word;
+}
+.hashtag{
+    word-wrap: break-word;
+}
+.name{
+    
+    
+    word-wrap: break-word;
+}
+.menciones{
+    
+        word-wrap: break-word;
+    
+}
+.BoxInput{
+    margin-right: 20px !important;
+}
+.Input{
+    border: 1px solid #808b968a;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: '10px 10px 5px' !important;
+    width: 350px;
+    /* margin-right: 30px !important; */
+}
+.Input::placeholder{
+    color: black !important;
+    background-color: black !important;
+}
+.InputBase::placeholder{
+    color: black !important;
+}
+.ButtonInput{
+    margin-left: -95px !important;
+    color: white !important;
+    margin-top: -1.5px !important;
+}
+.BoxMargen h4{
+    margin-bottom: -7px !important;
+}
+@media(max-width: 600px) {
+    .cuerpo {
+        font-size: 13px !important;
+    }
+
+    .url {
+        font-size: 13px !important;
+    }
+
+    .fecha {
+        font-size: 13px !important;
+    }
+
+    .hashtag {
+        font-size: 13px !important;
+    }
+    
+    .burbuja {
+        width: 200px;
+    }
+    
+}
+
+@media(max-width: 550px){
+    .MenuEsquemas{
+        width:200px;
+        height: 200px;
+    }
+    .Burbuja {
+        margin-right: -30px;
+    }
+    .BotonVolver{
+        margin-left: 55px !important;  
+    }
+    .ButtonInput{
+        width: 38% !important;
+        font-size: 12px !important;
+        padding-right: 40px !important;
+        padding-left: 30px !important;
+        margin-top: -3px !important;
+    }
+    .Input{
+        width: 100%;
+    }
+  
+    .IconButton{
+        margin-right: -15px !important;
+    }
+}
+@media(max-width:450px){
+    .ButtonInput{
+        width: 10% !important;
+        padding-right: 35px !important;
+        left: 30px !important;
+        font-size: 9.5px !important;
+        height: 30px !important;
+        margin-top: -2px !important;
+    }
+    .Input::placeholder{
+        font-size: 5px !important;
+        background-color: red !important;
+        
+    }
+    .IconButton{
+        padding-right: 0px !important;
+        margin-right: -5px !important;
+    }
+ 
+}
+
+@media(max-width: 700px) {
+    .Paper {
+        width: 1000px !important;
+    }
+    .BusquedaTwitt{
+        left: 30px !important;
+    }
+}
+/* @media((min-width: 600px) and (max-width: 465px)){
+    .ButtonInput{
+
+    }
+} */
+
+/* .ButtonInput{
+    right: 0;
+    position: absolute;
+} */
+@media (max-width: 1200px) {
+    .nueva{
+        width: 70% !important;
+        margin-left: 16% !important;
+        height: 43px;
+        font-size: 13px !important;
+        padding-bottom: 10px !important;
+        margin-top: 20px !important;
+        margin-bottom: 21px !important;
+        position: relative !important;
+    }
+    .BusquedaTwitt{
+        position: absolute !important;
+        /* display: flex !important;
+        justify-content: center !important;
+        align-items: center !important; */
+        top: 210px !important;
+        color: black !important;
+        left: 63% !important;
+        font-size: 11px !important;
+        text-align: center;
+        margin-top: 5px !important;
+        padding-bottom: 25px !important;
+        margin-bottom: 20px !important;
+    } 
+    .LineaDivisora{
+       display: none !important;
+    }
+    .ContenedorIzquierdo{
+        display: none !important;
+    }
+    .ContenedorDerecho{
+        left: 30% !important;
+        margin-left: 10% !important;
+        width: 80% !important;
+        margin-top: 30px !important;
+        margin-bottom: 140px !important;
+    }
+     .PaperGrid{
+         position: absolute !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        width: 60% !important;
+        height: 100px !important; 
+        left: 16% !important;
+        padding-top: 10px !important;
+        /* margin-left: 180px !important; */
+    } 
+    .Grid1{
+        height: 50px !important;
+    }
+    .Grid2{
+        height: 50px !important;
+    }
+    .Grid3{
+        height: 50px !important;
+    }
+    .Grid4{
+        height: 50px !important;
+    }
+    .Grid5{
+        height: 50px !important;
+    }
+    .ButtonDatos{
+        display: none !important;
+    }
+    .ListPaperDerecho{
+        top: 40px !important;
+    }
+     /* @media(max-width: 550px){
+         .nueva{
+             width: 40% !important;
+            font-size: 10px !important;
+            text-align: center !important;
+            height: 25px !important;
+            margin-top: -70px !important;
+            white-space: pre !important;
+            
+            
+        }
+        .BusquedaTwitt{
+            font-size: 15px;
+        }
+    }  */
+}
+
+

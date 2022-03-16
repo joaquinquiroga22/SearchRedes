@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+// import data from '../Busqueda/Busqueda.jsx'
 
 
 
@@ -27,41 +28,16 @@ import axios from 'axios'
 // }
 
 export default function Prueba() {
-    const [data, setData] = useState([]);
-    // const data = useGetdata()
-    useEffect(() => {
-
-
-        axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/g`, {
-            //   method: 'GET',
-            //   headers: {
-            //       "dataType": "json",
-            //      "Accept": "application/json",
-            //   }
-        })
-            .then(response => response.data)
-            .then(datos => {
-                console.log(datos)
-                setData(datos);
-
-                // console.log(datos[0].name)
-console.log(datos.estadistica.palabrasClaves[0].palabra)
-            }).catch((err) => {
-                console.log(err);
-
-            })
-
-
-
-    }, []);
+    const {data} = useParams();
+console.log(data)
     return (
         <div style={{ height: '1200px' }}>
 
-                     {data.estadistica.palabrasClaves ? (
-                            data.estadistica.palabrasClaves && data.estadistica.palabrasClaves.map((item) => (
+                      {data.listadoTwitter  ? (
+                            data.listadoTwitter && data.listadoTwitter.map((item) => (
                                <div>
-                                   <p>{item.palabra}</p>
-                                   <p>{item.cantidad}</p>
+                                   <h1>{item.cuerpo}</h1>
+                                   <h1>{item.name}</h1>
 
                                </div>
                             ))
@@ -69,7 +45,7 @@ console.log(datos.estadistica.palabrasClaves[0].palabra)
 
                         ) : (
                             <p>no hay nada</p>
-                        )}
+                        )} 
         </div>
 
 
