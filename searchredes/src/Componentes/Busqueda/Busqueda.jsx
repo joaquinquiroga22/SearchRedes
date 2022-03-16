@@ -55,6 +55,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 import CachedIcon from '@mui/icons-material/Cached';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
+import BarChartIcon from '@mui/icons-material/BarChart';
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
@@ -463,12 +464,12 @@ export default function Busqueda() {
                             </Button>
                         </Box>
                         <Button
-                            style={{ borderRadius: '8px' }}
+                            style={{ borderRadius: '20px', backgroundColor:'#2F9DED', color:'white' }}
                             variant="outlined"
                             color="primary"
                             size="large"
                             className={classes.button}
-                            startIcon={<AnalyticsOutlinedIcon />}
+                            startIcon={<BarChartIcon style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
 
                             onClick={handleClicke}
                         >
@@ -563,7 +564,7 @@ export default function Busqueda() {
     console.log(data)
 
     if (loading) {
-        //if (true) {
+    //if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
@@ -627,12 +628,12 @@ export default function Busqueda() {
 
                         {/* </div> */}
                         <Button
-                            style={{ borderRadius: '8px' }}
+                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
                             variant="outlined"
-                            color="primary"
+
                             size="large"
                             className={classes.button}
-                            startIcon={<AnalyticsOutlinedIcon />}
+                            startIcon={<BarChartIcon style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
 
                             onClick={handleClicke}
                         >
@@ -736,12 +737,12 @@ export default function Busqueda() {
                             </Button>
                         </Box>
                         <Button
-                            style={{ borderRadius: '8px' }}
+                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
                             variant="outlined"
                             color="primary"
                             size="large"
                             className={classes.button}
-                            startIcon={<AnalyticsOutlinedIcon />}
+                            startIcon={<BarChartIcon style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
 
                             onClick={handleClicke}
                         >
@@ -934,12 +935,12 @@ export default function Busqueda() {
 
 
                         <Button
-                            style={{ borderRadius: '8px' }}
+                            style={{ borderRadius: '20px', backgroundColor:'#2F9DED', color:'white' }}
                             variant="outlined"
                             color="primary"
                             size="large"
                             className={classes.button}
-                            startIcon={<AnalyticsOutlinedIcon />}
+                            startIcon={<BarChartIcon style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
 
                             onClick={handleClicke}
                         >
@@ -1139,7 +1140,7 @@ export default function Busqueda() {
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4> {item.palabra} </h4>
-                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalHasgtag).toFixed(0)}  />
+                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalHasgtag).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
