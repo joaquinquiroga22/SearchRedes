@@ -282,12 +282,12 @@ const neutral = (item1, item2) => {
 
 // }
 
-const cuenta = (item) => {
-   if(item >= 100){
-       return 100
-   }
-   return item * 10
-}
+// const cuenta = (item) => {
+//    if(item >= 100){
+//        return 100
+//    }
+//    return item * 10
+// }
 
 export default function Busqueda() {
 
@@ -295,7 +295,7 @@ export default function Busqueda() {
     const [openMedios, setOpenMedios] = React.useState(false);
 
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
+    // const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
     const [inputBusqueda, setInput] = useState("");
     const goTwitter = () => {
         if (inputBusqueda) {
@@ -306,14 +306,14 @@ export default function Busqueda() {
         }
     };
 
-    const goMedios = () => {
-        if (inputBusquedaMedios) {
-            navigate({
-                pathname: '/busquedaMedios',
-                search: '?search=' + inputBusquedaMedios,
-            })
-        }
-    }
+    // const goMedios = () => {
+    //     if (inputBusquedaMedios) {
+    //         navigate({
+    //             pathname: '/busquedaMedios',
+    //             search: '?search=' + inputBusquedaMedios,
+    //         })
+    //     }
+    // }
 
 
 
@@ -1106,7 +1106,7 @@ export default function Busqueda() {
 
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />{item.palabra}</h4>
-                                                <Progress done={item.cantidad} />
+                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalWords).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
@@ -1123,7 +1123,7 @@ export default function Busqueda() {
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ marginBottom: '-6px' }} >{item.palabra}</h4>
-                                                <Progress done={cuenta(item.cantidad)} />
+                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalMentions).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                             </Box>
@@ -1139,7 +1139,7 @@ export default function Busqueda() {
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4> {item.palabra} </h4>
-                                                <Progress done={cuenta(item.cantidad)}  />
+                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalHasgtag).toFixed(0)}  />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
