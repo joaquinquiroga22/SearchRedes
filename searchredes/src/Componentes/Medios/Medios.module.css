@@ -8,8 +8,8 @@
 }
 
 .progress-done {
-	background: linear-gradient(to left, #41D8DD, #5583EE);
-	box-shadow: 0 3px 3px -5px #41D8DD, 0 2px 5px #5583EE;
+	background: linear-gradient(to left, #E13680, #A43AB2);
+	box-shadow: 0 3px 3px -5px #E13680, 0 2px 5px #A43AB2;
 	border-radius: 20px;
 	color: #fff;
 	display: flex;
@@ -123,7 +123,7 @@
 .ButtonInput{
     margin-left: -95px !important;
     color: white !important;
-    margin-top: -1.5px !important;
+    margin-top: -3px !important;
 }
 .BoxMargen h4{
     margin-bottom: -7px !important;
@@ -237,7 +237,7 @@
         left: 63% !important;
         font-size: 11px !important;
         text-align: center;
-        margin-top: 5px !important;
+        margin-top: 60px !important;
         padding-bottom: 25px !important;
         margin-bottom: 20px !important;
     } 
@@ -251,7 +251,7 @@
         left: 30% !important;
         margin-left: 10% !important;
         width: 80% !important;
-        margin-top: 30px !important;
+        margin-top: 70px !important;
         margin-bottom: 140px !important;
     }
      .PaperGrid{
@@ -302,6 +302,11 @@
             font-size: 15px;
         }
     }  */
+}
+@media(min-width: 1200px){
+    .ButtonRedes{
+        display: none !important;
+    }
 }
 
 

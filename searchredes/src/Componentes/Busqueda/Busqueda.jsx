@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -17,11 +16,9 @@ import Divider from '@mui/material/Divider';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Avatar from '@mui/material/Avatar';
 import { ListItemIcon } from '@mui/material';
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import { Container, NavItem, ThemeProvider } from 'react-bootstrap';
+import { Container, ThemeProvider } from 'react-bootstrap';
 import { Paper, Box, Link, Grid } from '@material-ui/core';
 import BurbujaTwitter from '../BurbujaTwitter/BurbujaTwitter.js'
-// import { Modal } from 'react-bootstrap';
 import { Modal } from '@material-ui/core';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { createTheme } from '@material-ui/core/styles';
@@ -33,14 +30,11 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import CircularProgress from '@mui/material/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
 import { useSearchParams } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
-// import Spinner from '../Spinner/Spinner.js';
 import boxClass from './Busqueda.module.css'
 import image7 from '../imagenes/image7.png'
 import Group8 from '../imagenes/Group8.png'
@@ -51,11 +45,12 @@ import TagSharpIcon from '@mui/icons-material/TagSharp';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonIcon from '@mui/icons-material/Person';
 import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 import CachedIcon from '@mui/icons-material/Cached';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
 import BarChartIcon from '@mui/icons-material/BarChart';
+
+
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
@@ -143,9 +138,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     search: {
-        backgroundColor: 'white',
         position: 'relative',
-        // borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         '&:hover': {
             backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -157,7 +150,6 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(1),
             width: 'auto',
         },
-
     },
     searchIcon: {
         color: '#2FBCED',
@@ -171,12 +163,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         fontFamily: 'Minimalust',
-        // border:'1px solid #7FB3D5',
-        // backgroundColor:'#7FB3D5',
+
         marginTop: '4px',
-        // marginLeft:'3px',
-        // color:'white',
-        // width:'80px'
 
     },
     inputRoot: {
@@ -187,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         borderRadius: '12px',
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
+
         paddingLeft: `calc(1em + ${theme.spacing(10)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -293,11 +281,11 @@ const neutral = (item1, item2) => {
 export default function Busqueda() {
 
     const [openAlert, setOpenAlert] = React.useState(false);
-    const [openMedios, setOpenMedios] = React.useState(false);
 
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    // const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
+    const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
     const [inputBusqueda, setInput] = useState("");
+
+
     const goTwitter = () => {
         if (inputBusqueda) {
             navigate({
@@ -307,14 +295,18 @@ export default function Busqueda() {
         }
     };
 
-    // const goMedios = () => {
-    //     if (inputBusquedaMedios) {
-    //         navigate({
-    //             pathname: '/busquedaMedios',
-    //             search: '?search=' + inputBusquedaMedios,
-    //         })
-    //     }
-    // }
+    const [search] = useSearchParams();
+    var busqueda = search.get('search')?.toLowerCase()
+
+    const goMedios = () => {
+        if (busqueda) {
+
+            navigate({
+                pathname: '/busqueda-medios',
+                search: '?search=' + busqueda,
+            })
+        }
+    }
 
 
 
@@ -322,13 +314,8 @@ export default function Busqueda() {
 
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
-    // const params = useParams();
-    // const {search} = params
-    // console.log(search);
-    // console.log(params)
 
-    const [search] = useSearchParams();
-    var busqueda = search.get('search').toLowerCase()
+
 
 
     const styless = usseStyles();
@@ -336,12 +323,7 @@ export default function Busqueda() {
 
     const [anchorEl, setAnchorEl] = React.useState();
 
-    // const handle = (e) => {
-    //     if(e.key == "Enter"){
-    //         inputBusqueda()
-    //     }
-    //     return false;
-    // }
+
 
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
@@ -351,22 +333,16 @@ export default function Busqueda() {
         setAnchorEl();
     };
 
-    const handleClickOpenAlert = () => {
-        setOpenAlert(true);
-    };
+
 
     const handleCloseAlert = () => {
         setOpenAlert(false);
     };
 
-    const handleCloseMedios = () => {
-        setOpenMedios(false);
-    }
-    const [open, setOpen] = React.useState(false);
 
-    const handleClickk = () => {
-        setOpen(!open);
-    };
+
+
+
     const abrirCerrarModal = () => {
         setModal(!modal);
     }
@@ -391,9 +367,7 @@ export default function Busqueda() {
         await sleep(1000);
     }
 
-    // const [show, popup] = useState(false);
-    // const modalOpen = () => popup(true);
-    // const modalClose = () => popup(false);
+
 
     const classes = useStyles();
 
@@ -401,18 +375,14 @@ export default function Busqueda() {
         if (busqueda) {
             setLoading(true);
             axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`, {
-                //   method: 'GET',
-                //   headers: {
-                //       "dataType": "json",
-                //      "Accept": "application/json",
-                //   }
+
             })
                 .then(response => response.data)
                 .then(datos => {
                     console.log(datos)
                     setData(datos);
                     setLoading(false);
-                    // console.log(datos[0].name)
+
 
                 }).catch((err) => {
                     console.log(err);
@@ -435,13 +405,12 @@ export default function Busqueda() {
                         <ListItemAvatar className={classes.title}>
 
                             <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                             </Avatar>
                         </ListItemAvatar>
                         <Box className={boxClass.BoxInput}>
                             <InputBase
-                                // hiddenLabel={true}
-                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
                                 className={boxClass.Input}
 
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
@@ -457,14 +426,11 @@ export default function Busqueda() {
                             />
                             <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
-                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
-                    <SearchOutlinedIcon />
-                </IconButton> */}
 
                             </Button>
                         </Box>
                         <Button
-                            style={{ borderRadius: '20px', backgroundColor:'#2F9DED', color:'white' }}
+                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
                             variant="outlined"
                             color="primary"
                             size="large"
@@ -564,7 +530,7 @@ export default function Busqueda() {
     console.log(data)
 
     if (loading) {
-    //if (true) {
+        //if (true) {
         espera();
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
@@ -573,37 +539,14 @@ export default function Busqueda() {
                         <ListItemAvatar className={classes.title}>
 
                             <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                             </Avatar>
                         </ListItemAvatar>
-                        {/* <div className={classes.search}> */}
-                        {/* <Button type="submit" title="Buscar" style={{ borderRadius: '10px' }} className={classes.searchIcon} onClick={() => goTwitter()} endIcon={<SearchIcon />} >
 
-                                Buscar
-
-                            </Button>
-
-                            <InputBase
-
-                                placeholder="Que deseas buscar"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput
-                                }}
-                                inputProps={{ "aria-label": "search" }}
-                                onChange={e => setInput(e.target.value)}
-                                value={inputBusqueda}
-                                onKeyPress={event => {
-                                    if (event.key === 'Enter') {
-                                        goTwitter()
-                                    }
-                                }}
-                            /> */}
 
                         <Box className={boxClass.BoxInput}>
                             <InputBase
-                                // hiddenLabel={true}
-                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
                                 className={boxClass.Input}
 
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
@@ -619,14 +562,12 @@ export default function Busqueda() {
                             />
                             <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
-                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
-                    <SearchOutlinedIcon />
-                </IconButton> */}
+
 
                             </Button>
                         </Box>
 
-                        {/* </div> */}
+
                         <Button
                             style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
                             variant="outlined"
@@ -700,7 +641,7 @@ export default function Busqueda() {
         </div>
     }
 
-    if (!data || data.listadoTwitter.length == 0) {
+    if (!data || data.listadoTwitter.length === 0) {
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
@@ -708,13 +649,12 @@ export default function Busqueda() {
                         <ListItemAvatar className={classes.title}>
 
                             <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                             </Avatar>
                         </ListItemAvatar>
                         <Box className={boxClass.BoxInput}>
                             <InputBase
-                                // hiddenLabel={true}
-                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
                                 className={boxClass.Input}
 
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
@@ -730,9 +670,7 @@ export default function Busqueda() {
                             />
                             <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
                                 Buscar
-                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
-                    <SearchOutlinedIcon />
-                </IconButton> */}
+
 
                             </Button>
                         </Box>
@@ -844,22 +782,17 @@ export default function Busqueda() {
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573', marginBottom: '150px' }}>
                     <Toolbar>
-                        {/* <Typography variant="h4" className={classes.title}   >
-                            <Typography variant="subtitle"  >
-                                <span style={{ cursor: 'pointer', fontFamily: 'Raleway, Arial' }} onClick={() => window.location.replace("/")}>Logo</span>
-                            </Typography>
-                        </Typography> */}
+
                         <ListItemAvatar className={classes.title}>
 
                             <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                             </Avatar>
                         </ListItemAvatar>
 
                         <Box className={boxClass.BoxInput}>
                             <InputBase
-                                // hiddenLabel={true}
-                                // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
                                 className={boxClass.Input}
 
                                 style={{ fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft: '5px' }}
@@ -869,7 +802,7 @@ export default function Busqueda() {
                                 value={inputBusqueda}
                                 onKeyDown={event => {
                                     if (event.key === 'Enter') {
-                                        if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
+                                        if (busqueda && busqueda.toLowerCase() === inputBusqueda.toLowerCase()) {
 
                                             setOpenAlert(true)
                                         }
@@ -887,16 +820,14 @@ export default function Busqueda() {
                                 endIcon={<SearchOutlinedIcon
                                     className={boxClass.IconButton} />}
                                 onClick={() => {
-                                    if (busqueda && busqueda.toLowerCase() == inputBusqueda.toLowerCase()) {
+                                    if (busqueda && busqueda.toLowerCase() === inputBusqueda.toLowerCase()) {
                                         setOpenAlert(true);
                                     }
                                     goTwitter()
                                 }
                                 }>
                                 Buscar
-                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
-                    <SearchOutlinedIcon />
-                </IconButton> */}
+
 
                             </Button>
                         </Box>
@@ -935,7 +866,7 @@ export default function Busqueda() {
 
 
                         <Button
-                            style={{ borderRadius: '20px', backgroundColor:'#2F9DED', color:'white' }}
+                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
                             variant="outlined"
                             color="primary"
                             size="large"
@@ -978,20 +909,13 @@ export default function Busqueda() {
                                 </ListItemIcon>
                                 <ListItemText primary="Grafico Lineas" />
                             </StyledMenuItem>
-                            {/* <Button style={{ marginLeft: '60px', marginTop: '10px' }} variant='outlined' color='secondary' size='small' href="/" className={boxClass.BotonVolver}>
-                                Volver
-                            </Button> */}
+
                         </StyledMenu>
                     </Toolbar>
                 </AppBar>
             </div>
             <div style={{ padding: 0, margin: '0px 0px 0px  0px', maxWidth: '100%', minHeight: '750px', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-                {/* 
-                <Paper style={{ margin: '0 left', width: '50%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
-                <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
-                </Box>
-            </Paper> */}
+
 
                 {/* Contenedor Margen Izquierdo */}
 
@@ -1003,41 +927,17 @@ export default function Busqueda() {
                             size="large"
                             variant="contained"
                             color="primary"
-                            // href="/busquedaMedios"
-                            onClick={() => data}
-                        >
 
-                            datos
+                            onClick={() => goMedios()} >
+
+                            Medios
 
                         </Button>
                     </Box>
 
 
                     <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
-                        {/* <Grid item xs={6}>
-                            <Paper className={boxClass.Grid12}>
-                                <h1 > 6%</h1>
-                                <h4 style={{ marginTop: '-25px' }}>Strength</h4>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Paper className={boxClass.Grid12}>
-                                <h1 > 10:1</h1>
-                                <h4 style={{ marginTop: '-25px' }}>sentiment</h4>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Paper className={boxClass.Grid12}>
-                                <h1 > 64%</h1>
-                                <h4 style={{ marginTop: '-25px' }}>Passion</h4>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Paper className={boxClass.Grid12}>
-                                <h1 > 17%</h1>
-                                <h4 style={{ marginTop: '-25px' }}>Reach</h4>
-                            </Paper>
-                        </Grid> */}
+
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
                                 <h4><FavoriteIcon style={{ marginBottom: '-7px', width: '20px', color: 'red' }} />{data.estadistica.likes}</h4>
@@ -1057,6 +957,21 @@ export default function Busqueda() {
 
                             </Paper>
                         </Grid>
+                        <Grid item xs={12}>
+                        <Button
+                                className={boxClass.ButtonRedes}
+                                fullWidth
+                                style={{color: 'white', borderRadius: '20px', width: '40%', left: '30%' }}
+                                onClick={() => goMedios()}
+                                color="primary"
+                                variant="contained"
+
+                            >
+
+                                MEDIOS
+
+                            </Button>
+                        </Grid>
                     </Grid>
 
                 </Paper>
@@ -1065,9 +980,7 @@ export default function Busqueda() {
                     <Paper
                         style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }} //Paper margen izquierdo
                     >
-                        {/* 
-                        {data.estadistica[0] ? (
-                            data.estadistica[0] && data.estadistica[0].map((item) => ( */}
+
 
                         <List
                             sx={{
@@ -1153,12 +1066,7 @@ export default function Busqueda() {
                                 </Box>
                             </ListItem>
                         </List>
-                        {/* ))
 
-
-                        ) : (
-                            <p>no hay nada</p>
-                        )} */}
 
                     </Paper>
                 </Container>
@@ -1168,7 +1076,7 @@ export default function Busqueda() {
 
                 <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA DE TWITTS {""} {""} {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
+                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN REDES: {'"'}{busqueda}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper>
 
@@ -1180,32 +1088,7 @@ export default function Busqueda() {
 
                     >
 
-                        {/* <Button
 
-                            style={{ backgroundColor: 'red', color: 'white' }}
-                            onClick={ () => setOpenMedios(true)}
-
-                        >
-                            Medios
-                        </Button> */}
-
-
-
-
-
-
-
-
-
-
-                        {/* <Fab variant="extended" sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems: 'center'}} className={boxClass.BusquedaTwitt}>
-                                <TwitterIcon sx={{ mr: 1 }} />
-                                Busqueda Twitt: {busqueda}
-                            </Fab> */}
-
-                        {/* <IconButton color="primary" style={{ marginTop: '-75px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")}>
-                          <ArrowBackIcon /> Nueva Busqueda 
-                        </IconButton> */}
                         <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                         {data.listadoTwitter ? (
                             data.listadoTwitter && data.listadoTwitter.map((item) => (
@@ -1275,7 +1158,7 @@ export default function Busqueda() {
 
                                                 <Typography variant="subtitle1" display="inline-block" gutterBottom className={boxClass.hashtag}>
 
-                                                    {/* <  TagSharpIcon style={{ height: '15px' }}  />{item.hashtag} */}
+
                                                     {hashtag(item.hashtag)}
                                                     <Divider></Divider>
                                                 </Typography>
@@ -1291,26 +1174,10 @@ export default function Busqueda() {
                         ) : (
                             <p>no hay nada</p>
                         )}
-                        {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
+
                     </Paper>
                 </Container>
-                {/* <div>
-                <Dialog
-                            style={{ width: '20%', minHeight: '750px', borderRadius: '20px', float: 'right' }}
-                            open={openMedios}
-                            onClose={ handleCloseMedios}
-                        >
-                            <Button
-                            
-                            onClick={ handleCloseMedios}
-                            
-                            >Volver</Button>
 
-                            <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
-               
-                            {/* <Button className={boxClass.nueva} variant="contained" color="primary" style={{ bottom:'20px',right:'22px',fontSize:'8px',width:'7.5%' ,paddingBottom: '10px', height: '40px', borderRadius: '20px', position:'fixed'}} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button> */}
-                {/* </Dialog>
-                        </div> */}
             </div>
         </div>
 

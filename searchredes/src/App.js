@@ -22,7 +22,7 @@ function App() {
 
         <Routes>
           <Route  path="/" exact element={<Nav/>} />
-          {/* <Route  path="busquedaMedios" exact element={<Medios/>}/> */}
+           <Route  path="busqueda-medios" exact element={<Medios/>}/> 
 
           {/* <Route
             path="/"
