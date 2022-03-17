@@ -951,7 +951,7 @@ export default function Medios() {
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
-                                <h4>Ultima Mencion hace 10hs</h4>
+                                <h4>Ultima Mencion hace 7hs</h4>
 
                             </Paper>
                         </Grid>
