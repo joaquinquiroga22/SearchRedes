@@ -231,13 +231,13 @@ const menciones = (item) => {
 
 const positivo = (item) => {
     if (item >= 100000) {
-        return (item / 10000).toFixed(2);
+        return (item / 10000).toFixed(1);
     } else if (item >= 10000) {
-        return (item / 1000).toFixed(2);
+        return (item / 1000).toFixed(1);
     } else if (item >= 1000) {
         return item / 100
     } else if (item >= 100) {
-        return (item / 10).toFixed(2);
+        return (item / 10).toFixed(1);
     }
     return item
 }
@@ -285,7 +285,8 @@ export default function Busqueda() {
     const [inputBusquedaMedios, setInputBusquedaMedios] = useState("");
     const [inputBusqueda, setInput] = useState("");
 
-
+    
+    
     const goTwitter = () => {
         if (inputBusqueda) {
             navigate({
@@ -294,59 +295,59 @@ export default function Busqueda() {
             });
         }
     };
-
+    
     const [search] = useSearchParams();
     var busqueda = search.get('search')?.toLowerCase()
-
+    
     const goMedios = () => {
         if (busqueda) {
-
+            
             navigate({
                 pathname: '/busqueda-medios',
                 search: '?search=' + busqueda,
             })
         }
     }
-
-
-
+    
+    
+    
     const navigate = useNavigate();
-
+    
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
-
-
-
-
+    
+    
+    
+    
     const styless = usseStyles();
     const [modal, setModal] = useState(false)
-
+    
     const [anchorEl, setAnchorEl] = React.useState();
-
-
-
+    
+    
+    
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
+    
     const handleClosee = () => {
         setAnchorEl();
     };
-
-
-
+    
+    
+    
     const handleCloseAlert = () => {
         setOpenAlert(false);
     };
-
-
-
-
-
+    
+    
+    
+    
+    
     const abrirCerrarModal = () => {
         setModal(!modal);
     }
-
+    
     const body = (
         <div className={styless.modal}>
             <div align="center" >
@@ -359,46 +360,47 @@ export default function Busqueda() {
             </div>
         </div>
     )
-
+    
     function sleep(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
     async function espera() {
         await sleep(1000);
     }
-
-
-
+    
+    
+    
     const classes = useStyles();
-
+    
     useEffect(() => {
         if (busqueda) {
             setLoading(true);
             axios.get(`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`, {
-
+                
             })
-                .then(response => response.data)
-                .then(datos => {
-                    console.log(datos)
-                    setData(datos);
-                    setLoading(false);
-
-
-                }).catch((err) => {
-                    console.log(err);
-                    setLoading(false)
-                })
+            .then(response => response.data)
+            .then(datos => {
+                console.log(datos)
+                setData(datos);
+                setLoading(false);
+                
+                
+            }).catch((err) => {
+                console.log(err);
+                setLoading(false)
+            })
         }
-
-
+        
+        
     }, [busqueda]);
-
+    
     //`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`
     //`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`
     //`
+    
     if (!busqueda) {
         //if (true) {
-        return <div style={{ backgroundColor: '#024761' }}>
+            return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
@@ -775,7 +777,20 @@ export default function Busqueda() {
         </div >
     }
 
+    
+     const Positivo = () =>{
+        var suma = 0 ;
+        data.listadoTwitter.forEach(element => {
+            
+            suma += element.likes
+         
+        });        
 
+        return suma/45
+        
+     }
+
+     console.log(Positivo().toFixed(0))
     return (
 
         <div style={{ backgroundColor: '#024761' }}>
@@ -1002,7 +1017,11 @@ export default function Busqueda() {
                                     <h1>Sentimientos</h1>
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4 >Positivo</h4>
-                                    <Progress done={positivo(data.estadistica.likes)} />
+                         
+                                    <Progress done={positivo(data.estadistica.likes)} />   
+                                    {/* <Progress done={(Positivo()/100).toFixed(1)} />  */}
+                                    
+                     
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4>Neutral</h4>
                                     <Progress done={neutral(data.estadistica.retweet, data.estadistica.likes)} />
