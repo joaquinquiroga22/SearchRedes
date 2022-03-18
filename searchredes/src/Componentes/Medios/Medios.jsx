@@ -552,13 +552,24 @@ export default function Medios() {
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInputBusquedaMedios(e.target.value)}
                                 value={inputBusquedaMedios}
-                                onKeyPress={event => {
+                                onKeyDown={event => {
+
                                     if (event.key === 'Enter') {
-                                        goTwitter()
+                                        event.preventDefault()
+                                        
+                                        if (busqueda && busqueda.toLowerCase() === inputBusquedaMedios.toLowerCase()) {
+
+                                            setOpenAlert(true)
+                                            return
+                                        }
+                                        navigate({
+                                            pathname: '/busqueda-medios',
+                                            search: '?search=' + inputBusquedaMedios,
+                                        })
                                     }
                                 }}
                             />
-                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goTwitter()}>
+                            <Button type="submit" size="small" className={boxClass.ButtonInput} style={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB', marginTop: '5px !important', paddingLeft: '10px' }} variant="contained" title="Buscar" endIcon={<SearchOutlinedIcon className={boxClass.IconButton} />} onClick={() => goMedios()}>
                                 Buscar
 
 
@@ -639,7 +650,7 @@ export default function Medios() {
         </div>
     }
 
-    if (!data || data.listadoTwitter.length === 0) {
+    if (!data || data.listadoMedios.length === 0) {
         return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
@@ -661,9 +672,20 @@ export default function Medios() {
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInputBusquedaMedios(e.target.value)}
                                 value={inputBusquedaMedios}
-                                onKeyPress={event => {
+                                onKeyDown={event => {
+
                                     if (event.key === 'Enter') {
-                                        goTwitter()
+                                        event.preventDefault()
+                                        
+                                        if (busqueda && busqueda.toLowerCase() === inputBusquedaMedios.toLowerCase()) {
+
+                                            setOpenAlert(true)
+                                            return
+                                        }
+                                        navigate({
+                                            pathname: '/busqueda-medios',
+                                            search: '?search=' + inputBusquedaMedios,
+                                        })
                                     }
                                 }}
                             />
@@ -803,6 +825,7 @@ export default function Medios() {
 
                                     if (event.key === 'Enter') {
                                         event.preventDefault()
+                                        
                                         if (busqueda && busqueda.toLowerCase() === inputBusquedaMedios.toLowerCase()) {
 
                                             setOpenAlert(true)
@@ -1007,9 +1030,9 @@ export default function Medios() {
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <h1>Palabras Principales</h1>
-                                    {data.estadistica.palabrasClaves.words ? (
+                                     {data.estadistica.palabrasClaves.words ? (
                                         data.estadistica.palabrasClaves.words && data.estadistica.palabrasClaves.words.map((item) => (
-                                            <Box>
+                                            <Box> 
 
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
 
@@ -1023,7 +1046,7 @@ export default function Medios() {
 
                                     ) : (
                                         <p>no hay nada</p>
-                                    )}
+                                    )} 
 
                                     <h1>Usuarios Principales</h1>
 
@@ -1085,8 +1108,8 @@ export default function Medios() {
 
 
                         <Button className={boxClass.nueva} variant="contained" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px', backgroundColor: '#AE4AFC', color: 'white' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
-                        {data.listadoTwitter ? (
-                            data.listadoTwitter && data.listadoTwitter.map((item) => (
+                        {data.listadoMedios ? (
+                            data.listadoMedios && data.listadoMedios.map((item) => (
                                 <List
                                     className={boxClass.ListPaperDerecho}
                                     sx={{
