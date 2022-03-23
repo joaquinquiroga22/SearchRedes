@@ -211,7 +211,7 @@ export default function Nav() {
                             <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
                                 <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '1px', paddingBottom: '0px !important', textAlign: 'center', fontFamily: 'Trebuchet MS ' }} >
                                     <h4>
-                                        Pulsa para buscar por Google
+                                        Realizar busqueda por Google
                                     </h4>
                                 </Box>
                                 <Button
