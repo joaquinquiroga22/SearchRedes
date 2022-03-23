@@ -37,10 +37,12 @@ const buttons = [
                         <Grid item xs sm={4} color="white"  >
                             <List sx={{ marginTop: '-80px', float: 'left' }}  >
                                 <Typography  sx={{justifyContent:'flex-start', fontFamily: 'Ubuntu, sans-serif'}}>
-                                    Empresa
+                                    Pueblos del Desierto
+                                    Consultora
                               <br/>  
                               <br/>
-                                    Teléfono: 2645676869
+                                    Teléfono: +54 2646280323
+
                                 </Typography>
                             </List>
 
@@ -52,7 +54,7 @@ const buttons = [
 
 
                             <Typography sx={{fontFamily: 'Ubuntu, sans-serif'}} >
-                                Mail: ejemplo@
+                                Mail: mmartin@pueblosdeldesierto.com
                             
                             <br />
                             <br />
