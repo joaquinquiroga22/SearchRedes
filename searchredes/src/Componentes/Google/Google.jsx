@@ -1,5 +1,4 @@
-
-import * as React from 'react';
+import React from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -39,8 +38,6 @@ import { Avatar, ListItemAvatar } from '@mui/material';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
 import { Container } from 'react-bootstrap';
 import { FcGoogle } from 'react-icons/fc'
-
-
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -92,7 +89,9 @@ const useStyless = makeStyles((theme) => ({
 
 }));
 
-export default function Nav() {
+
+export default function Google(){
+
     const classess = useStyless();
     const handleEvent = () => {
         return openAlertNav(true)
@@ -147,7 +146,8 @@ export default function Nav() {
         }
     };
 
-    return (
+
+    return(
         <section style={{ backgroundColor: '#024761', }}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
@@ -218,11 +218,11 @@ export default function Nav() {
                                     variant="contained"
 
 
-                                    endIcon={<FcGoogle />}
-                                    style={{ backgroundColor: 'white', color: 'black',position:'relative', zIndex:'1', borderRadius:'20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'}}
-                                    href="/Google"
+                                    
+                                    style={{ backgroundColor: 'white', color: 'white',position:'relative', zIndex:'1', borderRadius:'20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px', backgroundColor:'red'}}
+                                    href="/"
                                 >
-                                    Google
+                                    Volver
 
                                 </Button>
                             </Box>
@@ -305,6 +305,6 @@ export default function Nav() {
                 </ThemeProvider>
             </ColorModeContext.Provider>
         </section>
-    );
+    
+    )
 }
-

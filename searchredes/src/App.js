@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Busqueda from '../src/Componentes/Busqueda/Busqueda.jsx'
 import Prueba from '../src/Componentes/Prueba/Prueba.js'
 import Medios from '../src/Componentes/Medios/Medios.jsx'
+import Google from "./Componentes/Google/Google";
 // import Prueba from '../src/Componentes/Prueba/Prueba.js'
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
           /> */}
 
          <Route  path="busqueda" exact element={<Busqueda/>}/>
+         <Route  path="Google" exact element={<Google/>}/>
 
           {/* <Route path="/Prueba"  element={<Prueba/>} />   */}
 
