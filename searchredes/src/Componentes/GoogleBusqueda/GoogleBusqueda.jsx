@@ -49,7 +49,8 @@ import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 import CachedIcon from '@mui/icons-material/Cached';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
 import BarChartIcon from '@mui/icons-material/BarChart';
-
+import SubtitlesOutlinedIcon from '@mui/icons-material/SubtitlesOutlined';
+import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
 
 const theme = createTheme({
     typography: {
@@ -245,8 +246,8 @@ export default function GoogleBusqueda() {
 
     const [inputBusquedaGoogle, setInputBusquedaGoogle] = useState("");
 
-    
-    
+
+
     const goGoogle = () => {
         if (inputBusquedaGoogle) {
             navigate({
@@ -255,51 +256,51 @@ export default function GoogleBusqueda() {
             });
         }
     };
-    
+
     const [search] = useSearchParams();
     var busquedaGoogle = search.get('search')?.toLowerCase()
-    
-    
-    
-    
-    
+
+
+
+
+
     const navigate = useNavigate();
-    
+
     const [data, setData] = useState();
     const [loading, setLoading] = useState(false);
-    
-    
-    
-    
+
+
+
+
     const styless = usseStyles();
     const [modal, setModal] = useState(false)
-    
+
     const [anchorEl, setAnchorEl] = React.useState();
-    
-    
-    
+
+
+
     const handleClicke = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    
+
     const handleClosee = () => {
         setAnchorEl();
     };
-    
-    
-    
+
+
+
     const handleCloseAlert = () => {
         setOpenAlert(false);
     };
-    
-    
-    
-    
-    
+
+
+
+
+
     const abrirCerrarModal = () => {
         setModal(!modal);
     }
-    
+
     const body = (
         <div className={styless.modal}>
             <div align="center" >
@@ -312,49 +313,49 @@ export default function GoogleBusqueda() {
             </div>
         </div>
     )
-    
+
     function sleep(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
     async function espera() {
         await sleep(1000);
     }
-    
-    
-    
+
+
+
     const classes = useStyles();
-    
-   
+
+
     useEffect(() => {
         if (busquedaGoogle) {
             setLoading(true);
-            fetch(`https://gnews.io/api/v4/search?q="${busquedaGoogle}"&lang=es&token=0eefc7f21b5ae2d950fd10dc040c6bcb`)
-                
-            
-            .then((res) => res.json())
-            .then(datos => {
-                console.log(datos)
-                setData(datos);
-                setLoading(false);
-                
-                
-            }).catch((err) => {
-                console.log(err);
-                setLoading(false)
-            })
+            fetch(`https://newsapi.org/v2/everything?q=${busquedaGoogle}&lenguage=es&apiKey=6f437bea93ce4b7badc357e36da6b2dc`)
+
+
+                .then((res) => res.json())
+                .then(datos => {
+                    console.log(datos)
+                    setData(datos);
+                    setLoading(false);
+
+
+                }).catch((err) => {
+                    console.log(err);
+                    setLoading(false)
+                })
         }
-        
-        
+
+
     }, [busquedaGoogle]);
     console.log(data)
-    
+
     //`https://guarded-sierra-66845.herokuapp.com/buscar/tw-test/${busqueda}`
     //`https://guarded-sierra-66845.herokuapp.com/buscar/tw/${busqueda}`
     //`
-    
+
     if (!busquedaGoogle) {
         //if (true) {
-            return <div style={{ backgroundColor: '#024761' }}>
+        return <div style={{ backgroundColor: '#024761' }}>
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573' }}>
                     <Toolbar>
@@ -731,10 +732,10 @@ export default function GoogleBusqueda() {
         </div >
     }
 
-    
-    
 
-     
+
+
+
     return (
 
         <div style={{ backgroundColor: '#024761' }}>
@@ -878,23 +879,21 @@ export default function GoogleBusqueda() {
 
                 {/* Contenedor Margen Izquierdo */}
 
-                <Paper className={boxClass.PaperGrid} style={{ margin: '0 auto', position: 'absolute', width: '15%', marginTop: '-140px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
-           
-                    
+                <Paper className={boxClass.PaperGrid} style={{ margin: '0 auto', position: 'absolute', width: '15%', marginTop: '-120px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust' }}>
 
 
-                    <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '-10px', marginLeft: '11%' }}  >
+
+
+                    {/* <Grid container spacing={1} className={boxClass.Grid} style={{ marginTop: '100px', marginLeft: '11%' }}  >
+
+                
 
                   
+                        <Grid item xs={12}>
+                            <Paper className={boxClass.Grid13}>
+                                <h4>Ultima Mencion hace 10hs</h4>
 
-                    
-                    <Grid item xs={12}>
-                         <Button 
-                         style={{backgroundColor:'#3498DB', color:'white'}}
-                         href="/Google"
-                         >
-                             Volver
-                         </Button>
+                            </Paper>
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
@@ -902,8 +901,29 @@ export default function GoogleBusqueda() {
 
                             </Paper>
                         </Grid>
-                       
-                    </Grid>
+                        <Grid item xs={12}>
+                            <Paper className={boxClass.Grid13}>
+                                <h4>Ultima Mencion hace 10hs</h4>
+
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button
+                                className={boxClass.ButtonRedes}
+                                fullWidth
+                                style={{ color: 'white', borderRadius: '20px', width: '40%', left: '30%' , marginTop:'50px !important', border:'10px solid red'}}
+                                href="/Google"
+                                
+                                variant="contained"
+
+                            >
+
+                                volver
+
+                            </Button>
+                        </Grid>
+                 
+                    </Grid> */}
 
                 </Paper>
 
@@ -928,19 +948,10 @@ export default function GoogleBusqueda() {
                             <ListItem >
 
 
-                                <Box className={boxClass.BoxMargen} sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
+                                {/* <Box className={boxClass.BoxMargen} sx={{ color: 'white', marginLeft: '5%', width: '100%' }}>
 
-                                    <h1>Sentimientos</h1>
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4 >Positivo</h4>
-                         
-                                      
-                                    {/* <Progress done={(Positivo()/100).toFixed(1)} />  */}
-                                    
-                     
-                                    <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                    <h4>Neutral</h4>
-                                    
+
+
 
 
 
@@ -955,7 +966,7 @@ export default function GoogleBusqueda() {
 
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4><StickyNote2OutlinedIcon style={{ marginBottom: '-6px' }} />{item.palabra}</h4>
-                                                
+
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
@@ -965,39 +976,9 @@ export default function GoogleBusqueda() {
                                         <p>no hay nada</p>
                                     )}
 
-                                    <h1>Usuarios Principales</h1>
-
-                                    {data.articles ? (
-                                        data.articles && data.articles.map((item) => (
-                                            <Box>
-                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                                <h4 style={{ marginBottom: '-6px' }} >{item.palabra}</h4>
-                                                
-                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
-
-                                            </Box>
-                                        ))
 
 
-                                    ) : (
-                                        <p>no hay nada</p>
-                                    )}
-                                    <h1>Hashtag Principales</h1>
-                                    {data.articles ? (
-                                        data.articles && data.articles.map((item) => (
-                                            <Box>
-                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                                <h4> {item.palabra} </h4>
-                                                <Divider style={{ backgroundColor: 'white' }}></Divider>
-                                            </Box>
-                                        ))
-
-
-                                    ) : (
-                                        <p>no hay nada</p>
-                                    )}
-
-                                </Box>
+                                </Box> */}
                             </ListItem>
                         </List>
 
@@ -1005,12 +986,12 @@ export default function GoogleBusqueda() {
                     </Paper>
                 </Container>
 
-                <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' />
+                {/* <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' /> */}
 
 
                 <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
-                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN REDES: {'"'}{busquedaGoogle}{'"'} <br /> RESULTADOS: </h4>
+                        <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN GOOGLE NEWS: {'"'}{busquedaGoogle}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper>
 
@@ -1023,7 +1004,7 @@ export default function GoogleBusqueda() {
                     >
 
 
-                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
+                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/Google")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                         {data.articles ? (
                             data.articles && data.articles.map((item) => (
                                 <List
@@ -1039,44 +1020,45 @@ export default function GoogleBusqueda() {
                                 >
                                     <ListItem >
 
-                                        <ListItemAvatar style={{width:'100px',height:'100px',paddingLeft:'10px !important'}} >
-                                            <Avatar style={{ width: '100%', height: '100%'}}>
-                                                <a style={{width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer' alt={item.url} title={item.title}>
-                                                    <img style={{width: '100%', height: '100%', objectFit:'cover'}} src={item.image} alt="" />
+                                        <ListItemAvatar style={{ width: '20%', height: '20%', marginLeft: '-10px', aspectRatio:'1.49/1' }} >
+                                            <Avatar style={{ width: '100%', height:'100%', borderRadius:'10px'}} variant="square" >
+                                                <a style={{ width: '100%', height: '100%' }} href={item.url_user} target="_blank" rel='noopener noreferrer' alt={item.url} title={item.title}>
+                                                    <img style={{ width: '100%', height: '100%', objectFit:'cover'}} src={item.urlToImage} alt="" />
                                                 </a>
 
                                             </Avatar>
 
                                         </ListItemAvatar>
                                         <ListItemText
+                                        style={{paddingLeft:'10px'}}
                                             primary={
                                                 <ThemeProvider theme={theme} display="block" >
                                                     <Typography variant="h6" display="block" gutterBottom className={boxClass.cuerpo} >
                                                         {item.description}
                                                         <br />
-                                                     </Typography>
-                                                     
-                                                     <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
-                                                            <TwitterIcon style={{ color: '#2FBCED', height: '15px', cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)} />
-                                                            <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
-                                                                {shortText(item.url)}
-                                                            </Link>
-                                                            
-                                                            <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
-                                                                <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {shortTextFecha(item.publishedAt)}
-                                                            </Typography>
-                                                            
-                                                            <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+                                                    </Typography>
 
-                                                                <ListItemText   >
-                                                                     {shortTextTitle(item.title)}
-                                                                </ListItemText>
-                                                                </Typography>
-                                                                <Divider></Divider>
-                                                            </Typography>
+                                                    <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.url}>
+                                                        <NewspaperOutlinedIcon style={{ height: '15px', cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)} />
+                                                        <Link style={{ cursor: 'pointer' }} onClick={() => window.open(`${item.url}`, `_blank`)}>
+                                                           {shortText(item.url)}
+                                                        </Link>
+
+                                                        <Typography variant="subtitle1" display="block" gutterBottom className={boxClass.fecha}>
+                                                            <CalendarTodayOutlinedIcon style={{ height: '15px' }} /> {shortTextFecha(item.publishedAt)}
+                                                        </Typography>
+
+                                                        <Typography variant="subtitle2" display="block" gutterBottom className={boxClass.hashtag}>
+
+                                                            <ListItemText   >
+                                                               <SubtitlesOutlinedIcon style={{height: '15px' }} /> {shortTextTitle(item.title)}
+                                                            </ListItemText>
+                                                        </Typography>
+                                                        <Divider></Divider>
+                                                    </Typography>
                                                 </ThemeProvider>
                                             }
-                                         
+
 
                                         />
 

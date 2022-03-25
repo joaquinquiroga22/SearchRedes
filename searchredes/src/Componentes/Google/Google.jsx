@@ -36,7 +36,7 @@ import { useState } from 'react';
 import style from '../Google/Google.module.css'
 import { Avatar, ListItemAvatar } from '@mui/material';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
-import { Container } from 'react-bootstrap';
+
 import { FcGoogle } from 'react-icons/fc'
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 const useStyles = makeStyles((theme) => ({

@@ -6,18 +6,13 @@ import Divider from '@mui/material/Divider';
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-// import wachin from '../imagenes/wachin.png'
-// import lineasrosa from '../imagenes/lineasrosa.png'
+
 import lineasamarillas from '../imagenes/lineasamarillas.png'
 import Button from '@mui/material/Button';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
+
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Box } from '@mui/system';
-import Checkbox from '@mui/material/Checkbox';
-// import Busqueda from "../Busqueda/Busqueda.jsx"
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -26,18 +21,14 @@ import Group8 from '../imagenes/Group8.png'
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 import IconButton from '@mui/material/IconButton';
 
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import style from '../Nav/Nav.module.css'
 import { Avatar, ListItemAvatar } from '@mui/material';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
-import { Container } from 'react-bootstrap';
 import { FcGoogle } from 'react-icons/fc'
 
 
@@ -57,8 +48,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-// const theme = useTheme();
-// const colorMode = React.useContext(ColorModeContext);
+
 
 function MyApp() {
     const theme = useTheme();
@@ -148,7 +138,7 @@ export default function Nav() {
     };
 
     return (
-        <section style={{ backgroundColor: '#024761', }}>
+        <section style={{ backgroundColor: '#024761'}}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
 
@@ -172,7 +162,7 @@ export default function Nav() {
 
                         <Paper
                             component="form"
-                            sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
+                            sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px'}}
                         >
 
                             <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
