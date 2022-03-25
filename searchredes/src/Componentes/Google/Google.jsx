@@ -33,7 +33,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import style from '../Nav/Nav.module.css'
+import style from '../Google/Google.module.css'
 import { Avatar, ListItemAvatar } from '@mui/material';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
 import { Container } from 'react-bootstrap';
@@ -90,7 +90,7 @@ const useStyless = makeStyles((theme) => ({
 }));
 
 
-export default function Google(){
+export default function Google() {
 
     const classess = useStyless();
     const handleEvent = () => {
@@ -137,18 +137,18 @@ export default function Google(){
     const navigate = useNavigate();
     const classes = useStyles();
 
-    const goTwitter = () => {
+    const goGoogle = () => {
         if (input) {
             navigate({
-                pathname: '/busqueda',
+                pathname: '/google-busqueda',
                 search: '?search=' + input,
             });
         }
     };
 
 
-    return(
-        <section style={{ backgroundColor: '#024761', }}>
+    return (
+        <section className={style.section}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
 
@@ -172,14 +172,15 @@ export default function Google(){
 
                         <Paper
                             component="form"
+                            className={style.Input}
                             sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
                         >
 
                             <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
                                 <h1 className={style.h1}>BIENVENID@</h1>
-                                <h2 className={style.h2}>AL BUSCADOR Y MONITOREO DE REDES Y MEDIOS</h2>
+                                <h2 className={style.h2}>AL BUSCADOR Y MONITOREO POR GOOGLE</h2>
 
-                                <h5 className={style.h5}>BUSCA Y ANALIZA TWITTER Y MEDIOS EN TIEMPO REAL</h5>
+                                <h5 className={style.h5}>BUSCA Y ANALIZA NOTICIAS POR GOOGLE</h5>
 
                             </Box>
 
@@ -192,7 +193,7 @@ export default function Google(){
                             <InputBase
                                 // hiddenLabel={true}
                                 // name='sadaaaaaaaaaaaaaaaaaaaaaaaaaa'
-                                className={style.Input}
+                                
                                 sx={{ ml: 1, flex: 1, fontFamily: 'Ubuntu, sans-serif' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
@@ -204,25 +205,25 @@ export default function Google(){
                                             // return alert("Busca otra cosa")
                                             return setOpenAlertNav(true)
                                         }
-                                        goTwitter()
+                                        goGoogle()
                                     }
                                 }}
                             />
                             <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
                                 <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '1px', paddingBottom: '0px !important', textAlign: 'center', fontFamily: 'Trebuchet MS ' }} >
                                     <h4>
-                                        Realizar busqueda por Google
+                                        Realizar busqueda por Redes
                                     </h4>
                                 </Box>
                                 <Button
                                     variant="contained"
 
 
-                                    
-                                    style={{ backgroundColor: 'white', color: 'white',position:'relative', zIndex:'1', borderRadius:'20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px', backgroundColor:'red'}}
+                                    className={style.ButtonVolver}
+                                    style={{ color: '#3498DB', position: 'relative', border: '2px solid #3498DB', zIndex: '1', borderRadius: '20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px', background: 'white' }}
                                     href="/"
                                 >
-                                    Volver
+                                    Volver a redes
 
                                 </Button>
                             </Box>
@@ -248,13 +249,12 @@ export default function Google(){
                                     if (input === "" || input === "?") {
                                         return setOpenAlertNav(true)
                                     }
-                                    return goTwitter()
+                                    return goGoogle()
                                 }
-                                }>
+                                }
+                            >
                                 Buscar
-                                {/* <IconButton sx={{ p: '10px', display:'flex', alignItems:'center', justifyContent:'center' }} aria-label="search">
-                    <SearchOutlinedIcon />
-                </IconButton> */}
+
 
                             </Button>
 
@@ -305,6 +305,6 @@ export default function Google(){
                 </ThemeProvider>
             </ColorModeContext.Provider>
         </section>
-    
+
     )
 }
