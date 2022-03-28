@@ -118,12 +118,11 @@
     margin-right: 20px !important;
 }
 .Input{
-    border: 1px solid #808b968a;
+    border: 1px solid rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     position: relative;
     box-shadow: '10px 10px 5px' !important;
     width: 350px;
-    /* margin-right: 30px !important; */
 }
 .Input::placeholder{
     color: black !important;
@@ -249,7 +248,7 @@
         left: 63% !important;
         font-size: 11px !important;
         text-align: center;
-        margin-top: 60px !important;
+        margin-top: -10px !important;
         padding-bottom: 25px !important;
         margin-bottom: 20px !important;
     } 
@@ -263,8 +262,8 @@
         left: 30% !important;
         margin-left: 10% !important;
         width: 80% !important;
-        margin-top: 70px !important;
-        margin-bottom: 140px !important;
+        margin-top: 20px !important;
+        margin-bottom: 160px !important;
     }
      .PaperGrid{
          position: absolute !important;

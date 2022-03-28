@@ -36,6 +36,9 @@
     .h5 {
         font-size: 10px;
     }
+    .h5 img{
+        width: 20% !important;
+    }
 
     .BoxSeleccion {
         font-size: 17px;
@@ -52,13 +55,30 @@
 
 @media(max-width: 394px) {
     .BoxSeleccion {
-        margin-bottom: -20px !important;
+        padding-bottom:-20px !important;
     }
 }
 .section{
-    background:linear-gradient(25deg, #41D8DD,#3498DB,#024761) ;
+    /* background:linear-gradient(25deg, #41D8DD,#3498DB,#024761) ; */
+    background-color: white;
 }
 .ButtonVolver:hover{
     background-color: #3498DB !important;
     color:white !important;
+}
+.h5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Input{
+    border: 10px solid transparent !important;
+    border-image: url("../imagenes/InputGoogle.png") 30  !important; 
+    border-image-width: 16px !important;
+    border-radius: 30px !important; 
+    background-color: transparent !important;
+}
+.Button{
+    height: 45px !important;
 }

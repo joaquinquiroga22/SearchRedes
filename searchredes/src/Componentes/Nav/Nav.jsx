@@ -149,7 +149,7 @@ export default function Nav() {
                             <ListItemAvatar >
 
                                 <Avatar variant="rounded" sx={{ width: 120, height: 56, backgroundColor: 'transparent' }}>
-                                    <a style={{ width: '100%' }}><img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                    <a style={{ width: '100%', cursor:'pointer'}} href="https://pueblosdeldesierto.com/" target="_blank"> <img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                                 </Avatar>
                             </ListItemAvatar>
                         </Toolbar>
@@ -207,7 +207,7 @@ export default function Nav() {
                                 <Button
                                     variant="contained"
 
-
+                                    className={style.ButtonGoogle}
                                     endIcon={<FcGoogle />}
                                     style={{ backgroundColor: 'white', color: 'black',position:'relative', zIndex:'1', borderRadius:'20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'}}
                                     href="/Google"

@@ -17,7 +17,7 @@ color: rgb(47, 184, 237) !important;
 /* .Twitter{
 color: rgb(47, 184, 237) !important;
 /* background-color: white !important; */
- /* }  */
+/* }  */
 /* .Facebook{
 color: rgb(47, 184, 237) !important;
 /* background-color: white !important; */
@@ -25,37 +25,38 @@ color: rgb(47, 184, 237) !important;
 /* .Linkedin{
  color: rgb(47, 184, 237) !important;
  /* background-color: white !important; */
- /* }  */
+/* }  */
 
 /* .Instagram:hover{
      background-color: #F7F9F9 !important ;
  } */
- .Instagram:checked{
+.Instagram:checked {
     background-color: white !important;
 }
+
 /* .Twitter:hover{
     background-color: #F7F9F9  !important;
     /* background-color: white !important; */
-    /* }
+/* }
     .Facebook:hover{
         background-color: #F7F9F9 !important ;
         /* background-color: white !important; */
-        /* } */ 
-        /* .Linkedin:hover{
+/* } */
+/* .Linkedin:hover{
             background-color: #F7F9F9  !important;
             /* background-color: white !important; */
-            /* } */ 
-            
-            /* .Instagram .Mui-checked{
+/* } */
+
+/* .Instagram .Mui-checked{
                 color: #F7F9F9  !important;
                 /* background-color: #f8f9f9 !important; */
-                /* }  */ 
-                /* .Mui-checked{
+/* }  */
+/* .Mui-checked{
                     color:white;
                 } */
-                
-                
-                /* .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root{
+
+
+/* .css-10bomdi-MuiButtonBase-root-MuiCheckbox-root{
                     color:rgb(47, 184, 237) !important; 
                     
                 } 
@@ -67,49 +68,60 @@ color: rgb(47, 184, 237) !important;
                     color:#f8f9f9 !important;
                     
                 } */
-                .Dialogo1{
-                    background-color: rgba(0, 0, 0, 0.5) !important;
-                    position: absolute !important;
-                    z-index: 1000000000 !important;
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                    
-                }
-                .Group8 {
-                    position: relative;
-                    margin-top: 10px;
-                    width: 80px;
-                    height: 80px;
-                
-                }
-                
-                @media(max-width: 500px){
-                    
-                    .Button{
-                        width: 30% !important;
-                        font-size: 10.5px !important;
-                        padding-right: 15px !important;
-                        padding-left: 20px !important;
-                    }
-                    .Input{
-                        width: 100%;
-                    }
-                    .h5{
-                        font-size: 10px;
-                    }
-                    .BoxSeleccion{
-                        font-size: 17px;
-                    }
-                    .h1{
-                        font-size: 19px;
-                    }
-                    .h2{
-                        font-size: 19px;
-                    }
-                }
-                @media(max-width: 394px){
-                    .BoxSeleccion{
-                        margin-bottom: -20px !important;
-                    }
-                }
+.Dialogo1 {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    position: absolute !important;
+    z-index: 1000000000 !important;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+.Group8 {
+    position: relative;
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+
+}
+
+@media(max-width: 500px) {
+
+    .Button {
+        width: 30% !important;
+        font-size: 10.5px !important;
+        padding-right: 15px !important;
+        padding-left: 20px !important;
+    }
+
+    .Input {
+        width: 100%;
+    }
+
+    .h5 {
+        font-size: 10px;
+    }
+
+    .BoxSeleccion {
+        font-size: 17px;
+    }
+
+    .h1 {
+        font-size: 19px;
+    }
+
+    .h2 {
+        font-size: 19px;
+    }
+}
+
+@media(max-width: 394px) {
+    .BoxSeleccion {
+        margin-bottom: -20px !important;
+    }
+}
+.ButtonGoogle:hover{
+    background-color: #3498DB !important;
+    color:white !important;
+}

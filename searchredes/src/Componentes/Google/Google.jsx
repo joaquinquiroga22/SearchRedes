@@ -36,8 +36,10 @@ import { useState } from 'react';
 import style from '../Google/Google.module.css'
 import { Avatar, ListItemAvatar } from '@mui/material';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
-
+import googlepalabra from '../imagenes/googlepalabra.svg'
 import { FcGoogle } from 'react-icons/fc'
+import LogoBlancoEmpresa from '../imagenes/LogoBlancoEmpresa.png'
+import InputGoogle from '../imagenes/InputGoogle.png'
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -154,33 +156,33 @@ export default function Google() {
 
 
 
-                    <AppBar position="static" style={{ borderRadius: "0 0 20px 20px", backgroundColor: 'white', boxShadow: '4px 4px 5px #566573', position: 'relative' }} >
+                    <AppBar position="static" style={{ borderRadius: "0 0 20px 20px", backgroundColor: '#3498DB', boxShadow: '4px 4px 5px #566573', position: 'relative' }} >
                         <Toolbar >
                             <ListItemAvatar >
 
                                 <Avatar variant="rounded" sx={{ width: 120, height: 56, backgroundColor: 'transparent' }}>
-                                    <a style={{ width: '100%' }}><img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                    <a style={{ width: '100%' }} href="https://pueblosdeldesierto.com/" target="_blank" ><img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoBlancoEmpresa} alt="img" /></a>
                                 </Avatar>
                             </ListItemAvatar>
                         </Toolbar>
                     </AppBar>
-                    <Box style={{ display: 'flex', flexDirection: 'column ', alignItems: 'flex-end' }}>
+                    {/* <Box style={{ display: 'flex', flexDirection: 'column ', alignItems: 'flex-end' }}>
                         <img style={{ width: '30%', position: 'absolute', marginBottom: '120px' }} className='img-fluid shadow-4' src={lineasamarillas} alt='hola' title='Image' />
-                    </Box>
+                    </Box> */}
 
                     <Box style={{ height: '100%', display: 'flex', position: 'relative', alignItems: 'center', justifyContent: 'center', margin: '250px 0 550px' }}>
 
                         <Paper
                             component="form"
                             className={style.Input}
-                            sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px', }}
+                            sx={{ p: '0px 1px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', boxShadow: '2px 2px 5px', }}
                         >
 
-                            <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
+                            <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'black' }}>
                                 <h1 className={style.h1}>BIENVENID@</h1>
                                 <h2 className={style.h2}>AL BUSCADOR Y MONITOREO POR GOOGLE</h2>
 
-                                <h5 className={style.h5}>BUSCA Y ANALIZA NOTICIAS POR GOOGLE</h5>
+                                <h5 className={style.h5}>BUSCA Y ANALIZA NOTICIAS POR <img style={{width:'20%'}} src={googlepalabra} alt="" /></h5>
 
                             </Box>
 
@@ -188,7 +190,7 @@ export default function Google() {
                             {/* <Box style={{ position: 'relative' }}>
                         <img style={{ height: '600px', position: 'absolute', zIndex: '-1', marginLeft: '-180px', marginTop: '-250px', }} className='img-fluid shadow-4' src={wachin} alt='hola' title='Image' />
                     </Box> */}
-
+                           {/* <img style={style.imgGoogle} src={InputGoogle} alt="" /> */}
 
                             <InputBase
                                 // hiddenLabel={true}
@@ -209,8 +211,8 @@ export default function Google() {
                                     }
                                 }}
                             />
-                            <Box style={{ position: 'absolute', marginTop: '200px', color: 'white', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
-                                <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '1px', paddingBottom: '0px !important', textAlign: 'center', fontFamily: 'Trebuchet MS ' }} >
+                            <Box style={{ position: 'absolute', marginTop: '200px', color: 'black', fontSize: '20px', alignItems: 'center', textAlign: 'center' }} >
+                                <Box className={style.BoxSeleccion} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '5px', marginTop: '10px', paddingBottom: '10px !important', textAlign: 'center', fontFamily: 'Trebuchet MS ' }} >
                                     <h4>
                                         Realizar busqueda por Redes
                                     </h4>
@@ -227,7 +229,7 @@ export default function Google() {
 
                                 </Button>
                             </Box>
-                            <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign: 'center' }}>
+                            <Box style={{ marginTop: '270px', position: 'absolute', color: 'black', textAlign: 'center' }}>
                                 <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop: '100px', textAlign: 'center', }}>
                                     <li>Nosotros</li>
                                     <li>Api</li>
@@ -241,7 +243,7 @@ export default function Google() {
 
                                 size="small"
                                 className={style.Button}
-                                sx={{ height: '100%', borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }}
+                                sx={{ borderRadius: '0px 25px 25px 0px', backgroundColor: '#3498DB' }}
                                 variant="contained"
                                 title="Buscar"
                                 endIcon={<SearchOutlinedIcon />}

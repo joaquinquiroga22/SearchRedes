@@ -51,7 +51,7 @@ import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
 import BarChartIcon from '@mui/icons-material/BarChart';
 import SubtitlesOutlinedIcon from '@mui/icons-material/SubtitlesOutlined';
 import NewspaperOutlinedIcon from '@mui/icons-material/NewspaperOutlined';
-
+import LogoBlancoEmpresa from '../imagenes/LogoBlancoEmpresa.png'
 const theme = createTheme({
     typography: {
         fontFamily: 'Raleway, Arial',
@@ -329,7 +329,7 @@ export default function GoogleBusqueda() {
     useEffect(() => {
         if (busquedaGoogle) {
             setLoading(true);
-            fetch(`https://newsapi.org/v2/everything?q=${busquedaGoogle}&lenguage=es&apiKey=6f437bea93ce4b7badc357e36da6b2dc`)
+            fetch(`https://newsapi.org/v2/everything?q=${busquedaGoogle}&language=es&pageSize=45&apiKey=6f437bea93ce4b7badc357e36da6b2dc`)
 
 
                 .then((res) => res.json())
@@ -738,15 +738,15 @@ export default function GoogleBusqueda() {
 
     return (
 
-        <div style={{ backgroundColor: '#024761' }}>
+        <div style={{ backgroundColor: 'white' }}>
             <div className={classes.root}>
-                <AppBar position="static" style={{ backgroundColor: 'white', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573', marginBottom: '150px' }}>
+                <AppBar position="static" style={{ backgroundColor: '#3498DB', borderRadius: "0 0 20px 20px", boxShadow: '4px 4px 5px #566573', marginBottom: '150px' }}>
                     <Toolbar>
 
                         <ListItemAvatar className={classes.title}>
 
                             <Avatar variant="rounded" sx={{ width: 120, height: 54, backgroundColor: 'transparent' }}>
-                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                <a href='/' style={{ width: '100%' }}><img style={{ width: '90%', aspectRatio: '1.88/1' }} src={LogoBlancoEmpresa} alt="img" /></a>
                             </Avatar>
                         </ListItemAvatar>
 
@@ -755,7 +755,7 @@ export default function GoogleBusqueda() {
 
                                 className={boxClass.Input}
 
-                                style={{ fontFamily: 'Ubuntu, sans-serif', color: 'rgba(0,0,0,1)', paddingLeft: '5px' }}
+                                style={{ fontFamily: 'Ubuntu, sans-serif', color: 'white', paddingLeft: '5px' }}
                                 placeholder="Que deseas buscar"
                                 inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={e => setInputBusquedaGoogle(e.target.value)}
@@ -826,7 +826,7 @@ export default function GoogleBusqueda() {
 
 
                         <Button
-                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white' }}
+                            style={{ borderRadius: '20px', backgroundColor: '#2F9DED', color: 'white', border:'1px solid rgba(0, 0, 0, 0.4)' }}
                             variant="outlined"
                             color="primary"
                             size="large"
@@ -989,8 +989,8 @@ export default function GoogleBusqueda() {
                 {/* <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' /> */}
 
 
-                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
-                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', colo: 'white', fontSize: '25px', wordWrap: 'break-word !important' }}>
+                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '18%' }}>
+                    <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', color: 'black', fontSize: '25px', wordWrap: 'break-word !important' }}>
                         <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN GOOGLE NEWS: {'"'}{busquedaGoogle}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper>
@@ -999,8 +999,8 @@ export default function GoogleBusqueda() {
 
                     <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'yellow', color: "white" }} orientation="vertical" />
                     <Paper
-                        style={{ width: '100%', minHeight: '750px', borderRadius: '20px', float: 'right' }}
-
+                        style={{ width: '100%', minHeight: '750px', borderRadius: '20px', float: 'right',paddingLeft:'35px', paddingRight:'35px' }}
+                        elevation="24"
                     >
 
 
