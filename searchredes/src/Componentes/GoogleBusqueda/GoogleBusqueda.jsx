@@ -989,7 +989,7 @@ export default function GoogleBusqueda() {
                 {/* <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' /> */}
 
 
-                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '18%' }}>
+                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', color: 'black', fontSize: '25px', wordWrap: 'break-word !important' }}>
                         <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN GOOGLE NEWS: {'"'}{busquedaGoogle}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
@@ -999,7 +999,7 @@ export default function GoogleBusqueda() {
 
                     <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'yellow', color: "white" }} orientation="vertical" />
                     <Paper
-                        style={{ width: '100%', minHeight: '750px', borderRadius: '20px', float: 'right',paddingLeft:'35px', paddingRight:'35px' }}
+                        style={{ width: '100%', minHeight: '750px', borderRadius: '20px', float: 'right' }}
                         elevation="24"
                     >
 
