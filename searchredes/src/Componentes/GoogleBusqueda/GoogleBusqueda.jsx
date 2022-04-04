@@ -329,7 +329,7 @@ export default function GoogleBusqueda() {
     useEffect(() => {
         if (busquedaGoogle) {
             setLoading(true);
-            fetch(`https://newsapi.org/v2/everything?q=${busquedaGoogle}&language=es&pageSize=45&apiKey=6f437bea93ce4b7badc357e36da6b2dc`)
+            fetch(`https://newsapi.org/v2/everything?q=${busquedaGoogle}&language=es&pageSize=45&apiKey=024e3828941e447a96fa5b7f73eff1a7`)
 
 
                 .then((res) => res.json())
@@ -830,8 +830,8 @@ export default function GoogleBusqueda() {
                             variant="outlined"
                             color="primary"
                             size="large"
-                            className={classes.button}
-                            startIcon={<BarChartIcon style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
+                            className={boxClass.EsquemaButton}
+                            startIcon={<BarChartIcon className={boxClass.IconEsquema} style={{ borderRadius: '20px', backgroundColor: 'white', color: '#2F9DED' }} />}
 
                             onClick={handleClicke}
                         >
@@ -927,7 +927,7 @@ export default function GoogleBusqueda() {
 
                 </Paper>
 
-                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '18%', border: '1px solid transparent', marginTop: '50px' }}>
+                <Container className={boxClass.ContenedorIzquierdo} style={{ borderRadius: '20px', marginBottom: '100px', width: '15%', border: '1px solid transparent', marginTop: '50px' }}>
                     <Paper
                         style={{ margin: '0 0 0 0', width: '100%', minHeight: '750px', borderRadius: '20px', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent' }} //Paper margen izquierdo
                     >
@@ -989,13 +989,13 @@ export default function GoogleBusqueda() {
                 {/* <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'white', color: "white", marginLeft: '10px', marginTop: '-150px', marginBottom: '100px', width: '1px' }} orientation='vertical' flexItem variant='middle' /> */}
 
 
-                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '23%' }}>
+                <Paper style={{ width: '30%', marginTop: '-150px', color: 'white', backgroundColor: 'transparent', boxShadow: 'none', borderColor: 'transparent', fontFamily: 'Minimalust', position: 'absolute', marginLeft: '20%' }}>
                     <Box className={boxClass.BusquedaTwitt} style={{ paddingTop: '-100px', color: 'black', fontSize: '25px', wordWrap: 'break-word !important' }}>
                         <h4 style={{ wordWrap: 'break-word !important' }}>BUSQUEDA EN GOOGLE NEWS: {'"'}{busquedaGoogle}{'"'} <br /> RESULTADOS: </h4>
                     </Box>
                 </Paper>
 
-                <Container className={boxClass.ContenedorDerecho} style={{ borderRadius: '25px', marginBottom: '100px', marginLeft: '60px', width: '60%', border: '0px solid #3498DB' }}>
+                <Container className={boxClass.ContenedorDerecho} style={{ borderRadius: '25px', marginBottom: '100px', marginLeft: '60px', width: '65%', border: '0px solid #3498DB' }}>
 
                     <Divider className={boxClass.LineaDivisora} style={{ backgroundColor: 'yellow', color: "white" }} orientation="vertical" />
                     <Paper
@@ -1004,7 +1004,7 @@ export default function GoogleBusqueda() {
                     >
 
 
-                        <Button className={boxClass.nueva} variant="contained" color="primary" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/Google")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
+                        <Button className={boxClass.nueva} variant="contained" style={{ textAlign: 'center', bottom: '20px', right: '3px', fontSize: '10px', width: '9%', position: 'fixed', marginTop: '-64px', paddingRight: '30px', paddingBottom: '10px', height: '40px', borderRadius: '20px' }} aria-label="upload picture" component="span" onClick={() => window.location.replace("/Google")} startIcon={<ArrowBackIcon />} >Nueva Busqueda</Button>
                         {data.articles ? (
                             data.articles && data.articles.map((item) => (
                                 <List
@@ -1054,7 +1054,7 @@ export default function GoogleBusqueda() {
                                                                <SubtitlesOutlinedIcon style={{height: '15px' }} /> {shortTextTitle(item.title)}
                                                             </ListItemText>
                                                         </Typography>
-                                                        <Divider></Divider>
+                                                        <Divider style={{backgroundColor:'rgba(0,0,0,0.3)'}}></Divider>
                                                     </Typography>
                                                 </ThemeProvider>
                                             }

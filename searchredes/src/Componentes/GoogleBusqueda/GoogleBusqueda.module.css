@@ -245,7 +245,7 @@
         align-items: center !important; */
         top: 210px !important;
         color: black !important;
-        left: 63% !important;
+        left: 80% !important;
         font-size: 11px !important;
         text-align: center;
         margin-top: -10px !important;
@@ -319,5 +319,22 @@
         display: none !important;
     }
 }
-
+.nueva{
+    background: linear-gradient(to left, #3498DB, #5583EE );
+    color: white !important;
+}
+.nueva:hover{
+    background: white !important;
+    color:black !important;
+    border: 1px solid #5583EE !important;
+}
+/* .EsquemaButton:hover{
+    background: white !important;
+    border:1px solid #55E3EE !important;
+    color: black !important;
+    
+}
+.IconEsquema:hover .startIcon{
+    background: black !important;
+} */
 
