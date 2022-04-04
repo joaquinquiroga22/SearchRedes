@@ -35,7 +35,7 @@ function App() {
          <Route  path="Google" exact element={<Google/>}/>
          <Route  path="google-busqueda" exact element={<GoogleBusqueda/>}/>
 
-          {/* <Route path="/Prueba"  element={<Prueba/>} />   */}
+           <Route path="/Prueba"  element={<Prueba/>} /> 
 
         </Routes>
       </Router>

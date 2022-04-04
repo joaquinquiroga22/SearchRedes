@@ -3,11 +3,16 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
-
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
-
+import TwitterIcon from '@material-ui/icons/Twitter';
 import lineasamarillas from '../imagenes/lineasamarillas.png'
 import Button from '@mui/material/Button';
 
@@ -138,7 +143,7 @@ export default function Nav() {
     };
 
     return (
-        <section style={{ backgroundColor: '#024761'}}>
+        <section style={{ backgroundColor: '#024761' }}>
             <ColorModeContext.Provider value={colorMode}>
                 <ThemeProvider theme={theme}>
 
@@ -149,7 +154,7 @@ export default function Nav() {
                             <ListItemAvatar >
 
                                 <Avatar variant="rounded" sx={{ width: 120, height: 56, backgroundColor: 'transparent' }}>
-                                    <a style={{ width: '100%', cursor:'pointer'}} href="https://pueblosdeldesierto.com/" target="_blank"> <img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
+                                    <a style={{ width: '100%', cursor: 'pointer' }} href="https://pueblosdeldesierto.com/" target="_blank"> <img style={{ width: '85%', aspectRatio: '1.88/1' }} src={LogoEmpresaNuevo} alt="img" /></a>
                                 </Avatar>
                             </ListItemAvatar>
                         </Toolbar>
@@ -162,7 +167,7 @@ export default function Nav() {
 
                         <Paper
                             component="form"
-                            sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px'}}
+                            sx={{ p: '3px 4px', display: 'flex', position: 'absolute', zIndex: '150000', alignItems: 'center', width: '70%', justifyContent: 'center', border: '1px solid #808B96', borderRadius: '30px 30px 30px 30px', height: '50px', boxShadow: '2px 2px 5px' }}
                         >
 
                             <Box style={{ position: 'absolute', marginTop: '-240px', textAlign: 'center', color: 'white' }}>
@@ -209,12 +214,22 @@ export default function Nav() {
 
                                     className={style.ButtonGoogle}
                                     endIcon={<FcGoogle />}
-                                    style={{ backgroundColor: 'white', color: 'black',position:'relative', zIndex:'1', borderRadius:'20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'}}
+                                    style={{ backgroundColor: 'white', color: 'black', position: 'relative', zIndex: '1', borderRadius: '20px', boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px' }}
                                     href="/Google"
                                 >
                                     Google
 
                                 </Button>
+                                {/* <FormControlLabel
+                                    control={
+                                    <Checkbox 
+                                    icon={<TwitterIcon  />} 
+                                    checkedIcon={<TwitterIcon style={{color:'white'}}/>} 
+                                    name="checkedH" />}
+                                    checked="true"
+
+                                    style={{marginLeft:'10px', backgroundColor:'#3498DB', borderRadius:'20px', color: 'blue'}}
+                                /> */}
                             </Box>
                             <Box style={{ marginTop: '270px', position: 'absolute', color: 'white', textAlign: 'center' }}>
                                 <ul style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '-55px', paddingTop: '100px', textAlign: 'center', }}>
