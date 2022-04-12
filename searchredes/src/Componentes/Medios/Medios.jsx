@@ -252,8 +252,13 @@ const positivo = (item) => {
 const neutral = (item1, item2) => {
 
     const prom = item1 / item2
-    if (prom > 10) {
+
+
+    if ((item1 === 0) && (item2 === 0)) {
+        return 0;
+    }else  if (prom > 10) {
         return 100;
+        
     }
     return (prom * 10).toFixed(2);
 }
@@ -961,14 +966,14 @@ export default function Medios() {
 
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
-                                <h4><FavoriteIcon style={{ marginBottom: '-7px', width: '20px', color: 'red' }} />{data.estadistica.likes}</h4>
+                                <h4><FavoriteIcon style={{ marginBottom: '-7px', width: '20px', color: 'red' }} />{data.estadisticaMedios.likes}</h4>
 
                             </Paper>
                         </Grid>
 
                         <Grid item xs={12}>
                             <Paper className={boxClass.Grid13}>
-                                <h4><CachedIcon style={{ marginBottom: '-7px', width: '20px' }} />{data.estadistica.retweet}</h4>
+                                <h4><CachedIcon style={{ marginBottom: '-7px', width: '20px' }} />{data.estadisticaMedios.retweet}</h4>
 
                             </Paper>
                         </Grid>
@@ -1020,25 +1025,25 @@ export default function Medios() {
                                     <h1>Sentimientos</h1>
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4 >Positivo</h4>
-                                    <Progress done={positivo(data.estadistica.likes)} />
+                                    <Progress done={positivo(data.estadisticaMedios.likes)} />
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
                                     <h4>Neutral</h4>
-                                    <Progress done={neutral(data.estadistica.retweet, data.estadistica.likes)} />
+                                    <Progress done={neutral(data.estadisticaMedios.likes, data.estadisticaMedios.retweet)} />
 
 
 
                                     <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                     <h1>Palabras Principales</h1>
-                                     {data.estadistica.palabrasClaves.words ? (
-                                        data.estadistica.palabrasClaves.words && data.estadistica.palabrasClaves.words.map((item) => (
+                                     {data.estadisticaMedios.palabrasClaves.words ? (
+                                        data.estadisticaMedios.palabrasClaves.words && data.estadisticaMedios.palabrasClaves.words.map((item) => (
                                             <Box> 
 
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ wordWrap: 'break-word' }}><StickyNote2OutlinedIcon style={{ marginBottom: '-6px', wordWrap: 'break-word' }} />{item.palabra}</h4>
-                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalWords).toFixed(0)} />
+                                                <Progress done={((item.cantidad * 100) / data.estadisticaMedios.palabrasClaves.CantidadTotalWords).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
@@ -1050,12 +1055,12 @@ export default function Medios() {
 
                                     <h1>Usuarios Principales</h1>
 
-                                    {data.estadistica.palabrasClaves.mentions ? (
-                                        data.estadistica.palabrasClaves.mentions && data.estadistica.palabrasClaves.mentions.map((item) => (
+                                    {data.estadisticaMedios.palabrasClaves.mentions ? (
+                                        data.estadisticaMedios.palabrasClaves.mentions && data.estadisticaMedios.palabrasClaves.mentions.map((item) => (
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ marginBottom: '-6px', wordWrap: 'break-word' }} >{item.palabra}</h4>
-                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalMentions).toFixed(0)} />
+                                                <Progress done={((item.cantidad * 100) / data.estadisticaMedios.palabrasClaves.CantidadTotalMentions).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
 
                                             </Box>
@@ -1066,12 +1071,12 @@ export default function Medios() {
                                         <p>no hay nada</p>
                                     )}
                                     <h1>Hashtag Principales</h1>
-                                    {data.estadistica.palabrasClaves.hashtag ? (
-                                        data.estadistica.palabrasClaves.hashtag && data.estadistica.palabrasClaves.hashtag.map((item) => (
+                                    {data.estadisticaMedios.palabrasClaves.hashtag ? (
+                                        data.estadisticaMedios.palabrasClaves.hashtag && data.estadisticaMedios.palabrasClaves.hashtag.map((item) => (
                                             <Box>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ wordWrap: 'break-word' }}> {item.palabra} </h4>
-                                                <Progress done={((item.cantidad * 100) / data.estadistica.palabrasClaves.CantidadTotalHasgtag).toFixed(0)} />
+                                                <Progress done={((item.cantidad * 100) / data.estadisticaMedios.palabrasClaves.CantidadTotalHasgtag).toFixed(0)} />
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                             </Box>
                                         ))
