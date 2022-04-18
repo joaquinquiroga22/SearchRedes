@@ -1053,11 +1053,11 @@ export default function Medios() {
                                         <p>no hay nada</p>
                                     )} 
 
-                                    <h1>Usuarios Principales</h1>
 
                                     {data.estadisticaMedios.palabrasClaves.mentions ? (
                                         data.estadisticaMedios.palabrasClaves.mentions && data.estadisticaMedios.palabrasClaves.mentions.map((item) => (
                                             <Box>
+                                                <h1>Usuarios Principales</h1>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ marginBottom: '-6px', wordWrap: 'break-word' }} >{item.palabra}</h4>
                                                 <Progress done={((item.cantidad * 100) / data.estadisticaMedios.palabrasClaves.CantidadTotalMentions).toFixed(0)} />
@@ -1070,10 +1070,10 @@ export default function Medios() {
                                     ) : (
                                         <p>no hay nada</p>
                                     )}
-                                    <h1>Hashtag Principales</h1>
                                     {data.estadisticaMedios.palabrasClaves.hashtag ? (
                                         data.estadisticaMedios.palabrasClaves.hashtag && data.estadisticaMedios.palabrasClaves.hashtag.map((item) => (
                                             <Box>
+                                                <h1>Hashtag Principales</h1>
                                                 <Divider style={{ backgroundColor: 'white' }}></Divider>
                                                 <h4 style={{ wordWrap: 'break-word' }}> {item.palabra} </h4>
                                                 <Progress done={((item.cantidad * 100) / data.estadisticaMedios.palabrasClaves.CantidadTotalHasgtag).toFixed(0)} />
