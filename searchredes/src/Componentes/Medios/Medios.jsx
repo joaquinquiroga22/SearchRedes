@@ -50,6 +50,7 @@ import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
 import CachedIcon from '@mui/icons-material/Cached';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LogoEmpresaNuevo from '../imagenes/LogoEmpresaNuevo.png'
+import rocket from '../imagenes/rocket-joypixels.gif'
 
 const theme = createTheme({
     typography: {
@@ -643,9 +644,11 @@ export default function Medios() {
                     >
                         <Box className={boxClass.hola} style={{ width: '50%', height: '300px', border: '', borderRadius: '10px', margin: '200px auto', textAlign: 'center' }}>
 
-                            <h1 style={{ color: '#2FBCED' }}>Buscando...</h1>
+                            {/* <h1 style={{ color: '#2FBCED' }}>Buscando...</h1>
                             {/* <Spinner /> */}
-                            <CircularProgress style={{ color: '#2FBCED', width: '10%' }} />
+                            {/* <CircularProgress style={{ color: '#2FBCED', width: '10%' }} />  */}
+                            <a style={{aspectRatio:'1/1',width:'10'}}><img style={{width:'35%'}} src={rocket} alt="hola" /></a>
+                            <h1 style={{ color: '#2FBCED' }}>Buscando...</h1>
                         </Box>
 
                     </Paper>
